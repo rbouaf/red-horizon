@@ -1,0 +1,36 @@
+using UnityEngine;
+using System.IO;
+using YamlDotNet.Serialization;
+using YamlDotNet.Serialization.NamingConventions;
+
+public class RoverDataLoader : MonoBehaviour
+{
+    [System.Serializable]
+    public class RoverDataList
+    {
+        public List<Rover> rovers;
+    }
+
+    private void Start()
+    {
+        string yamlPath = Path.Combine(Application.streamingAssetsPath, "configs/rover_config.yaml");
+
+        if (File.Exists(yamlPath))
+        {
+            string yaml = File.ReadAllText(yamlPath);
+            var deserializer = new DeserializerBuilder()
+                .WithNamingConvention(CamelCaseNamingConvention.Instance) // Matches YAML format
+                .Build();
+
+            RoverModel roverModel = deserializer.Deserialize<RoverData>(yaml);
+            foreach (var rover in roverModel.rovers)
+            {
+                Debug.Log($"Loaded Rover ID: {rover.id}, Mass: {rover.chassis.mass} kg");
+            }
+        }
+        else
+        {
+            Debug.LogError("YAML file not found!");
+        }
+    }
+}
