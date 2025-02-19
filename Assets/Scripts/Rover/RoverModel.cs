@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "RoverData", menuName = "ScriptableObjects/Rover")]
-public class RoverData : ScriptableObject
+public class RoverModel : ScriptableObject
 {
     public string id;
     public Chassis chassis;

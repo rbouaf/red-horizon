@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.IO;
+using System.Collections.Generic;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
 
@@ -8,7 +9,7 @@ public class RoverDataLoader : MonoBehaviour
     [System.Serializable]
     public class RoverDataList
     {
-        public List<Rover> rovers;
+        public List<RoverModel> rovers;
     }
 
     private void Start()
@@ -22,8 +23,8 @@ public class RoverDataLoader : MonoBehaviour
                 .WithNamingConvention(CamelCaseNamingConvention.Instance) // Matches YAML format
                 .Build();
 
-            RoverModel roverModel = deserializer.Deserialize<RoverData>(yaml);
-            foreach (var rover in roverModel.rovers)
+            RoverDataList roverData = deserializer.Deserialize<RoverDataList>(yaml);
+            foreach (var rover in roverData.rovers)
             {
                 Debug.Log($"Loaded Rover ID: {rover.id}, Mass: {rover.chassis.mass} kg");
             }
