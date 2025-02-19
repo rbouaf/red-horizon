@@ -25,6 +25,8 @@ public class OnScreenUI : MonoBehaviour
             float speedInKmH = horizontalSpeed * 3.6f;
 
 
+            // MaxSpeed Perseverance: 0.09 mph
+
             /*if (speedInKmH > 1 && speedInKmH < 50){
                 speedInKmH = 0.10;
             }
