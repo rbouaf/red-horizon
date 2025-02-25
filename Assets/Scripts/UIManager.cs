@@ -11,12 +11,12 @@ public class UIManager : MonoBehaviour
 
     // If you animate the globe's transform, you can store the "start" position, "end" position etc. 
     private Vector3 startPosition = new Vector3(0, 0, 0);
-    private Vector3 endPosition   = new Vector3(3, 0, 0);
+    private Vector3 endPosition   = new Vector3(6, 1, 0);
 
     // We'll do a simple interpolation in code. 
     // Alternatively, you can do a Unity Animation or a tween system like DOTween.
     private bool isTransitioning = false;
-    private float transitionTime = 2f; // 2 seconds
+    private float transitionTime = 0.5f;
     private float elapsedTime = 0f;
 
     private void Start()
@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
             // Move globe from start to end
             marsGlobe.position = Vector3.Lerp(startPosition, endPosition, t);
             // Optionally scale up:
-            marsGlobe.localScale = Vector3.Lerp(new Vector3(2,2,2), new Vector3(4,4,4), t);
+            marsGlobe.localScale = Vector3.Lerp(new Vector3(2,2,2), new Vector3(8,9,8), t);
 
             if (t >= 1f)
             {
