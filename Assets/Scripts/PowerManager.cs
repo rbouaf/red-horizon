@@ -26,7 +26,7 @@ public class PowerManager : MonoBehaviour
             batteryText.text = "Battery: " + batteryLevel.ToString("F1") + "%";
 
             // Change text color based on battery level
-            if (batteryLevel < 96f)
+            if (batteryLevel < 20f)
                 batteryText.color = Color.red; // Low battery warning
             else
                 batteryText.color = Color.white; 
