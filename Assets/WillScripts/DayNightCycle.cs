@@ -26,7 +26,7 @@ public class DayNightCycle : MonoBehaviour {
 
     void Update()
     {
-        // Get time speedup factor and apply it to the day/night cycle
+        // Get time speedup factor and apply it to the day/night cycle //TODO
         float timeScale = 1f;
 
         // Speed of the day/night cycle (in degrees per second)
