@@ -8,14 +8,19 @@ public class RoverController : MonoBehaviour
     public List<WheelController> driveWheels;
     public List<WheelController> steeringWheels;
 
-    public float maxHorsepower = 0.14f;
-    public float maxTorquePerWheel = 669.77f;
+    public float maxHorsepower = 30f;
+    public float maxTorquePerWheel = 6690.77f;
     public float maxSteerAngle = 30f;
+    public float brakingMultiplier = 5f;
 
     private float maxPowerWatts;
+    private Rigidbody rb;
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        rb.centerOfMass = new Vector3(0, -0.5f, 0);
+
         maxPowerWatts = HorsepowerToWatts(maxHorsepower);
         foreach (WheelController wheel in driveWheels)
         {
@@ -28,20 +33,48 @@ public class RoverController : MonoBehaviour
         float throttleInput = Input.GetAxis("Vertical");
         float steerInput = Input.GetAxis("Horizontal");
         float brakeInput = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
-
+        
+        // Apply the player inputs to the rover
         ApplyMovement(throttleInput);
         ApplySteering(steerInput);
         ApplyBraking(brakeInput);
+        
+        // Update wheel visuals
+        foreach (WheelController wheel in driveWheels)
+        {
+            wheel.UpdateWheelVisuals();
+        }
+        
+        foreach (WheelController wheel in steeringWheels)
+        {
+            wheel.UpdateWheelVisuals();
+        }
     }
 
     private void ApplyMovement(float throttle)
     {
-        float powerPerWheel = maxPowerWatts / driveWheels.Count; // Distribute power across 6 wheels
-        float rpm = driveWheels[0].wheelCollider.rpm; // Approximate RPM from one wheel
-
+        float rpmAverage = 0f;
+        int wheelCount = 0;
+        
+        // Calculate average RPM of all drive wheels
         foreach (WheelController wheel in driveWheels)
         {
-            wheel.ApplyTorque(throttle, rpm);
+            if (wheel.wheelCollider.isGrounded)
+            {
+                rpmAverage += wheel.wheelCollider.rpm;
+                wheelCount++;
+            }
+        }
+        
+        if (wheelCount > 0)
+        {
+            rpmAverage /= wheelCount;
+        }
+
+        // Apply torque to each drive wheel
+        foreach (WheelController wheel in driveWheels)
+        {
+            wheel.ApplyTorque(throttle, rpmAverage);
         }
     }
 
@@ -57,7 +90,7 @@ public class RoverController : MonoBehaviour
 
     private void ApplyBraking(float brakeForce)
     {
-        float brakeTorque = brakeForce * maxTorquePerWheel * 5f; // Scaled brake force
+        float brakeTorque = brakeForce * maxTorquePerWheel * brakingMultiplier;
 
         foreach (WheelController wheel in driveWheels)
         {
