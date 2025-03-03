@@ -75,3 +75,6 @@ crashlytics-build.properties
 .vscode/extensions.json
 .vscode/launch.json
 .DS_Store
+Assets/brizzy.meta
+Assets/Scripts.meta
+Assets/Scripts/Simulation.meta
