@@ -18,7 +18,7 @@ public class Geometry {
     public List<double> coordinates;
 }
 
-public class CheckpointLoader : MonoBehaviour {
+public class checkpointManager : MonoBehaviour {
     public TextAsset geoJsonFile;       // assign  GeoJSON file in the Inspector
     public GameObject checkpointPrefab; // unity prefab object created for every checkpoint (temporary)
 
