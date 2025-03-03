@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class MinimapExpand : MonoBehaviour
 {
+    /*
     public RectTransform minimapRectTransform; 
     public Camera minimapCamera;         
     public Vector2 collapsedSize = new Vector2(334, 270);  
@@ -43,4 +44,5 @@ public class MinimapExpand : MonoBehaviour
         minimapRectTransform.sizeDelta = collapsedSize;
         minimapCamera.orthographicSize = 5f;
     }
+    */
 }
