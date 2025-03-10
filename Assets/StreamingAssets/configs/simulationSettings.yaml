@@ -1,0 +1,14 @@
+# Mars Rover Simulation Settings
+# Physics settings control the simulation parameters
+physics:
+  # Time settings
+  timeScale: 1.0                # Speed of simulation (1.0 = real time)
+
+# Gameplay settings affect the game mechanics
+gameplay:
+  # Rover settings
+  startingBattery: 100          # Starting battery percentage
+  
+  # Default selections
+  defaultRover: "001"           # Default rover ID to use in roverConfig.yaml
+  defaultLandingSite: "id"   # Default landing site to use in terrainConfig.json

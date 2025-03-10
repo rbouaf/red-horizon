@@ -1,0 +1,29 @@
+# Environment settings control physical properties of Mars
+environment:
+  gravity: 3.72
+  
+  # Atmospheric properties
+  atmosphericDensity: 0.020             # kg/m³
+  atmosphericPressure: 0.61             # kPa
+  CO2Concentration: 0.95                # Fraction of CO2 in the atmosphere
+  NitrogenConcentration: 0.03
+  ArgonConcentration: 0.02
+  
+  # Temperature ranges (°C)
+  temperatureDay: 20  
+  temperatureNight: -80 
+  temperatureVariation: 15
+  
+  # Day-night cycle
+  dayNightCycleDuration: 24.6
+  sunriseTime: 6.0 
+  sunsetTime: 18.0
+  
+  # Weather conditions
+  windSpeed: 4.0                        # m/s
+  windGustProbability: 0.1              
+  windGustMultiplier: 2.5
+  dustStormProbability: 0.05            
+  dustStormDurationMinutes: 168         # Average duration of dust storms in hours
+  dustStormDurationMultiplier: 3.9      # * some random factor (0-1)
+  dustStormIntensity: 0.7      
