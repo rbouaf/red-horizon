@@ -22,7 +22,6 @@ public class SimulationController : MonoBehaviour
     
     private void Awake()
     {
-        // Find or create DataManager
         dataManager = FindAnyObjectByType<DataManager>();
         if (dataManager == null)
         {
