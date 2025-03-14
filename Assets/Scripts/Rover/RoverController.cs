@@ -8,10 +8,13 @@ public class RoverController : MonoBehaviour
     public List<WheelController> driveWheels;
     public List<WheelController> steeringWheels;
 
-    public float maxHorsepower = 30f;
-    public float maxTorquePerWheel = 6690.77f;
+    public float maxHorsepower = 10f;
+    public float maxTorquePerWheel = 669.77f;
     public float maxSteerAngle = 30f;
     public float brakingMultiplier = 5f;
+
+    [Header("Center of Mass")]
+    public Vector3 centerOfMassOffset = new Vector3(0, -0.5f, 0);
 
     private float maxPowerWatts;
     private Rigidbody rb;
@@ -19,12 +22,20 @@ public class RoverController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.centerOfMass = new Vector3(0, -0.5f, 0);
+        
+        // Set center of mass for better stability
+        if (rb != null)
+        {
+            rb.centerOfMass = centerOfMassOffset;
+            Debug.Log("Center of mass set to: " + rb.centerOfMass);
+        }
 
+        // Set up power calculations
         maxPowerWatts = HorsepowerToWatts(maxHorsepower);
         foreach (WheelController wheel in driveWheels)
         {
             wheel.maxPower = HorsepowerToWatts(wheel.horsepower);
+            wheel.maxTorque = maxTorquePerWheel;
         }
     }
 
@@ -34,72 +45,77 @@ public class RoverController : MonoBehaviour
         float steerInput = Input.GetAxis("Horizontal");
         float brakeInput = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
         
-        // Apply the player inputs to the rover
         ApplyMovement(throttleInput);
         ApplySteering(steerInput);
-        ApplyBraking(brakeInput);
-        
-        // Update wheel visuals
-        foreach (WheelController wheel in driveWheels)
-        {
-            wheel.UpdateWheelVisuals();
-        }
-        
-        foreach (WheelController wheel in steeringWheels)
-        {
-            wheel.UpdateWheelVisuals();
-        }
+        ApplyBrakes(brakeInput);
     }
 
     private void ApplyMovement(float throttle)
     {
-        float rpmAverage = 0f;
-        int wheelCount = 0;
-        
-        // Calculate average RPM of all drive wheels
         foreach (WheelController wheel in driveWheels)
         {
-            if (wheel.wheelCollider.isGrounded)
+            if (Mathf.Abs(throttle) > 0.1f)
             {
-                rpmAverage += wheel.wheelCollider.rpm;
-                wheelCount++;
+                wheel.ApplyDrive(throttle);
             }
-        }
-        
-        if (wheelCount > 0)
-        {
-            rpmAverage /= wheelCount;
-        }
-
-        // Apply torque to each drive wheel
-        foreach (WheelController wheel in driveWheels)
-        {
-            wheel.ApplyTorque(throttle, rpmAverage);
+            else
+            {
+                wheel.wheelCollider.motorTorque = 0;
+            }
         }
     }
 
     private void ApplySteering(float steer)
     {
+        // Calculate steering angle
         float steerAngle = steer * maxSteerAngle;
         
+        // Apply to all steering wheels
         foreach (WheelController wheel in steeringWheels)
         {
             wheel.wheelCollider.steerAngle = steerAngle;
         }
     }
 
-    private void ApplyBraking(float brakeForce)
+    private void ApplyBrakes(float brake)
     {
-        float brakeTorque = brakeForce * maxTorquePerWheel * brakingMultiplier;
-
         foreach (WheelController wheel in driveWheels)
         {
-            wheel.ApplyBraking(brakeTorque);
+            wheel.ApplyBrake(brake * brakingMultiplier);
+        }
+    }
+
+    private void UpdateWheelsVisuals()
+    {
+        foreach (WheelController wheel in driveWheels)
+        {
+            Quaternion rot;
+            Vector3 pos;
+            wheel.wheelCollider.GetWorldPose(out pos, out rot);
+            wheel.wheelModel.position = pos;
+            wheel.wheelModel.rotation = rot;
         }
     }
 
     private static float HorsepowerToWatts(float horsePower)
     {
         return horsePower * 745.7f;
+    }
+    
+    public bool IsGrounded()
+    {
+        foreach (WheelController wheel in driveWheels)
+        {
+            if (wheel.wheelCollider.isGrounded)
+                return true;
+        }
+        
+        foreach (WheelController wheel in steeringWheels)
+        {
+            if (wheel.wheelCollider.isGrounded)
+                return true;
+        }
+        
+        return false;
     }
 }

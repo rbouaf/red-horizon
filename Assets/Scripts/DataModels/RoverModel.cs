@@ -13,7 +13,7 @@ public class RoverModel : ScriptableObject
 [System.Serializable]
 public class Chassis
 {
-    public float mass; // kg
+    public float mass;
 }
 
 [System.Serializable]

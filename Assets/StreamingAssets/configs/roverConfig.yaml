@@ -1,5 +1,5 @@
 rovers:
-  - id: 001
+  - id: "001"
     chassis:
       mass: 800 # kg
     power_system:
