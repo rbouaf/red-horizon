@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 60fc75f5c726b458d97fb53592b33cbd
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175814
+  packageName: Mars Landscape 3D
+  packageVersion: 1.0
+  assetPath: Assets/Mars Landscape 3D/Resources/Materials/Crater_Brush.brush
+  uploadId: 382255

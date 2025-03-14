@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f35383bc9e18b4381af109e7608ac5d9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175814
+  packageName: Mars Landscape 3D
+  packageVersion: 1.0
+  assetPath: Assets/Mars Landscape 3D/Resources/Materials/Dust.mat
+  uploadId: 382255

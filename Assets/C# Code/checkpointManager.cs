@@ -49,7 +49,11 @@ public class checkpointManager : MonoBehaviour {
         }
     }
 
+<<<<<<< Updated upstream
    /// <summary>
+=======
+    /// <summary>
+>>>>>>> Stashed changes
     /// Converts full-map geo coordinates (in degrees) to local Unity coordinates on a specific terrain.
     /// </summary>
     /// <param name="lon">Longitude in degrees (full map center-origin)</param>
@@ -75,10 +79,17 @@ public class checkpointManager : MonoBehaviour {
         return new Vector3(unityX, 0, unityZ);
     }
     
+<<<<<<< Updated upstream
     
     public void UpdateCheckpointPosition(Transform checkpoint, Terrain terrain, double lon, double lat, Vector2 terrainGeoOrigin, Vector2 terrainGeoSize)
     {
         // Get the Unity terrain size 
+=======
+    // Example usage
+    public void UpdateCheckpointPosition(Transform checkpoint, Terrain terrain, double lon, double lat, Vector2 terrainGeoOrigin, Vector2 terrainGeoSize)
+    {
+        // Get the Unity terrain size (assumes terrain.terrainData.size is in Unity units)
+>>>>>>> Stashed changes
         Vector2 unityTerrainSize = new Vector2(terrain.terrainData.size.x, terrain.terrainData.size.z);
         
         // Convert the geo coordinate to a local Unity coordinate
