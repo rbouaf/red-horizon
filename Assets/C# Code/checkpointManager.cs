@@ -44,25 +44,48 @@ public class checkpointManager : MonoBehaviour {
                 
                 // Instantiate the checkpoint at the converted position
                 GameObject checkpoint = Instantiate(checkpointPrefab, localPos, Quaternion.identity);
-                checkpoint.name = feature.properties.ContainsKey("name") ? feature.properties["name"].ToString() : "Checkpoint";
+                checkpoint.name = feature.properties.ContainsKey("title") ? feature.properties["title"].ToString() : "Checkpoint";
             }
         }
     }
 
-    Vector3 ConvertGeoToLocal(double lon, double lat) {
-        // Convert from center-origin full map coordinates to bottom-left origin.
-        // Full map: longitude -180, 180, latitude -90, 90
-        float globalX = (float)(lon + 180.0);
-        float globalZ = (float)(lat + 90.0);
+   /// <summary>
+    /// Converts full-map geo coordinates (in degrees) to local Unity coordinates on a specific terrain.
+    /// </summary>
+    /// <param name="lon">Longitude in degrees (full map center-origin)</param>
+    /// <param name="lat">Latitude in degrees (full map center-origin)</param>
+    /// <param name="terrainGeoOrigin">Bottom-left geo coordinate of the terrain (adjusted system: 0-360, 0-180)</param>
+    /// <param name="terrainGeoSize">Geo extents of the terrain in degrees</param>
+    /// <param name="unityTerrainSize">Terrain dimensions in Unity units (e.g., from terrain.terrainData.size)</param>
+    /// <returns>Local Unity coordinate for the checkpoint</returns>
+    public Vector3 ConvertGeoToLocal(double lon, double lat, Vector2 terrainGeoOrigin, Vector2 terrainGeoSize, Vector2 unityTerrainSize)
+    {
+        // Convert from center-origin to bottom-left origin (adjusted coordinates in degrees)
+        float adjustedX = (float)(lon + 180.0);
+        float adjustedZ = (float)(lat + 90.0);
 
-        // If each smaller terrain has its own origin, subtract the terrain's bottom-left coordinates here.
+        // Determine how far into the terrain's geo extent the coordinate lies
+        float fractionX = (adjustedX - terrainGeoOrigin.x) / terrainGeoSize.x;
+        float fractionZ = (adjustedZ - terrainGeoOrigin.y) / terrainGeoSize.y;
+
+        // Scale by the Unity terrain size to get the local coordinate
+        float unityX = fractionX * unityTerrainSize.x;
+        float unityZ = fractionZ * unityTerrainSize.y;
+
+        return new Vector3(unityX, 0, unityZ);
+    }
+    
+    
+    public void UpdateCheckpointPosition(Transform checkpoint, Terrain terrain, double lon, double lat, Vector2 terrainGeoOrigin, Vector2 terrainGeoSize)
+    {
+        // Get the Unity terrain size 
+        Vector2 unityTerrainSize = new Vector2(terrain.terrainData.size.x, terrain.terrainData.size.z);
         
-        // ex:
-        // float localX = globalX - terrainOriginX;
-        // float localZ = globalZ - terrainOriginZ;
-        // return new Vector3(localX, 0, localZ);
-
-        // For now, return globalX and globalZ as the local coordinates.
-        return new Vector3(globalX, 0, globalZ);
+        // Convert the geo coordinate to a local Unity coordinate
+        Vector3 localPos = ConvertGeoToLocal(lon, lat, terrainGeoOrigin, terrainGeoSize, unityTerrainSize);
+        
+        // Optionally adjust Y using the terrain's heightmap
+        float newY = terrain.SampleHeight(localPos) + terrain.transform.position.y;
+        checkpoint.position = new Vector3(localPos.x, newY, localPos.z);
     }
 }
