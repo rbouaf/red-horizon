@@ -2932,7 +2932,7 @@ GameObject:
   - component: {fileID: 838547320}
   - component: {fileID: 838547319}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: TeleportButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4681,7 +4681,7 @@ GameObject:
   - component: {fileID: 1319487657}
   - component: {fileID: 1319487656}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: TeleportButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5344,9 +5344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4ad4ffa054786a40a981bfa638e8185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 580, y: 20, z: 689}
+  targetPosition: {x: 580, y: 500, z: 689}
   teleportButton: {fileID: 838547319}
   rb: {fileID: 1044359528}
+  buttonText: {fileID: 1319487656}
 --- !u!1 &1522712635
 GameObject:
   m_ObjectHideFlags: 0
