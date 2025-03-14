@@ -1,26 +1,67 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
+using Newtonsoft.Json; // Make sure the Newtonsoft JSON package is imported.
+using UnityEngine.UI;
 
+#region GeoJSON Data Classes
+[System.Serializable]
 public class GeoJsonData {
     public string type;
     public List<Feature> features;
 }
 
+[System.Serializable]
 public class Feature {
     public string type;
     public Geometry geometry;
     public Dictionary<string, object> properties;
 }
 
+[System.Serializable]
 public class Geometry {
     public string type;
     public List<double> coordinates;
 }
+#endregion
 
-public class checkpointManager : MonoBehaviour {
-    public TextAsset geoJsonFile;       // assign  GeoJSON file in the Inspector
-    public GameObject checkpointPrefab; // unity prefab object created for every checkpoint (temporary)
+#region Checkpoint Data Class
+// A plain class to hold checkpoint data.
+public class CheckpointData {
+    public string title;
+    public string description;
+    public string imagePath;
+    public CheckpointData(string title, string description, string imagePath) {
+        this.title = title;
+        this.description = description;
+        this.imagePath = imagePath;
+    }
+}
+#endregion
+
+public class CheckpointManager : MonoBehaviour {
+    [Header("GeoJSON & Prefab Settings")]
+    [Tooltip("Drag your GeoJSON file here")]
+    public TextAsset geoJsonFile;
+    [Tooltip("Drag your checkpoint prefab here")]
+    public GameObject checkpointPrefab;
+    
+    [Header("Terrain Conversion Settings")]
+    [Tooltip("Bottom-left of your terrain in adjusted degrees (0 to 360 for longitude, 0 to 180 for latitude)")]
+    public Vector2 terrainGeoOrigin;
+    [Tooltip("Geo size of the terrain in degrees (longitude span, latitude span)")]
+    public Vector2 terrainGeoSize;
+    [Tooltip("Actual terrain size in Unity units (X,Z)")]
+    public Vector2 unityTerrainSize;
+
+    [Header("UI Settings")]
+    [Tooltip("UI Panel that displays the checkpoint info")]
+    public GameObject checkpointUIPanel;
+    [Tooltip("UI Text element for the title")]
+    public Text titleText;
+    [Tooltip("UI Text element for the description")]
+    public Text descriptionText;
+    [Tooltip("UI Image element for the checkpoint image")]
+    public Image checkpointImage;
 
     void Start() {
         LoadCheckpointsFromGeoJson();
@@ -31,72 +72,103 @@ public class checkpointManager : MonoBehaviour {
             Debug.LogError("GeoJSON file not assigned!");
             return;
         }
-        
-        GeoJsonData data = JsonConvert.DeserializeObject<GeoJsonData>(geoJsonFile.text);
 
+        // Deserialize the GeoJSON data using Newtonsoft.Json
+        GeoJsonData data = JsonConvert.DeserializeObject<GeoJsonData>(geoJsonFile.text);
+        if (data == null || data.features == null) {
+            Debug.LogError("Failed to parse GeoJSON data.");
+            return;
+        }
+
+        // Loop through each feature
         foreach (Feature feature in data.features) {
-            if (feature.geometry.type == "Point") {
+            // Check if the feature represents a point.
+            if (feature.geometry != null && feature.geometry.type == "Point") {
                 double lon = feature.geometry.coordinates[0];
                 double lat = feature.geometry.coordinates[1];
 
-                // Convert from full map (mars trek) to Unity local coordinates
+                // Convert geo coordinates to a Unity world position using your custom logic.
                 Vector3 localPos = ConvertGeoToLocal(lon, lat);
+
+                // Instantiate the checkpoint prefab at the calculated position.
+                GameObject checkpointObj = Instantiate(checkpointPrefab, localPos, Quaternion.identity);
                 
-                // Instantiate the checkpoint at the converted position
-                GameObject checkpoint = Instantiate(checkpointPrefab, localPos, Quaternion.identity);
-                checkpoint.name = feature.properties.ContainsKey("title") ? feature.properties["title"].ToString() : "Checkpoint";
+                // Optionally set the GameObject's name if the property exists.
+                if (feature.properties.ContainsKey("title"))
+                    checkpointObj.name = feature.properties["title"].ToString();
+
+                // Extract additional properties for use in the UI.
+                string title = feature.properties.ContainsKey("title") ? feature.properties["title"].ToString() : "No Title";
+                string description = feature.properties.ContainsKey("description") ? feature.properties["description"].ToString() : "";
+                string imagePath = feature.properties.ContainsKey("image") ? feature.properties["image"].ToString() : "";
+
+                // Create a data object to pass to the checkpoint.
+                CheckpointData cpData = new CheckpointData(title, description, imagePath);
+
+                // Initialize the Checkpoint component (make sure your prefab has the Checkpoint.cs script attached).
+                Checkpoint cp = checkpointObj.GetComponent<Checkpoint>();
+                if (cp != null) {
+                    cp.Setup(cpData, this);
+                }
             }
         }
     }
 
-<<<<<<< Updated upstream
-   /// <summary>
-=======
     /// <summary>
->>>>>>> Stashed changes
-    /// Converts full-map geo coordinates (in degrees) to local Unity coordinates on a specific terrain.
+    /// Converts global geo coordinates (in degrees) to local Unity coordinates on your terrain.
+    /// Assumes full map geo coordinates are adjusted from a center-origin (-180 to 180, -90 to 90) to a bottom-left origin (0,0).
     /// </summary>
-    /// <param name="lon">Longitude in degrees (full map center-origin)</param>
-    /// <param name="lat">Latitude in degrees (full map center-origin)</param>
-    /// <param name="terrainGeoOrigin">Bottom-left geo coordinate of the terrain (adjusted system: 0-360, 0-180)</param>
-    /// <param name="terrainGeoSize">Geo extents of the terrain in degrees</param>
-    /// <param name="unityTerrainSize">Terrain dimensions in Unity units (e.g., from terrain.terrainData.size)</param>
-    /// <returns>Local Unity coordinate for the checkpoint</returns>
-    public Vector3 ConvertGeoToLocal(double lon, double lat, Vector2 terrainGeoOrigin, Vector2 terrainGeoSize, Vector2 unityTerrainSize)
-    {
-        // Convert from center-origin to bottom-left origin (adjusted coordinates in degrees)
+    Vector3 ConvertGeoToLocal(double lon, double lat) {
+        // Adjust from center-origin to bottom-left origin: (0,0) to (360,180)
         float adjustedX = (float)(lon + 180.0);
         float adjustedZ = (float)(lat + 90.0);
 
-        // Determine how far into the terrain's geo extent the coordinate lies
+        // Calculate the fraction along each axis relative to your terrain's geo extent.
         float fractionX = (adjustedX - terrainGeoOrigin.x) / terrainGeoSize.x;
         float fractionZ = (adjustedZ - terrainGeoOrigin.y) / terrainGeoSize.y;
 
-        // Scale by the Unity terrain size to get the local coordinate
+        // Map the fraction to Unity terrain units.
         float unityX = fractionX * unityTerrainSize.x;
         float unityZ = fractionZ * unityTerrainSize.y;
 
+        // Y (vertical) is set to 0, or you can sample your terrain's height if needed.
         return new Vector3(unityX, 0, unityZ);
     }
-    
-<<<<<<< Updated upstream
-    
-    public void UpdateCheckpointPosition(Transform checkpoint, Terrain terrain, double lon, double lat, Vector2 terrainGeoOrigin, Vector2 terrainGeoSize)
-    {
-        // Get the Unity terrain size 
-=======
-    // Example usage
-    public void UpdateCheckpointPosition(Transform checkpoint, Terrain terrain, double lon, double lat, Vector2 terrainGeoOrigin, Vector2 terrainGeoSize)
-    {
-        // Get the Unity terrain size (assumes terrain.terrainData.size is in Unity units)
->>>>>>> Stashed changes
-        Vector2 unityTerrainSize = new Vector2(terrain.terrainData.size.x, terrain.terrainData.size.z);
-        
-        // Convert the geo coordinate to a local Unity coordinate
-        Vector3 localPos = ConvertGeoToLocal(lon, lat, terrainGeoOrigin, terrainGeoSize, unityTerrainSize);
-        
-        // Optionally adjust Y using the terrain's heightmap
-        float newY = terrain.SampleHeight(localPos) + terrain.transform.position.y;
-        checkpoint.position = new Vector3(localPos.x, newY, localPos.z);
+
+    /// <summary>
+    /// Shows the checkpoint UI with details from the given data.
+    /// </summary>
+    public void ShowCheckpointUI(CheckpointData data) {
+        if (checkpointUIPanel) {
+            checkpointUIPanel.SetActive(true);
+            if (titleText) titleText.text = data.title;
+            if (descriptionText) descriptionText.text = data.description;
+            if (checkpointImage) {
+                // Convert the asset path to a Resources loadable path.
+                Sprite sprite = Resources.Load<Sprite>(GetResourcePath(data.imagePath));
+                checkpointImage.sprite = sprite;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Hides the checkpoint UI.
+    /// </summary>
+    public void HideCheckpointUI() {
+        if (checkpointUIPanel) {
+            checkpointUIPanel.SetActive(false);
+        }
+    }
+
+    /// <summary>
+    /// Helper method to convert an asset path to a Resources path.
+    /// Example: "Assets/Checkpoint/Images/pathfinder.jpg" becomes "Checkpoint/Images/pathfinder"
+    /// </summary>
+    string GetResourcePath(string assetPath) {
+        string withoutAssets = assetPath.Replace("Assets/", "");
+        int dotIndex = withoutAssets.LastIndexOf('.');
+        if (dotIndex >= 0)
+            withoutAssets = withoutAssets.Substring(0, dotIndex);
+        return withoutAssets;
     }
 }
