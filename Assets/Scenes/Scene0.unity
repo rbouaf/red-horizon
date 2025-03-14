@@ -249,8 +249,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 234387853}
-  - component: {fileID: 234387854}
   - component: {fileID: 234387855}
+  - component: {fileID: 234387857}
   m_Layer: 0
   m_Name: NavMeshGenerator
   m_TagString: Untagged
@@ -273,30 +273,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &234387854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234387852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6283e7f931660ae4e84a6b0de4e41564, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  terrain: {fileID: 322953329}
-  pointCount: 10000
-  walkableHeightOffset: 0.1
-  maxSlopeAngle: 30
-  navMeshMaterial: {fileID: 0}
-  adaptiveSamplingFactor: 2
-  includeBoundaryPoints: 1
-  boundaryPointCount: 40
-  maxTriangleSize: 10
-  clearanceHeight: 1
-  debugMode: 1
-  skipFiltering: 0
 --- !u!33 &234387855
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -305,6 +281,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234387852}
   m_Mesh: {fileID: 0}
+--- !u!114 &234387857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234387852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559c01a7e8239de408933fd561850e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  voxelSize: 0.5
+  agentHeight: 2
+  agentRadius: 0.5
+  maxSlope: 45
+  walkableMask:
+    serializedVersion: 2
+    m_Bits: 1
+  navMeshMaterial: {fileID: 0}
+  visualizeVoxels: 1
 --- !u!1 &322953327
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,6 +454,51 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25.157, y: 54.907085, z: 547.32153}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &483198796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 483198798}
+  - component: {fileID: 483198797}
+  m_Layer: 0
+  m_Name: GenerateNavMeshUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &483198797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483198796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e5f0e80783b5e94bbc77c44ad641ef9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generator: {fileID: 234387857}
+--- !u!4 &483198798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483198796}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 321.66473, y: 4.932415, z: 756.28314}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -646,7 +688,7 @@ Terrain:
   m_GameObject: {fileID: 1054260900}
   m_Enabled: 1
   serializedVersion: 6
-  m_TerrainData: {fileID: 15600000, guid: 156167cc33d0459489a1c5f9139af042, type: 2}
+  m_TerrainData: {fileID: 0}
   m_TreeDistance: 5000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -702,3 +744,4 @@ SceneRoots:
   - {fileID: 396726773}
   - {fileID: 1054260903}
   - {fileID: 322953330}
+  - {fileID: 483198798}
