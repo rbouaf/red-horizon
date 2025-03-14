@@ -2,10 +2,7 @@ using System;
 using System.Threading.Tasks;
 using UnityEngine;
 
-/// <summary>
-/// Interface for data loading and saving operations.
-/// Implementations handle specific file formats (JSON, YAML, etc.)
-/// </summary>
+
 public interface IDataLoader
 {
     T Load<T>(string filePath);

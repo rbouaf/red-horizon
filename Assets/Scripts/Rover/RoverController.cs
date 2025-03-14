@@ -48,8 +48,6 @@ public class RoverController : MonoBehaviour
         ApplyMovement(throttleInput);
         ApplySteering(steerInput);
         ApplyBrakes(brakeInput);
-
-        UpdateWheelsVisuals();
     }
 
     private void ApplyMovement(float throttle)

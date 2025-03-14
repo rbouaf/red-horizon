@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Serialization;
 using UnityEngine;
 using YamlDotNet.Serialization;
 using YamlDotNet.Serialization.NamingConventions;
@@ -13,13 +14,13 @@ public class YamlLoader : IDataLoader
     public YamlLoader()
     {
         deserializer = new DeserializerBuilder()
-            .WithNamingConvention(CamelCaseNamingConvention.Instance)
+            .WithNamingConvention(UnderscoredNamingConvention.Instance)
             .IgnoreUnmatchedProperties()
             .Build();
         
         serializer = new SerializerBuilder()
             .WithNamingConvention(CamelCaseNamingConvention.Instance)
-            .EmitDefaults()
+            .ConfigureDefaultValuesHandling(DefaultValuesHandling.Preserve)
             .Build();
     }
     

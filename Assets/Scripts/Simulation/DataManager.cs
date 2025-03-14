@@ -19,13 +19,12 @@ public class DataManager : MonoBehaviour
     [SerializeField] private string simulationSettingsPath = "simulationSettings.yaml";
     
     [Header("Loading Options")]
-    [SerializeField] private bool loadFromResources = true;
     [SerializeField] private bool loadOnStart = true;
     
     // Data storage
-    public EnvironmentSettings EnvironmentSettings { get; private set; }
+    //public EnvironmentSettings EnvironmentSettings { get; private set; }
     public RoverConfig RoverConfig { get; private set; }
-    public SimulationSettings SimulationSettings { get; private set; }
+    //public SimulationSettings SimulationSettings { get; private set; }
     
     // Loading status
     public bool IsLoading { get; private set; }
@@ -58,14 +57,6 @@ public class DataManager : MonoBehaviour
         IsLoading = false;
         LoadingProgress = 0f;
         IsDataLoaded = false;
-    }
-    
-    private void Start()
-    {
-        if (loadOnStart)
-        {
-            LoadAllData();
-        }
     }
     
     public void RegisterLoader(IDataLoader loader)
@@ -101,17 +92,17 @@ public class DataManager : MonoBehaviour
         
         try
         {
-            EnvironmentSettings = await LoadDataAsync<EnvironmentSettings>(environmentSettingsPath);
-            Debug.Log($"Loaded environment settings successfully.");
-            IncrementLoadingProgress();
+            // EnvironmentSettings = await LoadDataAsync<EnvironmentSettings>(environmentSettingsPath);
+            // Debug.Log($"Loaded environment settings successfully.");
+            // IncrementLoadingProgress();
             
             RoverConfig = await LoadDataAsync<RoverConfig>(roverConfigPath);
             Debug.Log($"Loaded rover configuration successfully.");
             IncrementLoadingProgress();
             
-            SimulationSettings = await LoadDataAsync<SimulationSettings>(simulationSettingsPath);
-            Debug.Log($"Loaded simulation settings successfully.");
-            IncrementLoadingProgress();
+            // SimulationSettings = await LoadDataAsync<SimulationSettings>(simulationSettingsPath);
+            // Debug.Log($"Loaded simulation settings successfully.");
+            // IncrementLoadingProgress();
             
             Debug.Log("All simulation data loaded successfully.");
             IsDataLoaded = true;
@@ -134,29 +125,12 @@ public class DataManager : MonoBehaviour
     {
         try
         {
-            if (loadFromResources)
-            {
-                string resourcePath = Path.Combine(dataFolder, Path.GetFileNameWithoutExtension(path));
-                resourcePath = resourcePath.Replace("\\", "/");
-                
-                Debug.Log($"Loading from Resources: {resourcePath}");
-                
-                TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
-                if (textAsset == null)
-                    throw new FileNotFoundException($"Resource not found: {resourcePath}");
-                
-                IDataLoader loader = GetLoaderForFile(path);
-                return loader.LoadFromText<T>(textAsset.text);
-            }
-            else
-            {
-                string filePath = Path.Combine(Application.dataPath, dataFolder, path);
-                
-                Debug.Log($"Loading from file system: {filePath}");
-                
-                IDataLoader loader = GetLoaderForFile(filePath);
-                return await loader.LoadAsync<T>(filePath);
-            }
+            string filePath = Path.Combine(Application.streamingAssetsPath, dataFolder, path);
+            
+            Debug.Log($"Loading from file system: {filePath}");
+            
+            IDataLoader loader = GetLoaderForFile(filePath);
+            return await loader.LoadAsync<T>(filePath);
         }
         catch (Exception ex)
         {
@@ -165,9 +139,6 @@ public class DataManager : MonoBehaviour
         }
     }
     
-    /// <summary>
-    /// Increment loading progress
-    /// </summary>
     private void IncrementLoadingProgress()
     {
         completedLoadingOperations++;
@@ -179,25 +150,10 @@ public class DataManager : MonoBehaviour
     {
         try
         {
-            if (loadFromResources)
-            {
-                string resourcePath = Path.Combine(dataFolder, Path.GetFileNameWithoutExtension(path));
-                resourcePath = resourcePath.Replace("\\", "/");
-                
-                TextAsset textAsset = Resources.Load<TextAsset>(resourcePath);
-                if (textAsset == null)
-                    throw new FileNotFoundException($"Resource not found: {resourcePath}");
-                
-                IDataLoader loader = GetLoaderForFile(path);
-                return loader.LoadFromText<T>(textAsset.text);
-            }
-            else
-            {
-                string filePath = Path.Combine(Application.dataPath, dataFolder, path);
-                
-                IDataLoader loader = GetLoaderForFile(filePath);
-                return loader.Load<T>(filePath);
-            }
+            string filePath = Path.Combine(Application.streamingAssetsPath, dataFolder, path);
+            
+            IDataLoader loader = GetLoaderForFile(filePath);
+            return loader.Load<T>(filePath);
         }
         catch (Exception ex)
         {
@@ -208,14 +164,9 @@ public class DataManager : MonoBehaviour
     
     public void SaveData<T>(T data, string path)
     {
-        if (loadFromResources)
-        {
-            Debug.LogWarning("Cannot save to Resources folder. Using file system instead.");
-        }
-        
         try
         {
-            string filePath = Path.Combine(Application.dataPath, dataFolder, path);
+            string filePath = Path.Combine(Application.streamingAssetsPath, dataFolder, path);
             
             IDataLoader loader = GetLoaderForFile(filePath);
             loader.Save(data, filePath);
@@ -226,25 +177,10 @@ public class DataManager : MonoBehaviour
             throw;
         }
     }
-    
-    public RoverModel GetDefaultRover()
-    {
-        if (RoverConfig == null || RoverConfig.rovers == null || RoverConfig.rovers.Count == 0)
-            return null;
-            
-        string defaultRoverId = SimulationSettings?.gameplay?.defaultRover ?? "001";
-        return RoverConfig.rovers.FirstOrDefault(r => r.id == defaultRoverId);
-    }
-    
+}
 
-    public void ApplyEnvironmentalSettings()
-    {
-        if (EnvironmentSettings?.environment == null)
-            return;
-            
-        // Apply physics settings like gravity
-        Physics.gravity = new Vector3(0, -EnvironmentSettings.environment.gravity, 0);
-        
-        Debug.Log($"Applied environment settings: Gravity={EnvironmentSettings.environment.gravity}");
-    }
+[Serializable]
+public class RoverConfig
+{
+    public List<RoverModel> rovers { get; set; } = new List<RoverModel>();
 }
