@@ -38,7 +38,7 @@ public class MinimapExpand : MonoBehaviour
     {
         minimapRectTransform.anchoredPosition = new Vector2(960, -500);
         minimapRectTransform.sizeDelta = expandedSize;
-        minimapCamera.orthographicSize = 50f;
+        minimapCamera.orthographicSize = 80f;
         //playerOnMap.localScale = new Vector3(200,200,200);
 
         int myNewLayer = LayerMask.NameToLayer("Player Minimap");
@@ -50,7 +50,7 @@ public class MinimapExpand : MonoBehaviour
     {
         minimapRectTransform.anchoredPosition = originalPosition;
         minimapRectTransform.sizeDelta = collapsedSize;
-        minimapCamera.orthographicSize = 10f;
+        minimapCamera.orthographicSize = 25f;
 
         int myNewLayer = LayerMask.NameToLayer("Full-Screen Map");
         test.layer = myNewLayer;
