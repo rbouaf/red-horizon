@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // For TextMeshPro support
+using TMPro; // For TextMeshPro support###
 
 public class UIManager : MonoBehaviour
 {
