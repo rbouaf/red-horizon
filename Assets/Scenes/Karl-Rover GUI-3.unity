@@ -786,11 +786,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 196724068}
-  visualWheel: {fileID: 240151878}
-  maxTorque: 669.77
+  wheelModel: {fileID: 0}
   horsepower: 0.23
-  terrainFriction: 1
   maxPower: 0
+  maxTorque: 669.77
 --- !u!1 &227552304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1113,6 +1112,7 @@ MonoBehaviour:
   maxTorquePerWheel: 669.77
   maxSteerAngle: 30
   brakingMultiplier: 5
+  centerOfMassOffset: {x: 0, y: -0.5, z: 0}
 --- !u!4 &299133905
 Transform:
   m_ObjectHideFlags: 0
@@ -1807,11 +1807,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 601567784}
-  visualWheel: {fileID: 1611897743}
-  maxTorque: 669.77
+  wheelModel: {fileID: 0}
   horsepower: 0.23
-  terrainFriction: 1
   maxPower: 0
+  maxTorque: 669.77
 --- !u!4 &601567783
 Transform:
   m_ObjectHideFlags: 0
@@ -2059,11 +2058,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 603097582}
-  visualWheel: {fileID: 14756752}
-  maxTorque: 669.77
+  wheelModel: {fileID: 0}
   horsepower: 0.23
-  terrainFriction: 1
   maxPower: 0
+  maxTorque: 669.77
 --- !u!1 &609432177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,11 +2202,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 609432179}
-  visualWheel: {fileID: 1492647166}
-  maxTorque: 669.77
+  wheelModel: {fileID: 0}
   horsepower: 0.23
-  terrainFriction: 1
   maxPower: 0
+  maxTorque: 669.77
 --- !u!1 &638402493
 GameObject:
   m_ObjectHideFlags: 0
@@ -4875,11 +4872,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 1404889681}
-  visualWheel: {fileID: 1069516440}
-  maxTorque: 669.77
+  wheelModel: {fileID: 0}
   horsepower: 0.23
-  terrainFriction: 1
   maxPower: 0
+  maxTorque: 669.77
 --- !u!1 &1433369441
 GameObject:
   m_ObjectHideFlags: 0
@@ -5813,11 +5809,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 1636071928}
-  visualWheel: {fileID: 1703582344}
-  maxTorque: 669.77
+  wheelModel: {fileID: 0}
   horsepower: 0.23
-  terrainFriction: 1
   maxPower: 0
+  maxTorque: 669.77
 --- !u!1 &1663287183
 GameObject:
   m_ObjectHideFlags: 0
