@@ -13,9 +13,19 @@ public class RoverController : MonoBehaviour
     public float maxSteerAngle = 30f;
     public float brakingMultiplier = 5f;
 
+    [Header("Speed Slider")]
+    public SpeedSlider speedSlider;  // Reference to Speed Slider script
+    private float normalSpeed = 1f;
+
+    [Header("Battery System")]
+    public float batteryLevel = 100f;  // Start at 100%
+    public float drainRate = 0.1f;  // Drain per second
+    public float boostDrainMultiplier = 3f;  // Extra drain when boosting
+
+    public TMPro.TextMeshProUGUI batteryText;  // Reference to UI Text
+
     [Header("Center of Mass")]
     public Vector3 centerOfMassOffset = new Vector3(0, -0.5f, 0);
-
     private float maxPowerWatts;
     private Rigidbody rb;
 
@@ -52,11 +62,26 @@ public class RoverController : MonoBehaviour
 
     private void ApplyMovement(float throttle)
     {
+        // No movement if the battery level is at zero
+        if (batteryLevel <= 0)
+        {
+            foreach (WheelController wheel in driveWheels)
+            {
+                wheel.wheelCollider.motorTorque = 0;  // Ensure no power is applied
+            }
+            return;
+        }
+
         foreach (WheelController wheel in driveWheels)
         {
             if (Mathf.Abs(throttle) > 0.1f)
             {
-                wheel.ApplyDrive(throttle);
+                // Use the slider's selected speed when Shift is held
+                float speedMultiplier = Input.GetKey(KeyCode.LeftShift) ? speedSlider.GetSelectedSpeed() * boostDrainMultiplier : normalSpeed;
+                wheel.ApplyDrive(throttle * speedMultiplier); 
+
+                // Call DrainBattery() to drain power based on speed
+                DrainBattery(speedMultiplier); 
             }
             else
             {
@@ -67,6 +92,12 @@ public class RoverController : MonoBehaviour
 
     private void ApplySteering(float steer)
     {
+        // No steering if battery level is zero
+        if (batteryLevel <= 0)
+        {
+            return;
+        }
+
         // Calculate steering angle
         float steerAngle = steer * maxSteerAngle;
         
@@ -117,5 +148,24 @@ public class RoverController : MonoBehaviour
         }
         
         return false;
+    }
+
+    private void DrainBattery(float speedMultiplier)
+    {
+        if (batteryLevel > 0)
+        {
+            batteryLevel -= (drainRate * speedMultiplier) * Time.deltaTime;
+            batteryLevel = Mathf.Clamp(batteryLevel, 0f, 100f);
+            
+            UpdateBatteryUI();
+        }
+    }
+
+    private void UpdateBatteryUI()
+    {
+        if (batteryText != null)
+        {
+            batteryText.text = "Battery: " + batteryLevel.ToString("F1") + "%";
+        }
     }
 }
