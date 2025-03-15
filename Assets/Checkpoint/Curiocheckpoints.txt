@@ -1,0 +1,84 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [137.44163, -4.58946]
+        },
+        "properties": {
+          "title": "Bradbury Landing",
+          "image": "Assets/Checkpoint/Images/bradbury_landing.jpg",
+          "description": "Bradbury Landing is the landing site for the Curiosity rover within Gale Crater. Named after writer Ray Bradbury, it is located in Aeolis Palus, a flat plain between Gale Crater's northern rim and central peak. Curiosity found evidence of conglomerated fluvial sediments shortly after landing.",
+          "rover": "Curiosity"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [137.44833, -4.59]
+        },
+        "properties": {
+          "title": "Glenelg",
+          "image": "Assets/Checkpoint/Images/glenelg.jpg",
+          "description": "This area marks a junction of three different terrain types, allowing Curiosity to examine exposed bedrock as wind eroded the overlying mudstone. Investigations here demonstrated that Gale Crater once hosted a lake with episodes of both flowing and still water.",
+          "rover": "Curiosity"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [137.36567, -4.67905]
+        },
+        "properties": {
+          "title": "Bagnold Dunes",
+          "image": "Assets/Checkpoint/Images/bagnold_dunes.jpg",
+          "description": "Curiosity reached the Bagnold Dunes on Sol 1174, sampling sand as it traversed this active, wind-driven dune field. The dunes presented a barrier between the rover and the higher slopes of Mt. Sharp.",
+          "rover": "Curiosity"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [137.35716, -4.71109]
+        },
+        "properties": {
+          "title": "Bagnold Dunes South",
+          "image": "Assets/Checkpoint/Images/bagnold_dunes_south.jpg",
+          "description": "The southern portion of the Bagnold Dunes where Curiosity continued its exploration of dynamic sand formations on Mars.",
+          "rover": "Curiosity"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [137.44833, -4.59]
+        },
+        "properties": {
+          "title": "Vera Rubin Ridge",
+          "image": "Assets/Checkpoint/Images/vera_rubin_ridge.jpg",
+          "description": "On Sol 1741, Curiosity observed the base of Vera Rubin Ridge. The rover’s Remote Micro-Imager captured stunning views of fine layering in the ridge face, which is rich in hematite—a mineral associated with water activity.",
+          "rover": "Curiosity"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [137.37272, -4.72368]
+        },
+        "properties": {
+          "title": "Top of Vera Rubin Ridge",
+          "image": "Assets/Checkpoint/Images/top_of_vera_rubin_ridge.jpg",
+          "description": "Curiosity continued southeast along the base of Vera Rubin Ridge in search of a gentle slope. On Sol 1796, the rover headed toward a rock ramp and, by Sol 1809, began ascending the bedrock of the ridge.",
+          "rover": "Curiosity"
+        }
+      }
+    ]
+  }
+  
