@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CheckpointPopUp : MonoBehaviour
+public class Checkpoint : MonoBehaviour
 {
     private CheckpointData data;
     private CheckpointManager manager;

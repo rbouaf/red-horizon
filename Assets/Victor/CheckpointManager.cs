@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json; // Make sure the Newtonsoft JSON package is imported.
 using UnityEngine.UI;
+using Newtonsoft.Json; 
 
-#region GeoJSON Data Classes
+// GeoJSON data classes
 [System.Serializable]
 public class GeoJsonData {
     public string type;
@@ -22,21 +22,19 @@ public class Geometry {
     public string type;
     public List<double> coordinates;
 }
-#endregion
 
-#region Checkpoint Data Class
-// A plain class to hold checkpoint data.
+// Data class to hold checkpoint details
 public class CheckpointData {
     public string title;
     public string description;
     public string imagePath;
+    
     public CheckpointData(string title, string description, string imagePath) {
         this.title = title;
         this.description = description;
         this.imagePath = imagePath;
     }
 }
-#endregion
 
 public class CheckpointManager : MonoBehaviour {
     [Header("GeoJSON & Prefab Settings")]
@@ -44,7 +42,7 @@ public class CheckpointManager : MonoBehaviour {
     public TextAsset geoJsonFile;
     [Tooltip("Drag your checkpoint prefab here")]
     public GameObject checkpointPrefab;
-    
+
     [Header("Terrain Conversion Settings")]
     [Tooltip("Bottom-left of your terrain in adjusted degrees (0 to 360 for longitude, 0 to 180 for latitude)")]
     public Vector2 terrainGeoOrigin;
@@ -74,7 +72,7 @@ public class CheckpointManager : MonoBehaviour {
         }
 
         // Deserialize the GeoJSON data using Newtonsoft.Json
-        GeoJsonData data = JsonConvert.DeserializeObject<GeoJsonData>(geoJsonFile.text);
+        GeoJsonData data = JsonConvert.DeserializeObject<GeoJsonData>(checkpoints.txt);
         if (data == null || data.features == null) {
             Debug.LogError("Failed to parse GeoJSON data.");
             return;
@@ -82,30 +80,29 @@ public class CheckpointManager : MonoBehaviour {
 
         // Loop through each feature
         foreach (Feature feature in data.features) {
-            // Check if the feature represents a point.
             if (feature.geometry != null && feature.geometry.type == "Point") {
                 double lon = feature.geometry.coordinates[0];
                 double lat = feature.geometry.coordinates[1];
 
-                // Convert geo coordinates to a Unity world position using your custom logic.
+                // Convert geo coordinates to a Unity world position
                 Vector3 localPos = ConvertGeoToLocal(lon, lat);
 
-                // Instantiate the checkpoint prefab at the calculated position.
+                // Instantiate the checkpoint prefab
                 GameObject checkpointObj = Instantiate(checkpointPrefab, localPos, Quaternion.identity);
-                
-                // Optionally set the GameObject's name if the property exists.
+
+                // Optionally set the GameObject's name if the "title" property exists
                 if (feature.properties.ContainsKey("title"))
                     checkpointObj.name = feature.properties["title"].ToString();
 
-                // Extract additional properties for use in the UI.
+                // Extract additional properties for UI
                 string title = feature.properties.ContainsKey("title") ? feature.properties["title"].ToString() : "No Title";
                 string description = feature.properties.ContainsKey("description") ? feature.properties["description"].ToString() : "";
                 string imagePath = feature.properties.ContainsKey("image") ? feature.properties["image"].ToString() : "";
 
-                // Create a data object to pass to the checkpoint.
+                // Create a checkpoint data object
                 CheckpointData cpData = new CheckpointData(title, description, imagePath);
 
-                // Initialize the Checkpoint component (make sure your prefab has the Checkpoint.cs script attached).
+                // Setup the checkpoint component (make sure your prefab includes the Checkpoint script)
                 Checkpoint cp = checkpointObj.GetComponent<Checkpoint>();
                 if (cp != null) {
                     cp.Setup(cpData, this);
@@ -116,27 +113,23 @@ public class CheckpointManager : MonoBehaviour {
 
     /// <summary>
     /// Converts global geo coordinates (in degrees) to local Unity coordinates on your terrain.
-    /// Assumes full map geo coordinates are adjusted from a center-origin (-180 to 180, -90 to 90) to a bottom-left origin (0,0).
+    /// Adjusts from center-origin (-180 to 180, -90 to 90) to a bottom-left origin.
     /// </summary>
     Vector3 ConvertGeoToLocal(double lon, double lat) {
-        // Adjust from center-origin to bottom-left origin: (0,0) to (360,180)
         float adjustedX = (float)(lon + 180.0);
         float adjustedZ = (float)(lat + 90.0);
 
-        // Calculate the fraction along each axis relative to your terrain's geo extent.
         float fractionX = (adjustedX - terrainGeoOrigin.x) / terrainGeoSize.x;
         float fractionZ = (adjustedZ - terrainGeoOrigin.y) / terrainGeoSize.y;
 
-        // Map the fraction to Unity terrain units.
         float unityX = fractionX * unityTerrainSize.x;
         float unityZ = fractionZ * unityTerrainSize.y;
 
-        // Y (vertical) is set to 0, or you can sample your terrain's height if needed.
         return new Vector3(unityX, 0, unityZ);
     }
 
     /// <summary>
-    /// Shows the checkpoint UI with details from the given data.
+    /// Displays the checkpoint UI with the given data.
     /// </summary>
     public void ShowCheckpointUI(CheckpointData data) {
         if (checkpointUIPanel) {
@@ -144,7 +137,6 @@ public class CheckpointManager : MonoBehaviour {
             if (titleText) titleText.text = data.title;
             if (descriptionText) descriptionText.text = data.description;
             if (checkpointImage) {
-                // Convert the asset path to a Resources loadable path.
                 Sprite sprite = Resources.Load<Sprite>(GetResourcePath(data.imagePath));
                 checkpointImage.sprite = sprite;
             }
@@ -161,8 +153,7 @@ public class CheckpointManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Helper method to convert an asset path to a Resources path.
-    /// Example: "Assets/Checkpoint/Images/pathfinder.jpg" becomes "Checkpoint/Images/pathfinder"
+    /// Converts an asset path (e.g., "Assets/Checkpoint/Images/pathfinder.jpg") to a Resources path.
     /// </summary>
     string GetResourcePath(string assetPath) {
         string withoutAssets = assetPath.Replace("Assets/", "");
