@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c30811e6a75df4309b68ce71c0eb88b4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175814
+  packageName: Mars Landscape 3D
+  packageVersion: 1.0
+  assetPath: Assets/Mars Landscape 3D/Scenes/Mars Landscape 3D Overview_Profiles/MarsLandscape3DPost-ProcessingVolumeProfile.asset
+  uploadId: 382255

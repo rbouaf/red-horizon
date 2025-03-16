@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 23916da3af1104b4abeb3b9be53334b1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175814
+  packageName: Mars Landscape 3D
+  packageVersion: 1.0
+  assetPath: Assets/Mars Landscape 3D/Resources/Materials/Skybox.mat
+  uploadId: 382255

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 13f086762e8674530af62b721b1065e3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 8574412962073106934
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175814
+  packageName: Mars Landscape 3D
+  packageVersion: 1.0
+  assetPath: Assets/Mars Landscape 3D/Resources/Materials/Ground_03.terrainlayer
+  uploadId: 382255
