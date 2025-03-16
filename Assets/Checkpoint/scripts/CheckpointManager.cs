@@ -74,6 +74,11 @@ public class CheckpointManager : MonoBehaviour {
 
     void Start() {
 
+        // Hide the UI panel at start
+        if (checkpointUIPanel != null) {
+            checkpointUIPanel.SetActive(false);
+        }
+
         if (customFont != null) {
             if (titleText != null)
                 titleText.font = customFont;
