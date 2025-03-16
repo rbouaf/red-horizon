@@ -36,6 +36,11 @@ public class MapSelectionManager : MonoBehaviour
     [Header("Desired Marker Position (Viewport)")]
     [SerializeField] private Vector2 desiredViewportPos = new Vector2(0.25f, 0.5f);
 
+    [Header("Panel Feedback")]
+    // Assign these to your MapSelectionPanel's RectTransform and Image components.
+    [SerializeField] private RectTransform panelRectTransform;
+    [SerializeField] private Image panelImage;
+
     private int currentIndex = 0;
     private Quaternion targetRotation;
     private bool isRotating = false;
@@ -77,6 +82,9 @@ public class MapSelectionManager : MonoBehaviour
                 float radius = 0.5f;
                 marker.transform.localPosition = localDir * radius;
                 
+                // Initially hide markers.
+                marker.SetActive(false);
+                
                 pointMarkers[i] = marker;
             }
         }
@@ -88,20 +96,25 @@ public class MapSelectionManager : MonoBehaviour
     public void NextPoint()
     {
         currentIndex++;
-        if (currentIndex >= interestPoints.Length) currentIndex = 0;
+        if (currentIndex >= interestPoints.Length)
+            currentIndex = 0;
         ShowInterestPoint(currentIndex);
+        StartCoroutine(FlashAndShakePanel());
     }
 
     public void PrevPoint()
     {
         currentIndex--;
-        if (currentIndex < 0) currentIndex = interestPoints.Length - 1;
+        if (currentIndex < 0)
+            currentIndex = interestPoints.Length - 1;
         ShowInterestPoint(currentIndex);
+        StartCoroutine(FlashAndShakePanel());
     }
 
     private void ShowInterestPoint(int index)
     {
-        if (interestPoints == null || interestPoints.Length == 0) return;
+        if (interestPoints == null || interestPoints.Length == 0)
+            return;
 
         InterestPoint point = interestPoints[index];
 
@@ -128,6 +141,18 @@ public class MapSelectionManager : MonoBehaviour
 
         // Rotate the globe so the selected interest point faces the desired direction.
         RotateGlobeToPoint(point.latitude, point.longitude);
+    }
+
+    // This method is called by UIManager once the map selection panel is active.
+    public void ShowMarkers()
+    {
+        if (pointMarkers != null)
+        {
+            foreach (GameObject marker in pointMarkers)
+            {
+                marker.SetActive(true);
+            }
+        }
     }
 
     private void RotateGlobeToPoint(float latitude, float longitude)
@@ -157,7 +182,7 @@ public class MapSelectionManager : MonoBehaviour
         Vector3 desiredWorldPos = cam.ViewportToWorldPoint(new Vector3(desiredViewportPos.x, desiredViewportPos.y, distance));
         Vector3 desiredDir = (desiredWorldPos - marsGlobe.position).normalized;
 
-        // 4. Apply an additional -90° rotation about the Y-axis (to shift right).
+        // 4. Apply an additional -56° rotation about the Y-axis.
         desiredDir = Quaternion.AngleAxis(-56f, Vector3.up) * desiredDir;
 
         // 5. Compute the delta rotation that rotates the current world direction to the desired direction.
@@ -195,6 +220,37 @@ public class MapSelectionManager : MonoBehaviour
             yield return null;
         }
         marker.transform.localScale = targetScale;
+    }
+
+    // Coroutine to flash the panel orange and shake it side to side.
+    private IEnumerator FlashAndShakePanel()
+    {
+        // Duration and shake magnitude can be adjusted.
+        float duration = 0.3f;
+        float shakeMagnitude = 10f;
+        // Get original values.
+        Vector2 originalPos = panelRectTransform.anchoredPosition;
+        Color originalColor = panelImage.color;
+        // Define the flash color (orange).
+        Color flashColor = new Color(1f, 1f, 1f, originalColor.a);
+
+        float elapsed = 0f;
+        // Immediately set the flash color.
+        panelImage.color = flashColor;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / duration;
+            // Lerp back to original color.
+            panelImage.color = Color.Lerp(flashColor, originalColor, t);
+            // Calculate horizontal shake offset (oscillating and decaying).
+            float offsetX = Mathf.Sin(t * Mathf.PI * 8f) * shakeMagnitude * (0.7f - t);
+            panelRectTransform.anchoredPosition = originalPos + new Vector2(offsetX, 0);
+            yield return null;
+        }
+        // Restore original values.
+        panelRectTransform.anchoredPosition = originalPos;
+        panelImage.color = originalColor;
     }
 
     // Easing function for a bouncy, overshooting effect (ease out back).

@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b03148655ff277c498e7999e6f4c4343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d8701d4489ff6464bac9ced46b48df71, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1964,14 +1964,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 67840767cfa8c1d42b40a927b738a14f, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.67133546, g: 1, b: 0, a: 0.14901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 440ca7f6a181396458d32e38154dbaec, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cabd378ec01ecc44ea3f449cedad463b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2422,7 +2422,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1937779851}
         m_TargetAssemblyTypeName: MapSelectionManager, Assembly-CSharp
-        m_MethodName: PrevPoint
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2452,7 +2452,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b03148655ff277c498e7999e6f4c4343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d8701d4489ff6464bac9ced46b48df71, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2723,6 +2723,8 @@ MonoBehaviour:
   markerBaseScale: 0.05
   markerBounceScale: 1.5
   desiredViewportPos: {x: 0.25, y: 0.5}
+  panelRectTransform: {fileID: 1452030259}
+  panelImage: {fileID: 1452030260}
 --- !u!1 &2122407835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,7 +2840,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b03148655ff277c498e7999e6f4c4343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d8701d4489ff6464bac9ced46b48df71, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

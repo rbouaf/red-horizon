@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // For TextMeshPro support###
+using TMPro; // For TextMeshPro support
 
 public class UIManager : MonoBehaviour
 {
@@ -61,6 +61,9 @@ public class UIManager : MonoBehaviour
         // Switch panels after fade-out is complete
         startMenuPanel.SetActive(false);
         mapSelectionPanel.SetActive(true);
+
+        // Make markers visible by calling ShowMarkers on MapSelectionManager.
+        FindObjectOfType<MapSelectionManager>().ShowMarkers();
 
         // Start the globe transition concurrently
         StartCoroutine(GlobeTransition());
