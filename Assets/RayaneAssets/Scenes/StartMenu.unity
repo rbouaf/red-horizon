@@ -185,8 +185,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278204888
+  m_fontColor: {r: 0.8470589, g: 0.22352943, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -457,8 +457,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278204888
+  m_fontColor: {r: 0.8470589, g: 0.22352943, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b03148655ff277c498e7999e6f4c4343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 440ca7f6a181396458d32e38154dbaec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1963,8 +1963,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Material: {fileID: 2100000, guid: 67840767cfa8c1d42b40a927b738a14f, type: 2}
+  m_Color: {r: 0, g: 0.8691118, b: 1, a: 0.14901961}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2233,7 +2233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2422,7 +2422,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1937779851}
         m_TargetAssemblyTypeName: MapSelectionManager, Assembly-CSharp
-        m_MethodName: PrevPoint
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2711,6 +2711,20 @@ MonoBehaviour:
       with the Ingenuity helicopter assisting in scouting terrains ahead.
     images:
     - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - pointName: Sojourner Landing Site
+    latitude: 19.09724
+    longitude: -33.25393
+    description: The first robotic rover to drive on the surface of Mars, Sojourner's
+      instrumentation included three cameras and an Alpha Proton X-ray Spectrometer
+      (APXS) to measure composition of Martian rocks and dust. Designed for a mission
+      lasting 7 sols (Martian days or 24 hours, 39 minutes, and 35.244 seconds),
+      but actually continued operating for 83 sols, until a battery in the lander
+      finally was exhausted. During that time, it covered a distance of 100 meters
+      around its landing site. Landed in Ares Vallis on July 4, 1997. Over its 85-day
+      mission, it explored the Pathfinder lander, analyzing rocks and soil within
+      a few meters of the landing site. It covered about 100 meters.
+    images:
+    - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   pointNameText: {fileID: 442602644}
   latLongText: {fileID: 1310269784}
   descriptionText: {fileID: 187975990}
@@ -2723,6 +2737,8 @@ MonoBehaviour:
   markerBaseScale: 0.05
   markerBounceScale: 1.5
   desiredViewportPos: {x: 0.25, y: 0.5}
+  panelRectTransform: {fileID: 1452030259}
+  panelImage: {fileID: 1452030260}
 --- !u!1 &2122407835
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,7 +2854,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b03148655ff277c498e7999e6f4c4343, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 440ca7f6a181396458d32e38154dbaec, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
