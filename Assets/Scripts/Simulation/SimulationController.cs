@@ -165,42 +165,4 @@ public class SimulationController : MonoBehaviour
     {
         return activeRoverModel;
     }
-    
-    public GameObject InstantiateRover(GameObject roverPrefab, string roverId, Vector3 position, Quaternion rotation)
-    {
-        // Get the rover model
-        RoverModel roverModel = GetRoverModel(roverId);
-        if (roverModel == null || roverPrefab == null)
-        {
-            Debug.LogError("Cannot instantiate rover: Invalid model or prefab");
-            return null;
-        }
-        
-        // Instantiate the rover prefab
-        GameObject roverInstance = Instantiate(roverPrefab, position, rotation);
-        
-        // Configure the rover with the model data
-        ConfigureRoverInstance(roverInstance, roverModel);
-        
-        return roverInstance;
-    }
-    
-    private void ConfigureRoverInstance(GameObject roverInstance, RoverModel roverModel)
-    {
-        if (roverInstance == null || roverModel == null)
-            return;
-            
-        // Get the RoverController component
-        RoverController roverController = roverInstance.GetComponent<RoverController>();
-        if (roverController == null)
-        {
-            Debug.LogError("RoverController component not found on rover instance");
-            return;
-        }
-        
-        // Set the rover model reference
-        roverController.roverModel = roverModel;
-        
-        Debug.Log($"Configured rover instance with model: {roverModel.id}");
-    }
 }
