@@ -26,6 +26,7 @@ public class Checkpoint : MonoBehaviour {
             hasTriggered = false;
             if (manager != null) {
                 manager.HideCheckpointUI();
+                manager.HideButton();
             }
         }
     }

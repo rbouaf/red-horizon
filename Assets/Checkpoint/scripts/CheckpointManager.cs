@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Newtonsoft.Json;
+using TMPro;
 
 // GeoJSON Data Classes 
 [System.Serializable]
@@ -62,15 +63,16 @@ public class CheckpointManager : MonoBehaviour {
     [Tooltip("UI Panel that displays the checkpoint info")]
     public GameObject checkpointUIPanel;
     [Tooltip("UI Text element for the title")]
-    public Text titleText;
+    public TextMeshProUGUI titleText;
     [Tooltip("UI Text element for the description")]
-    public Text descriptionText;
+    public TextMeshProUGUI descriptionText;
     [Tooltip("UI Image element for the checkpoint image")]
     public Image checkpointImage;
-    [Tooltip("Popup scale (1 = default size, less than 1 reduces the pop-up)")]
-    public float popupScale = 1f;
-
+    public GameObject toggleButton;
     public Font customFont;
+
+     // Store the last checkpoint data so we can re-show it if needed.
+    private CheckpointData currentCheckpointData;
 
     void Start() {
 
@@ -78,13 +80,20 @@ public class CheckpointManager : MonoBehaviour {
         if (checkpointUIPanel != null) {
             checkpointUIPanel.SetActive(false);
         }
-
-        if (customFont != null) {
-            if (titleText != null)
-                titleText.font = customFont;
-            if (descriptionText != null)
-                descriptionText.font = customFont;
+         if (titleText != null) {
+            titleText.gameObject.SetActive(false);
         }
+        if (descriptionText != null) {
+            descriptionText.gameObject.SetActive(false);
+        }
+        if (checkpointImage != null) {
+            checkpointImage.gameObject.SetActive(false);
+        }
+        if (toggleButton != null) {
+            toggleButton.SetActive(false);
+        }
+
+       
         // Set Unity terrain size automatically from a Terrain component if assigned
         if (myTerrain != null) {
             Vector3 size = myTerrain.terrainData.size;
@@ -154,7 +163,7 @@ public class CheckpointManager : MonoBehaviour {
                 // Create a CheckpointData object
                 CheckpointData cpData = new CheckpointData(title, description, imagePath);
 
-                // Setup the checkpoint component (ensure your prefab has a Checkpoint script)
+                // Setup the checkpoint component
                 Checkpoint cp = checkpointObj.GetComponent<Checkpoint>();
                 if (cp != null) {
                     cp.Setup(cpData, this);
@@ -163,10 +172,10 @@ public class CheckpointManager : MonoBehaviour {
         }
     }
 
-    /// <summary>
+    /// 
     /// Converts geo coordinates (longitude, latitude) to local Unity coordinates.
     /// Assumes that terrainGeoOrigin and terrainGeoSize are defined in the same coordinate space as the data.
-    /// </summary>
+    /// 
     Vector3 ConvertGeoToLocal(double lon, double lat) {
         float adjustedX = (float)lon;
         float adjustedZ = (float)lat;
@@ -177,41 +186,79 @@ public class CheckpointManager : MonoBehaviour {
         return new Vector3(unityX, 0, unityZ);
     }
 
-    /// <summary>
+    /// 
     /// Displays the checkpoint UI panel with the provided data
-    /// </summary>
+    /// 
     public void ShowCheckpointUI(CheckpointData data) {
+        currentCheckpointData = data; //store current data
         if (checkpointUIPanel != null) {
             checkpointUIPanel.SetActive(true);
-            // Optionally adjust the size of the UI panel.
-            checkpointUIPanel.transform.localScale = new Vector3(popupScale, popupScale, popupScale);
-            if (titleText != null) titleText.text = data.title;
-            if (descriptionText != null) descriptionText.text = data.description;
-            if (checkpointImage != null) {
-                Sprite sprite = Resources.Load<Sprite>(GetResourcePath(data.imagePath));
-                checkpointImage.sprite = sprite;
+        }
+        if (titleText != null) {
+            titleText.gameObject.SetActive(true);
+            titleText.text = data.title;
+        }
+        if (descriptionText != null) {
+            descriptionText.gameObject.SetActive(true);
+            descriptionText.text = data.description;
+        }
+        if (checkpointImage != null) {
+
+            checkpointImage.gameObject.SetActive(true);
+            Sprite sprite = Resources.Load<Sprite>(data.imagePath);
+            if (sprite == null) {
+            Debug.LogError("Sprite not found at path: " + data.imagePath);
             }
+            else {
+            checkpointImage.sprite = sprite;
+            }
+        }
+          if (toggleButton != null) {
+            toggleButton.SetActive(true);
         }
     }
 
-    /// <summary>
+    /// 
     /// Hides the checkpoint UI panel
-    /// </summary>
+    /// 
     public void HideCheckpointUI() {
         if (checkpointUIPanel != null) {
             checkpointUIPanel.SetActive(false);
         }
+        if (titleText != null) {
+            titleText.gameObject.SetActive(false);
+        }
+        if (descriptionText != null) {
+            descriptionText.gameObject.SetActive(false);
+        }
+        if (checkpointImage != null) {
+            checkpointImage.gameObject.SetActive(false);
+        }
     }
 
-    /// <summary>
-    /// Helper method to convert an asset path (e.g., "Assets/Checkpoint/Images/pathfinder.jpg")
-    /// to a Resources path ("Checkpoint/Images/pathfinder")
-    /// </summary>
-    string GetResourcePath(string assetPath) {
-        string withoutAssets = assetPath.Replace("Assets/", "");
-        int dotIndex = withoutAssets.LastIndexOf('.');
-        if (dotIndex >= 0)
-            withoutAssets = withoutAssets.Substring(0, dotIndex);
-        return withoutAssets;
+    public void HideButton() {
+         if (toggleButton != null) {
+            toggleButton.SetActive(false);
+        }
+    }
+
+    /// 
+    /// Toggles the checkpoint UI on or off.
+    /// If the UI is off, it reactivates it with the stored data.
+    ///
+
+    public void ToggleCheckpointUI() {
+        if (checkpointUIPanel == null)
+            return;
+
+        if (checkpointUIPanel.activeSelf) {
+            HideCheckpointUI();
+        }
+        else {
+            // Only show if we have stored checkpoint data.
+            if (currentCheckpointData != null) {
+                ShowCheckpointUI(currentCheckpointData);
+            }
+        }
     }
 }
