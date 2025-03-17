@@ -18,7 +18,7 @@
         "type": "Feature",
         "geometry": {
           "type": "Point",
-          "coordinates": [-33.26389, 19.08714]
+          "coordinates": [-33.24389, 19.08714]
         },
         "properties": {
           "title": "The Sojourner Rover",
