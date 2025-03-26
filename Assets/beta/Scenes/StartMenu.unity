@@ -2422,7 +2422,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1937779851}
         m_TargetAssemblyTypeName: MapSelectionManager, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: GoToNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

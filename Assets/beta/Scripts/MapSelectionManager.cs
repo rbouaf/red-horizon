@@ -1,7 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;  // For TextMeshPro support
+using TMPro;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class InterestPoint
@@ -259,4 +260,10 @@ public class MapSelectionManager : MonoBehaviour
         t = t - 1;
         return (t * t * ((s + 1) * t + s) + 1);
     }
+	public void GoToNextScene(){
+    	// Option 1: Load by name
+		Debug.Log("Hellos!");
+
+    	SceneManager.LoadScene("MarsMain");
+	}
 }
