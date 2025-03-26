@@ -24,6 +24,9 @@ public class RoverController : MonoBehaviour
 
     public TMPro.TextMeshProUGUI batteryText;  // Reference to UI Text
 
+    [Header("Solar Battery Charging")]
+    public float solarChargeRate = 0.5f; // Charge per second
+
     [Header("Center of Mass")]
     public Vector3 centerOfMassOffset = new Vector3(0, -0.5f, 0);
     private float maxPowerWatts;
@@ -58,6 +61,7 @@ public class RoverController : MonoBehaviour
         ApplyMovement(throttleInput);
         ApplySteering(steerInput);
         ApplyBrakes(brakeInput);
+        SolarCharge();
     }
 
     private void ApplyMovement(float throttle)
@@ -167,5 +171,27 @@ public class RoverController : MonoBehaviour
         {
             batteryText.text = "Battery: " + batteryLevel.ToString("F1") + "%";
         }
+    }
+
+    private void SolarCharge()
+    {
+        if (batteryLevel < 100f && IsInSunlight() && IsStationary())
+        {
+            batteryLevel += solarChargeRate * Time.deltaTime;
+            batteryLevel = Mathf.Clamp(batteryLevel, 0f, 100f);
+
+            UpdateBatteryUI();  
+        }
+    }
+
+    private bool IsStationary()
+    {
+        return rb.linearVelocity.magnitude < 0.1f;  // Consider stationary if rovers barely moving
+    }
+
+    private bool IsInSunlight()
+    {
+        // For now always true, update later w sun exposure
+        return true;
     }
 }
