@@ -262,10 +262,24 @@ public class MapSelectionManager : MonoBehaviour
         t = t - 1;
         return (t * t * ((s + 1) * t + s) + 1);
     }
-	public void GoToNextScene(){
-    	// Option 1: Load by name
-		Debug.Log("Hellos!");
+	public void GoToNextScene()
+	{
+    if (interestPoints == null || interestPoints.Length == 0)
+    {
+        Debug.LogError("No interest points set!");
+        return;
+    }
 
-    	SceneManager.LoadScene("MainCuriosity");
+    InterestPoint currentPoint = interestPoints[currentIndex];
+
+    if (string.IsNullOrEmpty(currentPoint.sceneName))
+    {
+        Debug.LogError("Scene name is not set for this interest point.");
+        return;
+    }
+
+    Debug.Log($"Loading scene: {currentPoint.sceneName}");
+    SceneManager.LoadScene(currentPoint.sceneName);
 	}
+
 }

@@ -2681,6 +2681,7 @@ MonoBehaviour:
       in the Space Shuttle Columbia disaster.
     images:
     - {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    sceneName: MainSpirit
   - pointName: Opportunity Landing Site
     latitude: -1.94817
     longitude: -5.52552
@@ -2691,6 +2692,7 @@ MonoBehaviour:
       source of the grey hematite readings seen from space. '
     images:
     - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    sceneName: MainOpportunity
   - pointName: Curiosity Landing Site
     latitude: -4.58946
     longitude: 137.44164
@@ -2701,6 +2703,7 @@ MonoBehaviour:
       having traveled over 29 kilometers.
     images:
     - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    sceneName: MainCuriosity
   - pointName: Perseverance Landing Site
     latitude: 18.44432
     longitude: 77.45075
@@ -2711,6 +2714,7 @@ MonoBehaviour:
       with the Ingenuity helicopter assisting in scouting terrains ahead.
     images:
     - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    sceneName: MainPerseverance
   - pointName: Sojourner Landing Site
     latitude: 19.09724
     longitude: -33.25393
@@ -2725,6 +2729,7 @@ MonoBehaviour:
       a few meters of the landing site. It covered about 100 meters.
     images:
     - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    sceneName: MainSojourner
   pointNameText: {fileID: 442602644}
   latLongText: {fileID: 1310269784}
   descriptionText: {fileID: 187975990}

@@ -14,6 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/beta/Scenes/MainSojourner.unity
     guid: 0994e7207483d1a4aa24384139fdcaeb
+  - enabled: 1
+    path: Assets/beta/Scenes/MainCuriosity.unity
+    guid: 356ed5a41ea2fc8498ed15d851f7c743
+  - enabled: 1
+    path: Assets/beta/Scenes/MainOpportunity.unity
+    guid: e6ff72e70e64a7047890c0a7cf9c6036
+  - enabled: 1
+    path: Assets/beta/Scenes/MainPerseverance.unity
+    guid: aba66d13f7b7267488015e796430aa48
+  - enabled: 1
+    path: Assets/beta/Scenes/MainSpirit.unity
+    guid: 5a41e872fc357b345b6fe2112001b7a7
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
