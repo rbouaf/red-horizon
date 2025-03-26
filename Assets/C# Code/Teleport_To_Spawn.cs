@@ -23,6 +23,7 @@ public class Teleport_To_Spawn : MonoBehaviour
     public void TeleportRover()
     {
         if ((rb.linearVelocity == Vector3.zero) && (rb.angularVelocity == Vector3.zero))
+        if ((Math.Abs(rb.linearVelocity.x) <= 0.2f) && (Math.Abs(rb.linearVelocity.z) <= 0.2f) && (rb.angularVelocity == Vector3.zero))
         {
             rb.position = targetPosition;
             Debug.Log("Teleported rover to " + targetPosition);
