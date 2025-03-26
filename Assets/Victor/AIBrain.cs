@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AIBrain : MonoBehaviour, IBrain
+public class AIBrain : MonoBehaviour, IBrain 
 {
     public string DecideSample(GameObject sampleObject)
     {
@@ -12,11 +12,12 @@ public class AIBrain : MonoBehaviour, IBrain
             // Create a dictionary mapping element names to their concentration values
             Dictionary<string, float> sampleScores = new Dictionary<string, float>
             {
-                { "Iron", info.ironConcentration },
-                { "Titanium", info.titaniumConcentration },
-                { "Magnesium", info.magnesiumConcentration },
-                { "Aluminium", info.aluminiumConcentration },
-                { "Chromium", info.chromiumConcentration }
+                { "Basaltic", info.basalticConcentration }
+                { "Andesitic", info.andesiticConcentration },
+                { "Sedimentary", info.sedimentaryConcentration },
+                { "Clay", info.clayConcentration },
+                { "Quartz", info.quartzConcentration },
+                { "Volcaniclastic", info.volcaniclasticConcentration }
             };
 
             // Evaluate the sensor data by finding the element with the highest concentration

@@ -37,7 +37,6 @@ public class CheckpointData {
     }
 }
 
-// Main Manager Script 
 public class CheckpointManager : MonoBehaviour {
     [Header("GeoJSON & Prefab Settings")]
     [Tooltip("Drag your GeoJSON file here")]

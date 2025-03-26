@@ -1,4 +1,4 @@
-public class SamplerTaker : MonoBehaviour
+public class Sampler : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI Sampler;
     // Reference a MonoBehaviour that implements IBrain (assign this in the Unity Inspector)
