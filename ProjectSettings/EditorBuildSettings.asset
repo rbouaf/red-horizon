@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/beta/Scenes/StartMenu.unity
     guid: f5b346f930494f549a16fa7ac86febb6
   - enabled: 1
-    path: Assets/beta/Scenes/MarsMain.unity
+    path: Assets/beta/Scenes/MainSojourner.unity
     guid: 0994e7207483d1a4aa24384139fdcaeb
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

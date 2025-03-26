@@ -12,6 +12,8 @@ public class InterestPoint
     public float longitude;
     public string description;
     public Sprite[] images; // Up to 3 images
+
+	public string sceneName;
 }
 
 public class MapSelectionManager : MonoBehaviour
@@ -264,6 +266,6 @@ public class MapSelectionManager : MonoBehaviour
     	// Option 1: Load by name
 		Debug.Log("Hellos!");
 
-    	SceneManager.LoadScene("MarsMain");
+    	SceneManager.LoadScene("MainCuriosity");
 	}
 }
