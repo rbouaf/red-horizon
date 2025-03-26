@@ -122,7 +122,6 @@ public class MapSelectionManager : MonoBehaviour
         pointNameText.text = point.pointName;
         latLongText.text = $"Lat: {point.latitude}, Long: {point.longitude}";
         descriptionText.text = point.description;
-        // (Optionally update images.)
 
         // Reset all markers to default (cyan color and base scale).
         if (pointMarkers != null)
@@ -166,7 +165,7 @@ public class MapSelectionManager : MonoBehaviour
             Mathf.Cos(latRad) * Mathf.Sin(lonRad)
         ).normalized;
 
-        // 2. Compute the current world direction of the interest point marker.
+        // 2. Compute the current world direction of the inte rest point marker.
         Vector3 currentWorldDir = marsGlobe.rotation * pointLocalDir;
 
         // 3. Determine the desired world direction.

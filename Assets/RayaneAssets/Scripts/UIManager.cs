@@ -11,12 +11,9 @@ public class UIManager : MonoBehaviour
 
     private Vector3 startPosition;
     private Vector3 endPosition = new Vector3(6, 1, 0);
-
     private Vector3 startScale;
     private Vector3 endScale = new Vector3(8, 8, 8);
-
     private float transitionTime = 2f;
-
     private CanvasGroup startMenuCanvasGroup;
     private CanvasGroup mapSelectionCanvasGroup;
 
