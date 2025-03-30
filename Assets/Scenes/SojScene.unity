@@ -1986,7 +1986,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dd98b69135904cbeaaaa0c2a92fe828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SampleTaker: {fileID: 0}
 --- !u!136 &946367830
 CapsuleCollider:
   m_ObjectHideFlags: 0

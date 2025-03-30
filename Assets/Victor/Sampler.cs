@@ -1,16 +1,20 @@
-public class Sampler : MonoBehaviour
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+
+public class SamplerTaker : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI Sampler;
     // Reference a MonoBehaviour that implements IBrain (assign this in the Unity Inspector)
-    public MonoBehaviour BrainComponent;
+    public AIBrain BrainComponent;
 
-    private IBrain brain;
 
     void Start()
     {
         Sampler.text = "";
-        brain = BrainComponent as IBrain;
-        if (brain == null)
+        if (BrainComponent == null)
         {
             Debug.LogError("Assigned BrainComponent does not implement IBrain!");
         }
@@ -18,9 +22,9 @@ public class Sampler : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("CanBeTaken") && brain != null)
+        if (other.CompareTag("CanBeTaken") && BrainComponent != null)
         {
-            string chosenSample = brain.DecideSample(other.gameObject);
+            string chosenSample = BrainComponent.DecideSample(other.gameObject);
             Sampler.text = "Touched: " + chosenSample;
         }
     }

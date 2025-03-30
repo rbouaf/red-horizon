@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class AIBrain : MonoBehaviour, IBrain 
+public class AIBrain : MonoBehaviour
 {
     public string DecideSample(GameObject sampleObject)
     {
@@ -12,7 +12,7 @@ public class AIBrain : MonoBehaviour, IBrain
             // Create a dictionary mapping element names to their concentration values
             Dictionary<string, float> sampleScores = new Dictionary<string, float>
             {
-                { "Basaltic", info.basalticConcentration }
+                { "Basaltic", info.basalticConcentration },
                 { "Andesitic", info.andesiticConcentration },
                 { "Sedimentary", info.sedimentaryConcentration },
                 { "Clay", info.clayConcentration },
