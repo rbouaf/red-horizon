@@ -752,6 +752,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384810544}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &413602678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5297640286462424509, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
+  m_PrefabInstance: {fileID: 264910982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &637047062
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,6 +2246,7 @@ Transform:
   - {fileID: 1134525519}
   - {fileID: 1885528284}
   - {fileID: 12287501}
+  - {fileID: 2098197041}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1134525518
@@ -2276,6 +2282,11 @@ Transform:
   - {fileID: 660370254}
   m_Father: {fileID: 1047448219}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1146487471 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2513313343952670899, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
+  m_PrefabInstance: {fileID: 1826662411}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1175450171
 GameObject:
   m_ObjectHideFlags: 0
@@ -3555,6 +3566,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1923738932}
   m_Mesh: {fileID: 1260361124546379252, guid: fe4f322267f364c5fbe7be3725a22561, type: 3}
+--- !u!1 &1962628217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3462093792325843721, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
+  m_PrefabInstance: {fileID: 725791758}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2021530012
 GameObject:
   m_ObjectHideFlags: 0
@@ -3848,6 +3864,64 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062778876}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2098197040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2098197041}
+  - component: {fileID: 2098197042}
+  m_Layer: 0
+  m_Name: Rocks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2098197041
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098197040}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -209.31085, y: 12581.375, z: -2455.7522}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1047448219}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2098197042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098197040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de52e8cb301bd4641ad53af490aec78a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terrain: {fileID: 1363539581}
+  basalticPrefab: {fileID: 1146487471}
+  andesiticPrefab: {fileID: 1962628217}
+  sedimentaryPrefab: {fileID: 1146487471}
+  clayPrefab: {fileID: 1146487471}
+  quartzPrefab: {fileID: 413602678}
+  volcaniclasticPrefab: {fileID: 1962628217}
+  basalticConcentration: 0.9
+  andesiticConcentration: 0.7
+  sedimentaryConcentration: 0.3
+  clayConcentration: 0.4
+  quartzConcentration: 0.05
+  volcaniclasticConcentration: 0.1
+  spawnMultiplier: 60000
 --- !u!1 &2124614005
 GameObject:
   m_ObjectHideFlags: 0
