@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoverController : MonoBehaviour
 {
+    private string roverId = "001";
     public RoverModel roverModel;
     public List<WheelController> driveWheels;
     public List<WheelController> steeringWheels;
@@ -37,7 +38,22 @@ public class RoverController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        SimulationController simController = GetComponent<SimulationController>();
+        if (simController == null)
+        {
+            Debug.LogError("SimulationController not found!");
+            return;
+        }
+        roverModel = simController.GetRoverModelById(roverId);
+        if (roverModel == null)
+        {
+            Debug.LogError("Rover model not found!");
+            return;
+        }
         
+        maxTorquePerWheel = roverModel.systems.mobility.wheelTorque;
+
         // Set center of mass for better stability
         if (rb != null)
         {
