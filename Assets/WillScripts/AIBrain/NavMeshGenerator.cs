@@ -3,10 +3,7 @@ using Unity.AI.Navigation;
 using System.Collections;
 using System.Collections.Generic;
 
-/// <summary>
 /// Generates a NavMesh at runtime for the Mars terrain using NavMeshSurface.
-/// Specifically designed for AI Navigation version 2.0.6.
-/// </summary>
 public class NavMeshGenerator : MonoBehaviour
 {
     [Header("NavMesh Generation")]
@@ -46,9 +43,7 @@ public class NavMeshGenerator : MonoBehaviour
         }
     }
     
-    /// <summary>
     /// Waits for delay, then generates the NavMesh
-    /// </summary>
     private IEnumerator GenerateNavMeshWithDelay()
     {
         if (isGenerating)
@@ -105,9 +100,7 @@ public class NavMeshGenerator : MonoBehaviour
         isGenerating = false;
     }
     
-    /// <summary>
     /// Builds the NavMesh in chunks for better performance on large terrains
-    /// </summary>
     private IEnumerator BuildNavMeshInChunks()
     {
         if (mainSurface == null) yield break;
@@ -169,9 +162,7 @@ public class NavMeshGenerator : MonoBehaviour
         Debug.Log($"Completed building NavMesh in {totalChunks} chunks");
     }
     
-    /// <summary>
     /// Public method to manually trigger NavMesh generation
-    /// </summary>
     public void GenerateNavMesh()
     {
         if (!isGenerating)
@@ -184,9 +175,7 @@ public class NavMeshGenerator : MonoBehaviour
         }
     }
     
-    /// <summary>
     /// Clears all NavMesh data
-    /// </summary>
     public void ClearNavMesh()
     {
         if (mainSurface != null)
@@ -205,9 +194,7 @@ public class NavMeshGenerator : MonoBehaviour
         Debug.Log("NavMesh data cleared");
     }
     
-    /// <summary>
     /// Update the visualizations
-    /// </summary>
     private void OnDrawGizmosSelected()
     {
         // Draw the main surface bounds if available

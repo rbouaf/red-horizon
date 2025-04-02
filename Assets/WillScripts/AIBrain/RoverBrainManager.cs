@@ -2,9 +2,8 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-/// <summary>
+
 /// Manages different AI brain modules for the rover.
-/// </summary>
 public class RoverBrainManager : MonoBehaviour
 {
     [System.Serializable]

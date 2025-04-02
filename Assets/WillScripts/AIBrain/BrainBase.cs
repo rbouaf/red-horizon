@@ -1,9 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-/// <summary>
 /// Base abstract class for all AI brains providing common functionality.
-/// </summary>
 public abstract class BrainBase : MonoBehaviour, IBrain
 {
     [Header("Brain Settings")]
