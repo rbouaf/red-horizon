@@ -19,13 +19,15 @@ public class RoverController : MonoBehaviour
 
     [Header("Battery System")]
     public float batteryLevel = 100f;  // Start at 100%
-    public float drainRate = 0.1f;  // Drain per second
+    public float drainRate = 0.01f;  // Drain per second
     public float boostDrainMultiplier = 3f;  // Extra drain when boosting
 
     public TMPro.TextMeshProUGUI batteryText;  // Reference to UI Text
 
     [Header("Solar Battery Charging")]
-    public float solarChargeRate = 0.5f; // Charge per second
+    public float solarChargeRate = 1.0f; // Charge per second
+
+    public TMPro.TextMeshProUGUI chargingStatusText;
 
     [Header("Center of Mass")]
     public Vector3 centerOfMassOffset = new Vector3(0, -0.5f, 0);
@@ -175,18 +177,26 @@ public class RoverController : MonoBehaviour
 
     private void SolarCharge()
     {
+        bool charging = false;
+
         if (batteryLevel < 100f && IsInSunlight() && IsStationary())
         {
             batteryLevel += solarChargeRate * Time.deltaTime;
             batteryLevel = Mathf.Clamp(batteryLevel, 0f, 100f);
-
             UpdateBatteryUI();  
+            charging = true;
+        }
+
+        // Show or hide charging text
+        if (chargingStatusText != null)
+        {
+            chargingStatusText.gameObject.SetActive(charging);
         }
     }
 
     private bool IsStationary()
     {
-        return rb.linearVelocity.magnitude < 0.1f;  // Consider stationary if rovers barely moving
+        return rb.linearVelocity.magnitude < 0.01f;  // Consider stationary if rovers barely moving
     }
 
     private bool IsInSunlight()
