@@ -1,71 +1,70 @@
 {
-    "type": "FeatureCollection",
-    "features": [
-       {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [-5.52552, -1.94817]
-        },
-        "properties": {
-          "title": "Landing site",
-          "image": "Images/Landing_site_opp",
-          "description": "As luck would have it, Opportunity actually landed in a small impact crater. Eagle crater, with a diameter of 22 meters and a depth of 3 meters, proved to be an excellent place for Opportunity to start its mission. The crater contains exposed rock outcrops which, upon close examination, revealed the source of the grey hematite readings seen from space.",
-          "rover": "Opportunity"
-        }
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.52552, -1.94817]
       },
-       {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [-5.50, -2.0522]
-        },
-        "properties": {
-          "title": "Victoria Crater",
-          "image": "Images/Victoria_crater_large",
-          "description": "At 750 meters in diameter and 70 meters in depth, Victoria Crater is significantly larger than either Eagle or Endurance craters. When Opportunity arrived at the crater, it drove about a quarter of the way around the rim, mapping the crater and looking for a safe route in. Again, numerous layers of sedimentary rock were exposed and a large dune field occupied the floor of the crater. Inside the crater, analysis of the exposed rock showed that the processes that had been at work locally in Eagle and Endurance craters acted more widely, on a regional scale. Sulfate salts were produced by the interaction between basalt rock and acidic water. Sand generated, transported, and deposited by the wind became cemented into sedimentary rock under the influence of groundwater. Differences between layers told how the processes of sedimentary rock formation changed as Mars became more arid. Opportunity spent 341 sols (Martian days) exploring inside Victoria Crater before exiting and continuing on.",
-          "rover": "Opportunity"
-        }
-      }, 
-       {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [-5.3487, -2.31545]
-        },
-        "properties": {
-          "title": "Spirit Mound",
-          "image": "Images/SpiritMound_large",
-          "description": "After more than a terrestrial year of exploring Marathon Valley, Opportunity exited the valley on Sol 4482 through Lewis and Clark Gap heading to the east, downslope and inward, along the rim of Endeavour Crater. As Opportunity continued across the terrain of Cape Tribulation, the name giving to this raised section of the crater's western rim containing Marathon Valley, the rover team guided the rover to a hill dubbed Spirit Mound. The team had thought they might possibly find ancient Matijevic Formation material there, similar to what they had found earlier in Cape York. But upon arriving at the Spirit Mound, they found more of the brecciated rocks of the Shoemaker Formation that they had become quite familiar with in their traverse across Cape Tribulation.",
-          "rover": "Opportunity"
-        }
-      }, 
-       {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [-5.3561, -2.3217]
-        },
-        "properties": {
-          "title": "Rocheport",
-          "image": "Images/Rocheport_large",
-          "description": "After leaving Spirit Mound, Opportunity headed southwest up and outward along the raised section of Endeavour Crater's rim known as Cape Tribulation. The goal was to exit Cape Tribulation and head south along the Meridiani Plain, to the next raised section known as Cape Byron. Cresting the rim, Opportunity reached a gap named Rocheport on Sol 4640, where it would finally exit Cape Tribulation. Taking a farewell pan of the terrain revealed a section of striated Shoemaker Formation bedrock that appeared to have been etched or carved by something. Opportunity made a final stop in this region to examine the striated rock. Possible explanations for the striations included formation by ice, wind erosion, or a spillover of water. Discussion continued as Opportunity journeyed on, leaving Cape Tribulation behind.",
-          "rover": "Opportunity"
-        }
-      }, 
-       {
-        "type": "Feature",
-        "geometry": {
-          "type": "Point",
-          "coordinates": [-5.349, -2.331]
-        },
-        "properties": {
-          "title": "La Bajada",
-          "image": "Images/La Bajada",
-          "description": "In the beginning of November, 2017 Opportunity was in an area that had been labeled as "La Bajada". The area was characterized by two differing rock outcrops coming together. The northern outcrop exhibited what appeared to be small, etched erosional tails that seemed to indicate scouring in an uphill direction. Opportunity was positioned over a good example site dubbed Mesilla from Sols 4890 through 4906. Study with the Pancam, Microscopic Imager (MI), Alpha Particle X-ray Spectrometer (APXS) confirmed these as wind-carved erosional features.",
-          "rover": "Opportunity"
-        }
+      "properties": {
+        "title": "Landing site",
+        "image": "Images/Landing_site_opp",
+        "description": "As luck would have it, Opportunity actually landed in a small impact crater. Eagle crater, with a diameter of 22 meters and a depth of 3 meters, proved to be an excellent place for Opportunity to start its mission. The crater contains exposed rock outcrops which, upon close examination, revealed the source of the grey hematite readings seen from space.",
+        "rover": "Opportunity"
       }
-    ]
-  }
-  
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.50, -2.0522]
+      },
+      "properties": {
+        "title": "Victoria Crater",
+        "image": "Images/Victoria_crater_large",
+        "description": "At 750 meters in diameter and 70 meters in depth, Victoria Crater is significantly larger than either Eagle or Endurance craters. When Opportunity arrived at the crater, it drove about a quarter of the way around the rim, mapping the crater and looking for a safe route in. Again, numerous layers of sedimentary rock were exposed and a large dune field occupied the floor of the crater. Inside the crater, analysis of the exposed rock showed that the processes that had been at work locally in Eagle and Endurance craters acted more widely, on a regional scale. Sulfate salts were produced by the interaction between basalt rock and acidic water. Sand generated, transported, and deposited by the wind became cemented into sedimentary rock under the influence of groundwater. Differences between layers told how the processes of sedimentary rock formation changed as Mars became more arid. Opportunity spent 341 sols (Martian days) exploring inside Victoria Crater before exiting and continuing on.",
+        "rover": "Opportunity"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.3487, -2.31545]
+      },
+      "properties": {
+        "title": "Spirit Mound",
+        "image": "Images/SpiritMound_large",
+        "description": "After more than a terrestrial year of exploring Marathon Valley, Opportunity exited the valley on Sol 4482 through Lewis and Clark Gap heading to the east, downslope and inward, along the rim of Endeavour Crater. As Opportunity continued across the terrain of Cape Tribulation, the name giving to this raised section of the crater's western rim containing Marathon Valley, the rover team guided the rover to a hill dubbed Spirit Mound. The team had thought they might possibly find ancient Matijevic Formation material there, similar to what they had found earlier in Cape York. But upon arriving at the Spirit Mound, they found more of the brecciated rocks of the Shoemaker Formation that they had become quite familiar with in their traverse across Cape Tribulation.",
+        "rover": "Opportunity"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.3561, -2.3217]
+      },
+      "properties": {
+        "title": "Rocheport",
+        "image": "Images/Rocheport_large",
+        "description": "After leaving Spirit Mound, Opportunity headed southwest up and outward along the raised section of Endeavour Crater's rim known as Cape Tribulation. The goal was to exit Cape Tribulation and head south along the Meridiani Plain, to the next raised section known as Cape Byron. Cresting the rim, Opportunity reached a gap named Rocheport on Sol 4640, where it would finally exit Cape Tribulation. Taking a farewell pan of the terrain revealed a section of striated Shoemaker Formation bedrock that appeared to have been etched or carved by something. Opportunity made a final stop in this region to examine the striated rock. Possible explanations for the striations included formation by ice, wind erosion, or a spillover of water. Discussion continued as Opportunity journeyed on, leaving Cape Tribulation behind.",
+        "rover": "Opportunity"
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-5.349, -2.331]
+      },
+      "properties": {
+        "title": "La Bajada",
+        "image": "Images/La Bajada",
+        "description": "In the beginning of November, 2017 Opportunity was in an area that had been labeled as \"La Bajada\". The area was characterized by two differing rock outcrops coming together. The northern outcrop exhibited what appeared to be small, etched erosional tails that seemed to indicate scouring in an uphill direction. Opportunity was positioned over a good example site dubbed Mesilla from Sols 4890 through 4906. Study with the Pancam, Microscopic Imager (MI), Alpha Particle X-ray Spectrometer (APXS) confirmed these as wind-carved erosional features.",
+        "rover": "Opportunity"
+      }
+    }
+  ]
+}

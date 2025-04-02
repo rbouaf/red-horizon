@@ -75,7 +75,7 @@
         "properties": {
           "title": "Top of Vera Rubin Ridge",
           "image": "Images/top_of_vera_rubin_ridge",
-          "description": "Curiosity continued southeast along the base of Vera Rubin Ridge in search of a gentle slope. On Sol 1796, the rover headed toward a rock ramp and, by Sol 1809, began ascending the bedrock of the ridge.",
+          "description": "Curiosity continued southeast along the base of Vera Rubin Ridge in search of a gentle slope. On Sol 1796, the rover headed toward a rock ramp and, by Sol 1809, began ascending the bedrock of the ridge. It's a wonderful place to rest and admire the views of Mount Sharp",
           "rover": "Curiosity"
         }
       }
