@@ -1,61 +1,72 @@
 using UnityEngine;
-
+using TMPro;
 
 public class MinimapExpand : MonoBehaviour
 {
-    
-    public RectTransform minimapRectTransform; 
-    public GameObject test;
-    public Transform playerOnMap;
-    public Camera minimapCamera;         
-    public Vector2 collapsedSize = new Vector2(350, 280);  
-    public Vector2 expandedSize = new Vector2(3000, 3000); 
-    public Vector2 expandedSizePlayer = new Vector2(100, 100); 
-    private bool isExpanded = false;        
+    public RectTransform minimap;
+    public RectTransform background;
 
-    private Vector2 originalPosition;
+    public Camera minimapCamera; 
+
+
+    public GameObject button1;
+    public GameObject button2;
+    public GameObject button3;
+
+    public TMPro.TextMeshProUGUI ExpandMinimize;
+
+
+    public Vector2 normalSize = new Vector2(350, 280);  
+    public Vector2 expandedSize = new Vector2(2000, 1500); 
+
+    private bool isExpanded = false;
+    private Vector2 originalPosition; 
+    private Vector2 originalPosition2; 
 
     void Start()
     {
-        originalPosition = minimapRectTransform.anchoredPosition;  
+        originalPosition = minimap.anchoredPosition; 
+        originalPosition2 = background.anchoredPosition;
+        minimapCamera.orthographicSize = 10f;
+        ExpandMinimize.text = "Expand";
     }
 
     public void ToggleMinimap()
     {
         if (isExpanded)
         {
-            CollapseMinimap();
+        
+            minimapCamera.orthographicSize = 10f;
+            minimap.localScale = Vector3.one;
+            minimap.anchoredPosition = originalPosition; 
+
+            background.localScale = Vector3.one;
+            background.anchoredPosition = originalPosition2;
+
+            button1.gameObject.SetActive(true);
+            button2.gameObject.SetActive(true);
+            button3.gameObject.SetActive(true);
+            ExpandMinimize.text = "Expand";
+
         }
         else
         {
-            ExpandMinimap();
+
+
+            minimapCamera.orthographicSize = 30f;
+            
+            minimap.localScale = new Vector3(8f,8f, 1f);
+            minimap.anchoredPosition = Vector2.zero;  
+
+            background.localScale = new Vector3(8f, 8f, 1f);  
+            background.anchoredPosition = Vector2.zero;  
+
+            button1.gameObject.SetActive(false);
+            button2.gameObject.SetActive(false);
+            button3.gameObject.SetActive(false);
+            ExpandMinimize.text = "Minimize";
         }
 
-        isExpanded = !isExpanded;
+        isExpanded = !isExpanded; 
     }
-
-    private void ExpandMinimap()
-    {
-        minimapRectTransform.anchoredPosition = new Vector2(960, -500);
-        minimapRectTransform.sizeDelta = expandedSize;
-        minimapCamera.orthographicSize = 50f;
-        //playerOnMap.localScale = new Vector3(200,200,200);
-
-        int myNewLayer = LayerMask.NameToLayer("Player Minimap");
-        test.layer = myNewLayer;
-        
-    }
-
-    private void CollapseMinimap()
-    {
-        minimapRectTransform.anchoredPosition = originalPosition;
-        minimapRectTransform.sizeDelta = collapsedSize;
-        minimapCamera.orthographicSize = 10f;
-
-        int myNewLayer = LayerMask.NameToLayer("Full-Screen Map");
-        test.layer = myNewLayer;
-
-
-    }
-    
 }
