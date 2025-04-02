@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+//using UnitySystem;
 
 public class OnScreenUI : MonoBehaviour
 {
@@ -8,7 +9,13 @@ public class OnScreenUI : MonoBehaviour
 
     public TMPro.TextMeshProUGUI coords;
 
+    private RoverController rc;
+    private SimulationController sm;
 
+    void start(){
+      rc = FindFirstObjectByType<RoverController>();
+      sm = FindFirstObjectByType<SimulationController>();
+    }
 
     void Update()
     {
@@ -25,10 +32,17 @@ public class OnScreenUI : MonoBehaviour
     {
        Vector3 flatVelocity = Vector3.ProjectOnPlane(roverRigidbody.linearVelocity, Vector3.up);
             float horizontalSpeed = flatVelocity.magnitude;
-            float speedInKmH = horizontalSpeed * 3.6f ;
+            float speedInKmH = horizontalSpeed;
+            
+            //* 3.6f;
 
 
-            speedText.text = "Average Speed: " + speedInKmH + " km/h";
+
+
+            speedText.text = "Average Speed: " + (Mathf.Round(speedInKmH * 100f) / 100f) + " m/s";
+
+            DataManager dm = sm.GetDataManager();
+            //Debug.Log($"Temparature Day: {dm.EnvironmentSettings.ev.temperatureDay}");
     }
 
 
@@ -40,8 +54,21 @@ public class OnScreenUI : MonoBehaviour
         coords.text = "X: " + pos.x.ToString("F2") + 
                         " Y: " + pos.y.ToString("F2") + 
                         " Z: " + pos.z.ToString("F2");
+
+        
         
     }
+
+    /*
+  
+  void getTemp(){
+      sm
+    }
+
+
+
+
+    */
 
 
 

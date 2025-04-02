@@ -10,8 +10,8 @@ environment:
   ArgonConcentration: 0.02
   
   # Temperature ranges (°C)
-  temperatureDay: 20  
-  temperatureNight: -80 
+  temperatureDay: 20                    # max day temp
+  temperatureNight: -80                 # average night temp
   temperatureVariation: 15
   
   # Day-night cycle
