@@ -11,7 +11,8 @@ public class Checkpoint : MonoBehaviour {
     }
 
     void OnTriggerEnter(Collider other) {
-        if (!hasTriggered && other.CompareTag("Rover")) { // Make sure rover has the "Rover" tag
+        Debug.Log($"OnTriggerEnter triggered on {gameObject.name} with {other.gameObject.name}");
+        if (!hasTriggered && other.CompareTag("Rover")) {
             hasTriggered = true;
             if (manager != null) {
                 manager.ShowCheckpointUI(data);
@@ -20,11 +21,14 @@ public class Checkpoint : MonoBehaviour {
     }
 
     void OnTriggerExit(Collider other) {
+        Debug.Log($"OnTriggerExit triggered on {gameObject.name} with {other.gameObject.name}");
         if (hasTriggered && other.CompareTag("Rover")) {
             hasTriggered = false;
             if (manager != null) {
                 manager.HideCheckpointUI();
+                manager.HideButton();
             }
         }
     }
+
 }

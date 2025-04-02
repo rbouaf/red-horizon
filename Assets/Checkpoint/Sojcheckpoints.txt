@@ -9,7 +9,7 @@
         },
         "properties": {
           "title": "Pathfinder’s Successful Landing",
-          "image": "Assets/Checkpoint/Images/pathfinder.jpg",
+          "image": "Images/pathfinder",
           "description": "During descent and at an altitude of 355 meters, a cluster of airbags was inflated, surrounding and protecting the lander. At an altitude of 21.5 meters, the lander separated from the backshell, falling and then bouncing in its encasing balloons to a rest on the ground, where the balloons were deflated. This successful entry, descent, and landing strategy became the model for future MSL rovers. The lander opened its petals revealing solar panels and the Sojourner rover. The lander conducted imaging and meteorology studies, and acted as a communications relay for the Sojourner rover.",
           "rover": "Sojourner"
         }
@@ -18,11 +18,11 @@
         "type": "Feature",
         "geometry": {
           "type": "Point",
-          "coordinates": [-33.26389, 19.08714]
+          "coordinates": [-33.24389, 19.08714]
         },
         "properties": {
           "title": "The Sojourner Rover",
-          "image": "Assets/Checkpoint/Images/sojourner.jpg",
+          "image": "Images/sojourner",
           "description": "The first robotic rover to drive on the surface of Mars, Sojourner's instrumentation included three cameras and an Alpha Proton X-ray Spectrometer (APXS) to measure the composition of Martian rocks and dust. It was designed for a 7-sol mission but continued operating for 83 sols, covering 100 meters around its landing site.",
           "rover": "Sojourner"
         }

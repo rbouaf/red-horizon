@@ -9,7 +9,7 @@
         },
         "properties": {
           "title": "Point of Interest 1",
-          "image": "Assets/Checkpoint/Images/poi1.jpg",
+          "image": "Images/poi1",
           "description": "Welcome to Jezero Crater. Here is the exact spot where Perseverance gently touched down with the help of its SkyCrane landing system.",
           "rover": "Perseverance"
         }
@@ -22,7 +22,7 @@
         },
         "properties": {
           "title": "Point of Interest 3",
-          "image": "Assets/Checkpoint/Images/poi3.jpg",
+          "image": "Images/poi3",
           "description": "The first successful rock sample collected by Perseverance occurred in this location, after the first coring attempt returned empty except for a sample of Martian atmosphere trapped inside a sealed tube.",
           "rover": "Perseverance"
         }
@@ -35,7 +35,7 @@
         },
         "properties": {
           "title": "Point of Interest 4",
-          "image": "Assets/Checkpoint/Images/poi4.jpg",
+          "image": "Images/poi4",
           "description": "The oldest rocks in Jezero Crater visited by Perseverance occurred here. Dubbed the Séitah formation, these rocks revealed a geologic story of past liquid water exposure.",
           "rover": "Perseverance"
         }
@@ -48,7 +48,7 @@
         },
         "properties": {
           "title": "Point of Interest 7",
-          "image": "Assets/Checkpoint/Images/poi7.jpg",
+          "image": "Images/poi7",
           "description": "Further down lies the largest crater in the Jezero delta fan deposit, Belva.",
           "rover": "Perseverance"
         }
