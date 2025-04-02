@@ -3,27 +3,27 @@ environment:
   gravity: 3.72
   
   # Atmospheric properties
-  atmosphericDensity: 0.020             # kg/m³
-  atmosphericPressure: 0.61             # kPa
-  CO2Concentration: 0.95                # Fraction of CO2 in the atmosphere
-  NitrogenConcentration: 0.03
-  ArgonConcentration: 0.02
+  atmospheric_density: 0.020            # kg/m³
+  atmospheric_pressure: 0.61            # kPa
+  co2_concentration: 0.95               # Fraction of CO2 in the atmosphere
+  nitrogen_concentration: 0.03
+  argon_concentration: 0.02
   
   # Temperature ranges (°C)
-  temperatureDay: 20                    # max day temp
-  temperatureNight: -80                 # average night temp
-  temperatureVariation: 15
+  temperature_day: 20                   # max day temp
+  temperature_night: -80                # average night temp
+  temperature_variation: 15
   
   # Day-night cycle
-  dayNightCycleDuration: 24.6
-  sunriseTime: 6.0 
-  sunsetTime: 18.0
+  day_night_cycle_duration: 24.6
+  sunrise_time: 6.0 
+  sunset_time: 18.0
   
   # Weather conditions
-  windSpeed: 4.0                        # m/s
-  windGustProbability: 0.1              
-  windGustMultiplier: 2.5
-  dustStormProbability: 0.05            
-  dustStormDurationMinutes: 168         # Average duration of dust storms in hours
-  dustStormDurationMultiplier: 3.9      # * some random factor (0-1)
-  dustStormIntensity: 0.7      
+  wind_speed: 4.0                       # m/s
+  wind_gust_probability: 0.1              
+  wind_gust_multiplier: 2.5
+  dust_storm_probability: 0.05            
+  dust_storm_duration_minutes: 168      # Average duration of dust storms in hours
+  dust_storm_duration_multiplier: 3.9   # * some random factor (0-1)
+  dust_storm_intensity: 0.7      

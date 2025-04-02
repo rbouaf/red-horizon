@@ -188,5 +188,5 @@ public class RoverConfig
 [Serializable]
 public class EnvironmentSettings
 {
-    public EnvironmentModel ev { get; set; }
+    public EnvironmentModel environment { get; set; }
 }

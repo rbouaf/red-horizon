@@ -6,7 +6,7 @@ public class EnvironmentModel : ScriptableObject
     public float gravity;
     public float atmosphericDensity;  
     public float atmosphericPressure;
-    public float cO2Concentration;
+    public float co2Concentration;
     public float nitrogenConcentration;
     public float argonConcentration;
     

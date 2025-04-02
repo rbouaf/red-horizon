@@ -12,9 +12,9 @@ public class OnScreenUI : MonoBehaviour
     private RoverController rc;
     private SimulationController sm;
 
-    void start(){
-      rc = FindFirstObjectByType<RoverController>();
-      sm = FindFirstObjectByType<SimulationController>();
+    private void Start(){
+      rc = GetComponent<RoverController>();
+      sm = FindAnyObjectByType<SimulationController>();
     }
 
     void Update()
@@ -42,7 +42,7 @@ public class OnScreenUI : MonoBehaviour
             speedText.text = "Average Speed: " + (Mathf.Round(speedInKmH * 100f) / 100f) + " m/s";
 
             DataManager dm = sm.GetDataManager();
-            //Debug.Log($"Temparature Day: {dm.EnvironmentSettings.ev.temperatureDay}");
+            Debug.Log($"Temparature Day: {dm.EnvironmentSettings.environment.temperatureDay}"); // Example of accessing rover data
     }
 
 
