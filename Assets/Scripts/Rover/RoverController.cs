@@ -27,6 +27,7 @@ public class RoverController : MonoBehaviour
 
     [Header("Solar Battery Charging")]
     public float solarChargeRate = 1.0f; // Charge per second
+    public float dustRate = 0.01f; //Decrease in solarChargeRate per second
 
     public TMPro.TextMeshProUGUI chargingStatusText;
 
@@ -80,6 +81,7 @@ public class RoverController : MonoBehaviour
         ApplySteering(steerInput);
         ApplyBrakes(brakeInput);
         SolarCharge();
+        MakePanelsDustier();
     }
 
     private void ApplyMovement(float throttle)
@@ -208,6 +210,20 @@ public class RoverController : MonoBehaviour
         {
             chargingStatusText.gameObject.SetActive(charging);
         }
+    }
+
+    private void MakePanelsDustier()
+    {
+        if (solarChargeRate >= dustRate)
+        {
+            solarChargeRate -= dustRate * Time.deltaTime;
+            solarChargeRate = Mathf.Max(0f, solarChargeRate);
+        }
+    }
+
+    public void CleanPanels()
+    {
+        solarChargeRate = 1.0f; //Reset the charging rate to default value
     }
 
     private bool IsStationary()
