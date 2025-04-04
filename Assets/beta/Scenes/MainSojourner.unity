@@ -711,11 +711,11 @@ Transform:
   m_GameObject: {fileID: 115457685}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.18087925, z: -0, w: 0.9835053}
-  m_LocalPosition: {x: 1582.0563, y: 97.2, z: 3877.6301}
-  m_LocalScale: {x: 2.4782517, y: 0.3464, z: 2.58536}
+  m_LocalPosition: {x: 635.635, y: -425.64923, z: 4030.1028}
+  m_LocalScale: {x: 2.4782517, y: 0.3464, z: 2.5853598}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 906126959}
   m_LocalEulerAnglesHint: {x: 0, y: -20.842, z: 0}
 --- !u!1 &127274437
 GameObject:
@@ -1043,7 +1043,7 @@ GameObject:
   - component: {fileID: 180783891}
   - component: {fileID: 180783890}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: HideText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2923,14 +2923,14 @@ Transform:
   m_GameObject: {fileID: 458684610}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1560.6, y: 125.4, z: 3885.2}
+  m_LocalPosition: {x: 614.1787, y: -397.44925, z: 4037.6726}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 372627148}
   - {fileID: 8572473}
   - {fileID: 271558579}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 906126959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &470925193
 GameObject:
@@ -3573,8 +3573,9 @@ GameObject:
   - component: {fileID: 629766543}
   - component: {fileID: 629766542}
   - component: {fileID: 629766541}
+  - component: {fileID: 629766545}
   m_Layer: 5
-  m_Name: Button
+  m_Name: HideButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3691,9 +3692,23 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: -300}
+  m_AnchoredPosition: {x: 600, y: -210}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &629766545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629766540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6236dd14f93b034439673cd517df78e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 629766541}
+  buttonText: {fileID: 180783890}
 --- !u!1 &647711238
 GameObject:
   m_ObjectHideFlags: 0
@@ -4772,6 +4787,10 @@ Transform:
   - {fileID: 1821073971}
   - {fileID: 921695959}
   - {fileID: 1802269258}
+  - {fileID: 1032447312}
+  - {fileID: 458684611}
+  - {fileID: 1068300780}
+  - {fileID: 115457689}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &906126960
@@ -5750,7 +5769,7 @@ RectTransform:
   - {fileID: 163530322}
   - {fileID: 1843772220}
   - {fileID: 883304359}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 906126959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -5993,11 +6012,11 @@ Transform:
   m_GameObject: {fileID: 1068300778}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 399.69537, y: 290.80786, z: 69.55376}
+  m_LocalPosition: {x: -546.7259, y: -232.04138, z: 222.02635}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 906126959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1114955423
 GameObject:
@@ -9648,10 +9667,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 0.6
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -9987,7 +10006,3 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 906126959}
-  - {fileID: 1032447312}
-  - {fileID: 458684611}
-  - {fileID: 115457689}
-  - {fileID: 1068300780}
