@@ -3404,6 +3404,7 @@ GameObject:
   - component: {fileID: 542163516}
   - component: {fileID: 542163515}
   - component: {fileID: 542163514}
+  - component: {fileID: 542163517}
   m_Layer: 5
   m_Name: Teleport Button
   m_TagString: Untagged
@@ -3474,19 +3475,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 542163515}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &542163515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3525,6 +3514,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542163512}
   m_CullTransparentMesh: 1
+--- !u!114 &542163517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542163512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetPosition: {x: 0, y: 0, z: 0}
+  teleportButton: {fileID: 542163514}
+  rb: {fileID: 264630811}
+  buttonText: {fileID: 403331547}
 --- !u!1 &620515037
 GameObject:
   m_ObjectHideFlags: 0
