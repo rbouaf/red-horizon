@@ -9,6 +9,8 @@ public class OnScreenUI : MonoBehaviour
     public TMPro.TextMeshProUGUI coords;
     public TMPro.TextMeshProUGUI weather;
 
+    public TMPro.TextMeshProUGUI weatherTypeText;
+
     public Slider updateSlider; 
 
     private RoverController rc;
@@ -21,6 +23,16 @@ public class OnScreenUI : MonoBehaviour
 
     private float fluctuationRange = 0.1f;
     private float timeSinceLastUpdate = 0f;
+
+    private string[] marsWeatherTypes = {
+    "Sunny",
+    "Cloudy",
+    "Dust Storm",
+    "Clear",
+    "Windy",
+    "Hazy"
+};
+
 
     private void Start()
     {
@@ -40,6 +52,9 @@ public class OnScreenUI : MonoBehaviour
         {
             updateSlider.onValueChanged.AddListener(OnSliderValueChanged);
         }
+
+        string randomWeather = marsWeatherTypes[Random.Range(0, marsWeatherTypes.Length)];
+        weatherTypeText.text = randomWeather;
     }
 
     private IEnumerator WaitForSimulationController()
@@ -96,6 +111,15 @@ public class OnScreenUI : MonoBehaviour
             timeSinceLastUpdate = 0f;  
         }
         UpdateCoords();
+
+
+
+        // FOR WEATHER TYPE
+        if (Time.frameCount % 900 == 0)
+        {
+            string randomWeather = marsWeatherTypes[Random.Range(0, marsWeatherTypes.Length)];
+            weatherTypeText.text = randomWeather;
+        }
     }
 
     void FixedUpdate()

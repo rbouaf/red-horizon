@@ -4,7 +4,7 @@ public class RedDot : MonoBehaviour
 {
 
     public Transform rover;
-    public float offsetY = 110f;  
+    public float offsetY = 1f;  
 
     void LateUpdate()
     {
