@@ -29,6 +29,8 @@ public class RoverController : MonoBehaviour
     public float solarChargeRate = 1.0f; // Charge per second
     public float dustRate = 0.01f; //Decrease in solarChargeRate per second
 
+    [SerializeField] private Light sunLight;  
+
     public TMPro.TextMeshProUGUI chargingStatusText;
 
     [Header("Center of Mass")]
@@ -233,7 +235,7 @@ public class RoverController : MonoBehaviour
 
     private bool IsInSunlight()
     {
-        // For now always true, update later w sun exposure
-        return true;
+        // Consider it day if sun intensity is strong enough
+        return sunLight != null && sunLight.intensity > 0.5f;
     }
 }
