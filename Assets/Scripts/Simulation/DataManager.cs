@@ -22,7 +22,7 @@ public class DataManager : MonoBehaviour
     [SerializeField] private bool loadOnStart = true;
     
     // Data storage
-    //public EnvironmentSettings EnvironmentSettings { get; private set; }
+    public EnvironmentSettings EnvironmentSettings { get; private set; }
     public RoverConfig RoverConfig { get; private set; }
     //public SimulationSettings SimulationSettings { get; private set; }
     
@@ -92,9 +92,9 @@ public class DataManager : MonoBehaviour
         
         try
         {
-            // EnvironmentSettings = await LoadDataAsync<EnvironmentSettings>(environmentSettingsPath);
-            // Debug.Log($"Loaded environment settings successfully.");
-            // IncrementLoadingProgress();
+            EnvironmentSettings = await LoadDataAsync<EnvironmentSettings>(environmentSettingsPath);
+            Debug.Log($"Loaded environment settings successfully.");
+            IncrementLoadingProgress();
             
             RoverConfig = await LoadDataAsync<RoverConfig>(roverConfigPath);
             Debug.Log($"Loaded rover configuration successfully.");
@@ -183,4 +183,10 @@ public class DataManager : MonoBehaviour
 public class RoverConfig
 {
     public List<RoverModel> rovers { get; set; } = new List<RoverModel>();
+}
+
+[Serializable]
+public class EnvironmentSettings
+{
+    public EnvironmentModel environment { get; set; }
 }

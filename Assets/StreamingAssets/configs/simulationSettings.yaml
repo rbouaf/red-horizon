@@ -1,10 +1,10 @@
 # Mars Rover Simulation Settings
 physics:
-  timeScale: 1.0                # Speed of simulation (1.0 = real time)
+  time_scale: 1.0                # Speed of simulation (1.0 = real time)
 
 gameplay:
   # Rover settings
-  startingBattery: 100          # Starting battery percentage
+  starting_battery: 100          # Starting battery percentage
   
-  defaultRover: "001"           # Default rover ID to use in roverConfig.yaml
-  defaultLandingSite: "id"      # Default landing site to use in terrainConfig.json
+  default_rover: "001"           # Default rover ID to use in roverConfig.yaml
+  default_landingSite: "id"      # Default landing site to use in terrainConfig.json

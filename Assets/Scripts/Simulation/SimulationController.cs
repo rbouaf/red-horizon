@@ -165,6 +165,11 @@ public class SimulationController : MonoBehaviour
     {
         return activeRoverModel;
     }
+
+    public DataManager GetDataManager()
+    {
+        return dataManager;
+    }
     
     public GameObject InstantiateRover(GameObject roverPrefab, string roverId, Vector3 position, Quaternion rotation)
     {

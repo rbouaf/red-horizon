@@ -236,4 +236,8 @@ public class RoverController : MonoBehaviour
         // For now always true, update later w sun exposure
         return true;
     }
+
+    public Rigidbody GetRigidBody(){
+        return rb;
+    }
 }
