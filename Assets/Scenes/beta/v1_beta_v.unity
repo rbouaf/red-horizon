@@ -952,6 +952,7 @@ MonoBehaviour:
   speedText: {fileID: 1270640204}
   coords: {fileID: 746848667}
   weather: {fileID: 1382543017}
+  updateSlider: {fileID: 2051730344}
 --- !u!4 &227552306
 Transform:
   m_ObjectHideFlags: 0
@@ -3214,7 +3215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -963.7, y: 395.8}
+  m_AnchoredPosition: {x: -936.55304, y: 395.8}
   m_SizeDelta: {x: 151.4142, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638402495
@@ -3502,7 +3503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -888.14703, y: 274.23004}
+  m_AnchoredPosition: {x: -861, y: 274.23004}
   m_SizeDelta: {x: 272.00098, y: 180.73499}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &736753788
@@ -6528,7 +6529,7 @@ GameObject:
   - component: {fileID: 1382543018}
   - component: {fileID: 1382543017}
   m_Layer: 5
-  m_Name: Temp
+  m_Name: WeatherUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9167,7 +9168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -889, y: 274.1}
+  m_AnchoredPosition: {x: -861.853, y: 274.1}
   m_SizeDelta: {x: 298.7534, y: 200.6699}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2092746985
