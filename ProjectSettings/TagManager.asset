@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CanBeTaken
   - Rover
+  - test
+  - Terrain
   layers:
   - Default
   - TransparentFX
