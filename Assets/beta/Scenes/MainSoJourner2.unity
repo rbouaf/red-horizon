@@ -1588,13 +1588,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 281952362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97b43abae4e3d3c4aa6b7ddd2ff97831, type: 3}
+  m_Script: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  samplingRadius: 10
-  rockLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
+  targetPosition: {x: 0, y: 0, z: 0}
+  teleportButton: {fileID: 1376691216}
+  rb: {fileID: 281952366}
+  buttonText: {fileID: 771289797}
 --- !u!65 &281952365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1677,6 +1677,7 @@ MonoBehaviour:
   batteryText: {fileID: 0}
   solarChargeRate: 0.5
   dustRate: 0.01
+  sunLight: {fileID: 0}
   chargingStatusText: {fileID: 0}
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
 --- !u!1 &290063988
@@ -9528,13 +9529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8cc879e652a44719df890ab1f93bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
-  moveSpeed: 5
-  rotateSpeed: 100
-  cameraOffset: {x: 0, y: 2, z: -5}
-  jumpForce: 5
-  isGrounded: 1
-  rb: {fileID: 0}
 --- !u!54 &1740850211
 Rigidbody:
   m_ObjectHideFlags: 0
