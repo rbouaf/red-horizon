@@ -169,6 +169,11 @@ public class OnScreenUI : MonoBehaviour
             float horizontalSpeed = flatVelocity.magnitude;
             float speedInKmH = horizontalSpeed;
             
+            if (speedInKmH < 0.1f)
+            {
+                speedInKmH = 0.0f;
+            }
+
             speedText.text = "Average Speed: " + (Mathf.Round(speedInKmH * 100f) / 100f) + " m/s";
 
            
