@@ -401,7 +401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Easy AI
+  m_text: Free Roam
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1801,7 +1801,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
+  m_TextStyleHashCode: 2194
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -2762,7 +2762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.00012207031, y: -0.000030517578}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410586461
@@ -2929,14 +2929,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -2989,15 +2989,15 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 429968716}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.00008046043}
-  m_LocalScale: {x: 0.9998417, y: 0.9998417, z: 0.9998417}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00008985711}
+  m_LocalScale: {x: 0.99984163, y: 0.99984163, z: 0.99984163}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 886225008}
+  m_Father: {fileID: 1034548555}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -712.12506, y: -174.741}
+  m_AnchoredPosition: {x: 0, y: 280}
   m_SizeDelta: {x: 500, y: -300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &458684610
@@ -3757,7 +3757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.69158196, g: 0.9806273, b: 1, a: 1}
+  m_Color: {r: 0.32167214, g: 0.7973264, b: 0.8316401, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3799,7 +3799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: -210}
+  m_AnchoredPosition: {x: 330, y: -210}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629766545
@@ -4794,9 +4794,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1034548555}
   - {fileID: 410586460}
-  - {fileID: 429968719}
   m_Father: {fileID: 959423958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5278,8 +5276,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285134079
+  m_fontColor: {r: 1, g: 0.9583011, b: 0.41291726, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5303,7 +5301,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5952,6 +5950,7 @@ RectTransform:
   - {fileID: 1603660824}
   - {fileID: 692538471}
   - {fileID: 1915653425}
+  - {fileID: 1034548555}
   - {fileID: 959423958}
   - {fileID: 883304359}
   - {fileID: 2104098941}
@@ -5975,7 +5974,7 @@ GameObject:
   - component: {fileID: 1034548557}
   - component: {fileID: 1034548556}
   m_Layer: 5
-  m_Name: TakeSampleButton
+  m_Name: TakeSample
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5994,11 +5993,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1914473902}
-  m_Father: {fileID: 886225008}
+  - {fileID: 429968719}
+  m_Father: {fileID: 1032447312}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -750, y: -500}
+  m_AnchoredPosition: {x: 75, y: -330}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1034548556
@@ -9246,6 +9246,7 @@ GameObject:
   - component: {fileID: 1930158478}
   - component: {fileID: 1930158477}
   - component: {fileID: 1930158476}
+  - component: {fileID: 1930158479}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -9316,7 +9317,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1930158477}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1930158479}
+        m_TargetAssemblyTypeName: HideButtons, Assembly-CSharp
+        m_MethodName: Hidebuttons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1930158477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9355,6 +9368,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930158474}
   m_CullTransparentMesh: 1
+--- !u!114 &1930158479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930158474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9a41b31733795944a73bcd6e95071d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonsToHide:
+  - {fileID: 1034548556}
 --- !u!1 &1934092572
 GameObject:
   m_ObjectHideFlags: 0
@@ -10205,7 +10232,7 @@ GameObject:
   - component: {fileID: 2094487233}
   - component: {fileID: 2094487232}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CheckpointCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

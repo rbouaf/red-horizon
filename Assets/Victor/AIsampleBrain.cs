@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class AIsampleBrain : MonoBehaviour
 {
-    //(assign in Inspector if AIBrain is not on the rover itself)
+    //(assign in inspector if AIBrain is not on the rover itself)
     public Transform roverTransform;
 
     public float samplingRadius = 10f;
