@@ -1541,6 +1541,7 @@ MonoBehaviour:
   messageText: {fileID: 429968717}
   glowColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   glowDuration: 5
+  forwardThreshold: 0.5
 --- !u!1 &269285004
 GameObject:
   m_ObjectHideFlags: 0

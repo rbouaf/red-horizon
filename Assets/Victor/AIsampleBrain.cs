@@ -41,7 +41,7 @@ public class AIsampleBrain : MonoBehaviour
         List<GameObject> candidateRocks = new List<GameObject>();
         float highestRarity = float.MinValue;
 
-        // Iterate through all detected colliders.
+        
         foreach (Collider col in colliders)
         {
             // Check if the rock is in front of the rover using dot product.
@@ -62,7 +62,7 @@ public class AIsampleBrain : MonoBehaviour
                     candidateRocks.Clear();
                     candidateRocks.Add(col.gameObject);
                 }
-                // If tied for highest rarity
+               // add to candidates if two are tied for rarity
                 else if (Mathf.Approximately(rarity, highestRarity))
                 {
                     candidateRocks.Add(col.gameObject);
@@ -70,7 +70,7 @@ public class AIsampleBrain : MonoBehaviour
             }
         }
 
-        // Display the result.
+        // Display the result
         if (candidateRocks.Count > 0)
         {
             // randomly choose one if there are multiple candidates.
@@ -97,12 +97,10 @@ public class AIsampleBrain : MonoBehaviour
         Renderer rend = rock.GetComponent<Renderer>();
         if (rend != null)
         {
-            // Enable emission on the material.
             rend.material.EnableKeyword("_EMISSION");
-            // Set the emission color to the specified glow color.
             rend.material.SetColor("_EmissionColor", glowColor);
 
-            // Optional: Reset the emission after a delay.
+            // reset the emission after a delay.
             StartCoroutine(ResetGlow(rend));
         }
         else
@@ -115,7 +113,7 @@ public class AIsampleBrain : MonoBehaviour
     private IEnumerator ResetGlow(Renderer rend)
     {
         yield return new WaitForSeconds(glowDuration);
-        // Reset emission by setting it to black.
+        
         rend.material.SetColor("_EmissionColor", Color.black);
     }
 }
