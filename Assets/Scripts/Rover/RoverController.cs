@@ -29,7 +29,7 @@ public class RoverController : MonoBehaviour
     public float solarChargeRate = 1.0f; // Charge per second
     public float dustRate = 0.01f; //Decrease in solarChargeRate per second
 
-    [SerializeField] private Light sunLight;  
+    public Light sunLight;  
 
     public TMPro.TextMeshProUGUI chargingStatusText;
 

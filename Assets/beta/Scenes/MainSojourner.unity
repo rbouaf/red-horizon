@@ -1515,9 +1515,10 @@ MonoBehaviour:
   batteryLevel: 100
   drainRate: 0.1
   boostDrainMultiplier: 3
-  batteryText: {fileID: 0}
+  batteryText: {fileID: 1961385642}
   solarChargeRate: 0.5
   dustRate: 0.01
+  sunLight: {fileID: 63765621}
   chargingStatusText: {fileID: 0}
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
 --- !u!114 &264630813
