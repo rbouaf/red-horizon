@@ -3,16 +3,16 @@ using UnityEngine;
 public class BrainGUI : MonoBehaviour
 {
     public GameObject menuPanel;
+    
 
     void Start()
     {
-        if (menuPanel != null)
+        if (menuPanel.name == "Left-Side Buttons")
         {
-            menuPanel.SetActive(false);
+            menuPanel.SetActive(true); 
         }
-        else
-        {
-            Debug.LogError("Menu Panel is not assigned in BrainGUI script!");
+        else{
+            menuPanel.SetActive(false);
         }
     }
 
@@ -23,6 +23,8 @@ public class BrainGUI : MonoBehaviour
             menuPanel.SetActive(!menuPanel.activeSelf);
         }
     }
+
+    
 }
 
 

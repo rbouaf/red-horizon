@@ -7,6 +7,7 @@ public class OnScreenUI : MonoBehaviour
     public Rigidbody roverRigidbody;
     public TMPro.TextMeshProUGUI speedText;
     public TMPro.TextMeshProUGUI coords;
+    public TMPro.TextMeshProUGUI environmentalInfoText;
     public TMPro.TextMeshProUGUI weather;
 
     public TMPro.TextMeshProUGUI weatherTypeText;
@@ -33,6 +34,12 @@ public class OnScreenUI : MonoBehaviour
     "Hazy"
 };
 
+    public float atmospheric_density;
+    public float atmospheric_pressure;
+    public float co2_concentration;
+    public float nitrogen_concentration;
+    public float argon_concentration;
+
 
     private void Start()
     {
@@ -55,6 +62,17 @@ public class OnScreenUI : MonoBehaviour
 
         string randomWeather = marsWeatherTypes[Random.Range(0, marsWeatherTypes.Length)];
         weatherTypeText.text = randomWeather;
+
+        string info = 
+        "Atmospheric Density: 0.000 kg/m³\n" +  // 3 decimal places for precision
+        "Atmospheric Pressure: 0.00 kPa\n" +  // 2 decimal places
+        "CO2 Concentration: 0.00 %\n" +  // Convert to percentage and format
+        "Nitrogen Concentration: 0.00 %\n" +  // Convert to percentage
+        "Argon Concentration: 0.00 %";  // Convert to percentage
+
+        environmentalInfoText.text = info;
+
+
     }
 
     private IEnumerator WaitForSimulationController()
@@ -79,6 +97,7 @@ public class OnScreenUI : MonoBehaviour
         }
 
         initializeTemp(dm);
+        //EnvAirComposition(dm);
     }
 
       void OnSliderValueChanged(float value)
@@ -98,6 +117,12 @@ public class OnScreenUI : MonoBehaviour
         maxTemp = dm.EnvironmentSettings.environment.temperatureDay;
 
 
+          atmospheric_density = dm.EnvironmentSettings.environment.atmosphericDensity;
+          atmospheric_pressure = dm.EnvironmentSettings.environment.atmosphericPressure;
+          co2_concentration = dm.EnvironmentSettings.environment.co2Concentration;
+          nitrogen_concentration = dm.EnvironmentSettings.environment.nitrogenConcentration;
+          argon_concentration = dm.EnvironmentSettings.environment.argonConcentration;
+
         currentTemperature = Random.Range(minTemp, maxTemp);
         targetTemperature = Random.Range(minTemp, maxTemp);
     }
@@ -108,6 +133,14 @@ public class OnScreenUI : MonoBehaviour
         
         if (timeSinceLastUpdate >= 1f)  {
             UpdateTemp();
+            string info = 
+            "Atmospheric Density: " + atmospheric_density.ToString("F3") + " kg/m³\n" +  // 3 decimal places for precision
+            "Atmospheric Pressure: " + atmospheric_pressure.ToString("F2") + " kPa\n" +  // 2 decimal places
+            "CO2 Concentration: " + (co2_concentration * 100).ToString("F2") + " %\n" +  // Convert to percentage and format
+            "Nitrogen Concentration: " + (nitrogen_concentration * 100).ToString("F2") + " %\n" +  // Convert to percentage
+            "Argon Concentration: " + (argon_concentration * 100).ToString("F2") + " %";  // Convert to percentage
+
+            environmentalInfoText.text = info;
             timeSinceLastUpdate = 0f;  
         }
         UpdateCoords();
@@ -120,6 +153,9 @@ public class OnScreenUI : MonoBehaviour
             string randomWeather = marsWeatherTypes[Random.Range(0, marsWeatherTypes.Length)];
             weatherTypeText.text = randomWeather;
         }
+
+        // FOR ENV ATMOSPHERIC CONTENT
+        
     }
 
     void FixedUpdate()
@@ -133,9 +169,6 @@ public class OnScreenUI : MonoBehaviour
             float horizontalSpeed = flatVelocity.magnitude;
             float speedInKmH = horizontalSpeed;
             
-  
-
-
             speedText.text = "Average Speed: " + (Mathf.Round(speedInKmH * 100f) / 100f) + " m/s";
 
            
@@ -147,7 +180,7 @@ public class OnScreenUI : MonoBehaviour
 
     
         currentTemperature = Mathf.Clamp(currentTemperature + fluctuation, minTemp, maxTemp);
-        weather.text = "Temperature:" + Mathf.Round(currentTemperature) + "°C";
+        weather.text = Mathf.Round(currentTemperature) + "°C";
     }
 
     void UpdateCoords(){
@@ -159,6 +192,18 @@ public class OnScreenUI : MonoBehaviour
 
         
         
+    }
+
+    void EnvAirComposition(DataManager dm){
+        if (dm.EnvironmentSettings == null || dm.EnvironmentSettings.environment == null)
+        {
+            return;
+        }
+         float atmospheric_density = dm.EnvironmentSettings.environment.atmosphericDensity;
+         float atmospheric_pressure = dm.EnvironmentSettings.environment.atmosphericPressure;
+         float co2_concentration = dm.EnvironmentSettings.environment.co2Concentration;
+         float nitrogen_concentration = dm.EnvironmentSettings.environment.nitrogenConcentration;
+         float argon_concentration = dm.EnvironmentSettings.environment.argonConcentration;
     }
 }
 
