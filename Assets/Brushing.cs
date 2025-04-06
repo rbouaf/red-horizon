@@ -4,12 +4,12 @@ using System.Collections;
 using TMPro;
 using System;
 
-public class change_text : MonoBehaviour
+public class Brushing : MonoBehaviour
 {
     public Button myButton; // Assigned in Inspector
     public TMP_Text buttonText; // Assigned in Inspector
     public String originalButtonText; //Store the original text of the brush button
-    private RoverController targetScript; // Assigned in Inspector
+    public RoverController targetScript; // Assigned in Inspector
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
