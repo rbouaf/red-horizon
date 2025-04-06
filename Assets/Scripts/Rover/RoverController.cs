@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -235,7 +236,7 @@ public class RoverController : MonoBehaviour
 
     private bool IsStationary()
     {
-        return rb.linearVelocity.magnitude < 0.1f;  // Consider stationary if rovers barely moving
+        return ((Math.Abs(rb.linearVelocity.x) <= 0.2f) && (Math.Abs(rb.linearVelocity.z) <= 0.2f));  // Consider stationary if rovers barely moving
     }
 
     private bool IsInSunlight()
