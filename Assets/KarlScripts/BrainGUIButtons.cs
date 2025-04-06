@@ -11,14 +11,14 @@ public class BrainGUIButtons : MonoBehaviour
     {
         PathfindingAI.text = "Pathfinding AI Activated";
     
-        Invoke("RevertPathfindingText", 10f);
+        Invoke("RevertPathfindingText", 2f);
     }
 
        public void ShowMessageSampling()
     {
         SamplingAI.text = "Sampling AI Activated";
        
-        Invoke("RevertSamplingText", 10f);
+        Invoke("RevertSamplingText", 2f);
     }
 
    
