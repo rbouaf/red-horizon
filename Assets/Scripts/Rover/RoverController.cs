@@ -41,6 +41,12 @@ public class RoverController : MonoBehaviour
     private float maxPowerWatts;
     private Rigidbody rb;
 
+    [Header("Audio")]
+
+    public AudioSource movementAudio;
+
+    public float fadeSpeed = 0.1f; // How fast to fade in/out
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -77,6 +83,14 @@ public class RoverController : MonoBehaviour
 
         //Connect brush button to CleanPanels function
         brushButton.onClick.AddListener(CleanPanels);
+
+
+        // Rover Hum
+        if (movementAudio != null && !movementAudio.isPlaying)
+        {
+            movementAudio.volume = 0f;
+            movementAudio.Play();
+        }
 }
 
     private void Update()
@@ -118,6 +132,38 @@ public class RoverController : MonoBehaviour
             else
             {
                 wheel.wheelCollider.motorTorque = 0;
+            }
+        }
+
+        // Adjust rover movement audio with speed
+        if (movementAudio != null)
+        {
+            // Check for any movement input (throttle or steering)
+            bool inputPressed =
+                Mathf.Abs(Input.GetAxis("Vertical")) > 0.1f ||
+                Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f;
+
+            // Base volume on actual rover speed
+            float speed = rb.linearVelocity.magnitude;
+            float maxSpeed = 2.0f; 
+            float targetVolume = Mathf.Clamp01(speed / maxSpeed) * 0.4f;
+
+            if (inputPressed)
+            {
+                // Start audio if not playing
+                if (!movementAudio.isPlaying)
+                {
+                    movementAudio.Play();
+                }
+            }
+
+            // Adjust volume based on speed
+            movementAudio.volume = Mathf.MoveTowards(movementAudio.volume, targetVolume, fadeSpeed * Time.deltaTime);
+
+            // Stop audio if volume is 0 and no input
+            if (!inputPressed && movementAudio.volume <= 0.01f && movementAudio.isPlaying)
+            {
+                movementAudio.Stop();
             }
         }
     }
