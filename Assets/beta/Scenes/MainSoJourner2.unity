@@ -1552,6 +1552,7 @@ GameObject:
   - component: {fileID: 281952366}
   - component: {fileID: 281952365}
   - component: {fileID: 281952364}
+  - component: {fileID: 281952368}
   m_Layer: 9
   m_Name: rover
   m_TagString: Rover
@@ -1678,6 +1679,36 @@ MonoBehaviour:
   solarChargeRate: 0.5
   dustRate: 0.01
   brushButton: {fileID: 1350649779}
+  sunLight: {fileID: 1737310280}
+  chargingStatusText: {fileID: 0}
+  centerOfMassOffset: {x: 0, y: -0.5, z: 0}
+--- !u!114 &281952368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281952362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91aed13c5dde94044bea9367835ec8b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roverModel: {fileID: 0}
+  driveWheels: []
+  steeringWheels: []
+  maxHorsepower: 10
+  maxTorquePerWheel: 669.77
+  maxSteerAngle: 30
+  brakingMultiplier: 5
+  speedSlider: {fileID: 0}
+  batteryLevel: 100
+  drainRate: 0.01
+  boostDrainMultiplier: 3
+  batteryText: {fileID: 0}
+  solarChargeRate: 1
+  dustRate: 0.01
+  brushButton: {fileID: 0}
   sunLight: {fileID: 0}
   chargingStatusText: {fileID: 0}
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
@@ -7212,9 +7243,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RoverController, Assembly-CSharp
-        m_MethodName: CleanPanels
+      - m_Target: {fileID: 11500000, guid: 91aed13c5dde94044bea9367835ec8b2, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9352,7 +9383,7 @@ GameObject:
   - component: {fileID: 1737310280}
   - component: {fileID: 1737310279}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Sun Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

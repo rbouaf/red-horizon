@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoverController : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class RoverController : MonoBehaviour
     [Header("Solar Battery Charging")]
     public float solarChargeRate = 1.0f; // Charge per second
     public float dustRate = 0.01f; //Decrease in solarChargeRate per second
+    public Button brushButton; // Assigned in Inspector
 
     public Light sunLight;  
 
@@ -71,7 +73,10 @@ public class RoverController : MonoBehaviour
             wheel.maxPower = HorsepowerToWatts(wheel.horsepower);
             wheel.maxTorque = maxTorquePerWheel;
         }
-    }
+
+        //Connect brush button to CleanPanels function
+        brushButton.onClick.AddListener(CleanPanels);
+}
 
     private void Update()
     {
@@ -230,7 +235,7 @@ public class RoverController : MonoBehaviour
 
     private bool IsStationary()
     {
-        return rb.linearVelocity.magnitude < 0.01f;  // Consider stationary if rovers barely moving
+        return rb.linearVelocity.magnitude < 0.1f;  // Consider stationary if rovers barely moving
     }
 
     private bool IsInSunlight()
