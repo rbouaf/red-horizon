@@ -3,15 +3,11 @@ using UnityEngine;
 public class Minimap : MonoBehaviour
 {
     public GameObject player;
-    //public Vector3 offset = new Vector3(0, 40, 0);
-
-    //public float fixedHeight = 40f;
-
 
     void Start(){
         player =  GameObject.FindGameObjectWithTag("Player");
         if (player == null) {
-             Debug.LogError("Rover parent object not found!");
+             Debug.LogError("Player object not found!");
         }
     }
 

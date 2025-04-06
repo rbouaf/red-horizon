@@ -5,23 +5,15 @@ public class MinimapExpand : MonoBehaviour
 {
     public RectTransform minimap;
     public RectTransform background;
-
     public Camera minimapCamera; 
-
-
     public GameObject button1;
     public GameObject button2;
     public GameObject button3;
-
     public GameObject envatmosphericcontent;
     public GameObject background1;
-
     public TMPro.TextMeshProUGUI ExpandMinimize;
-
-
     public Vector2 normalSize = new Vector2(350, 280);  
     public Vector2 expandedSize = new Vector2(2000, 1500); 
-
     private bool isExpanded = false;
     private Vector2 originalPosition; 
     private Vector2 originalPosition2; 

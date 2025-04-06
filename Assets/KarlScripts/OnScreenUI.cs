@@ -9,22 +9,16 @@ public class OnScreenUI : MonoBehaviour
     public TMPro.TextMeshProUGUI coords;
     public TMPro.TextMeshProUGUI environmentalInfoText;
     public TMPro.TextMeshProUGUI weather;
-
     public TMPro.TextMeshProUGUI weatherTypeText;
-
     public Slider updateSlider; 
-
     private RoverController rc;
     private SimulationController sm;
-
     private float currentTemperature;
     private float targetTemperature;
     private float minTemp;
     private float maxTemp;
-
     private float fluctuationRange = 0.1f;
     private float timeSinceLastUpdate = 0f;
-
     private string[] marsWeatherTypes = {
     "Sunny",
     "Cloudy",
@@ -33,7 +27,6 @@ public class OnScreenUI : MonoBehaviour
     "Windy",
     "Hazy"
 };
-
     public float atmospheric_density;
     public float atmospheric_pressure;
     public float co2_concentration;
@@ -64,11 +57,11 @@ public class OnScreenUI : MonoBehaviour
         weatherTypeText.text = randomWeather;
 
         string info = 
-        "Atmospheric Density: 0.000 kg/m³\n" +  // 3 decimal places for precision
-        "Atmospheric Pressure: 0.00 kPa\n" +  // 2 decimal places
-        "CO2 Concentration: 0.00 %\n" +  // Convert to percentage and format
-        "Nitrogen Concentration: 0.00 %\n" +  // Convert to percentage
-        "Argon Concentration: 0.00 %";  // Convert to percentage
+        "Atmospheric Density: 0.000 kg/m³\n" +  
+        "Atmospheric Pressure: 0.00 kPa\n" + 
+        "CO2 Concentration: 0.00 %\n" +  
+        "Nitrogen Concentration: 0.00 %\n" + 
+        "Argon Concentration: 0.00 %"; 
 
         environmentalInfoText.text = info;
 
@@ -97,7 +90,7 @@ public class OnScreenUI : MonoBehaviour
         }
 
         initializeTemp(dm);
-        //EnvAirComposition(dm);
+      
     }
 
       void OnSliderValueChanged(float value)
@@ -134,11 +127,11 @@ public class OnScreenUI : MonoBehaviour
         if (timeSinceLastUpdate >= 1f)  {
             UpdateTemp();
             string info = 
-            "Atmospheric Density: " + atmospheric_density.ToString("F3") + " kg/m³\n" +  // 3 decimal places for precision
-            "Atmospheric Pressure: " + atmospheric_pressure.ToString("F2") + " kPa\n" +  // 2 decimal places
-            "CO2 Concentration: " + (co2_concentration * 100).ToString("F2") + " %\n" +  // Convert to percentage and format
-            "Nitrogen Concentration: " + (nitrogen_concentration * 100).ToString("F2") + " %\n" +  // Convert to percentage
-            "Argon Concentration: " + (argon_concentration * 100).ToString("F2") + " %";  // Convert to percentage
+            "Atmospheric Density: " + atmospheric_density.ToString("F3") + " kg/m³\n" +  
+            "Atmospheric Pressure: " + atmospheric_pressure.ToString("F2") + " kPa\n" +  
+            "CO2 Concentration: " + (co2_concentration * 100).ToString("F2") + " %\n" +  
+            "Nitrogen Concentration: " + (nitrogen_concentration * 100).ToString("F2") + " %\n" +  
+            "Argon Concentration: " + (argon_concentration * 100).ToString("F2") + " %";  
 
             environmentalInfoText.text = info;
             timeSinceLastUpdate = 0f;  
