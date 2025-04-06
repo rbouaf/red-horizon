@@ -8,7 +8,7 @@ public class SimulationController : MonoBehaviour
 {
     private Dictionary<string, RoverModel> availableRoverModels = new Dictionary<string, RoverModel>();
     
-    private RoverModel activeRoverModel;
+    public RoverModel activeRoverModel;
     
     private DataManager dataManager;
     
@@ -150,7 +150,7 @@ public class SimulationController : MonoBehaviour
         return availableRoverModels;
     }
     
-    public RoverModel GetRoverModel(string roverId)
+    public RoverModel GetRoverModelById(string roverId)
     {
         if (string.IsNullOrEmpty(roverId) || !availableRoverModels.ContainsKey(roverId))
         {
@@ -165,11 +165,16 @@ public class SimulationController : MonoBehaviour
     {
         return activeRoverModel;
     }
+
+    public DataManager GetDataManager()
+    {
+        return dataManager;
+    }
     
     public GameObject InstantiateRover(GameObject roverPrefab, string roverId, Vector3 position, Quaternion rotation)
     {
         // Get the rover model
-        RoverModel roverModel = GetRoverModel(roverId);
+        RoverModel roverModel = GetRoverModelById(roverId);
         if (roverModel == null || roverPrefab == null)
         {
             Debug.LogError("Cannot instantiate rover: Invalid model or prefab");

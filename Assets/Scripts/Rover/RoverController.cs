@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RoverController : MonoBehaviour
 {
+    private string roverId = "001";
     public RoverModel roverModel;
     public List<WheelController> driveWheels;
     public List<WheelController> steeringWheels;
@@ -13,16 +14,49 @@ public class RoverController : MonoBehaviour
     public float maxSteerAngle = 30f;
     public float brakingMultiplier = 5f;
 
+    [Header("Speed Slider")]
+    public SpeedSlider speedSlider;  // Reference to Speed Slider script
+    private float normalSpeed = 1f;
+
+    [Header("Battery System")]
+    public float batteryLevel = 100f;  // Start at 100%
+    public float drainRate = 0.01f;  // Drain per second
+    public float boostDrainMultiplier = 3f;  // Extra drain when boosting
+
+    public TMPro.TextMeshProUGUI batteryText;  // Reference to UI Text
+
+    [Header("Solar Battery Charging")]
+    public float solarChargeRate = 1.0f; // Charge per second
+    public float dustRate = 0.01f; //Decrease in solarChargeRate per second
+
+    public Light sunLight;  
+
+    public TMPro.TextMeshProUGUI chargingStatusText;
+
     [Header("Center of Mass")]
     public Vector3 centerOfMassOffset = new Vector3(0, -0.5f, 0);
-
     private float maxPowerWatts;
     private Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        SimulationController simController = GetComponent<SimulationController>();
+        if (simController == null)
+        {
+            Debug.LogError("SimulationController not found!");
+            return;
+        }
+        roverModel = simController.GetRoverModelById(roverId);
+        if (roverModel == null)
+        {
+            Debug.LogError("Rover model not found!");
+            return;
+        }
         
+        maxTorquePerWheel = roverModel.systems.mobility.wheelTorque;
+
         // Set center of mass for better stability
         if (rb != null)
         {
@@ -48,15 +82,32 @@ public class RoverController : MonoBehaviour
         ApplyMovement(throttleInput);
         ApplySteering(steerInput);
         ApplyBrakes(brakeInput);
+        SolarCharge();
+        MakePanelsDustier();
     }
 
     private void ApplyMovement(float throttle)
     {
+        // No movement if the battery level is at zero
+        if (batteryLevel <= 0)
+        {
+            foreach (WheelController wheel in driveWheels)
+            {
+                wheel.wheelCollider.motorTorque = 0;  // Ensure no power is applied
+            }
+            return;
+        }
+
         foreach (WheelController wheel in driveWheels)
         {
             if (Mathf.Abs(throttle) > 0.1f)
             {
-                wheel.ApplyDrive(throttle);
+                // Use the slider's selected speed when Shift is held
+                float speedMultiplier = Input.GetKey(KeyCode.LeftShift) ? speedSlider.GetSelectedSpeed() * boostDrainMultiplier : normalSpeed;
+                wheel.ApplyDrive(throttle * speedMultiplier); 
+
+                // Call DrainBattery() to drain power based on speed
+                DrainBattery(speedMultiplier); 
             }
             else
             {
@@ -67,6 +118,12 @@ public class RoverController : MonoBehaviour
 
     private void ApplySteering(float steer)
     {
+        // No steering if battery level is zero
+        if (batteryLevel <= 0)
+        {
+            return;
+        }
+
         // Calculate steering angle
         float steerAngle = steer * maxSteerAngle;
         
@@ -117,5 +174,72 @@ public class RoverController : MonoBehaviour
         }
         
         return false;
+    }
+
+    private void DrainBattery(float speedMultiplier)
+    {
+        if (batteryLevel > 0)
+        {
+            batteryLevel -= (drainRate * speedMultiplier) * Time.deltaTime;
+            batteryLevel = Mathf.Clamp(batteryLevel, 0f, 100f);
+            
+            UpdateBatteryUI();
+        }
+    }
+
+    private void UpdateBatteryUI()
+    {
+        if (batteryText != null)
+        {
+            batteryText.text = "Battery: " + batteryLevel.ToString("F1") + "%";
+        }
+    }
+
+    private void SolarCharge()
+    {
+        bool charging = false;
+
+        if (batteryLevel < 100f && IsInSunlight() && IsStationary())
+        {
+            batteryLevel += solarChargeRate * Time.deltaTime;
+            batteryLevel = Mathf.Clamp(batteryLevel, 0f, 100f);
+            UpdateBatteryUI();  
+            charging = true;
+        }
+
+        // Show or hide charging text
+        if (chargingStatusText != null)
+        {
+            chargingStatusText.gameObject.SetActive(charging);
+        }
+    }
+
+    private void MakePanelsDustier()
+    {
+        if (solarChargeRate >= dustRate)
+        {
+            solarChargeRate -= dustRate * Time.deltaTime;
+            solarChargeRate = Mathf.Max(0f, solarChargeRate);
+        }
+    }
+
+    public void CleanPanels()
+    {
+        solarChargeRate = 1.0f; //Reset the charging rate to default value
+    }
+
+    private bool IsStationary()
+    {
+        return rb.linearVelocity.magnitude < 0.01f;  // Consider stationary if rovers barely moving
+    }
+
+    private bool IsInSunlight()
+    {
+        // Consider it day if sun intensity is strong enough
+        return sunLight != null && sunLight.intensity > 0.5f;
+    }
+
+    public Rigidbody GetRigidBody(){
+        return rb;
     }
 }
