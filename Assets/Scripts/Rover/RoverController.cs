@@ -91,7 +91,7 @@ public class RoverController : MonoBehaviour
         MakePanelsDustier();
     }
 
-    private void ApplyMovement(float throttle)
+    public void ApplyMovement(float throttle)
     {
         // No movement if the battery level is at zero
         if (batteryLevel <= 0)
@@ -121,7 +121,7 @@ public class RoverController : MonoBehaviour
         }
     }
 
-    private void ApplySteering(float steer)
+    public void ApplySteering(float steer)
     {
         // No steering if battery level is zero
         if (batteryLevel <= 0)
