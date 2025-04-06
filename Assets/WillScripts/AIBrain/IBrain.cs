@@ -20,4 +20,7 @@ public interface IBrain
     /// Pauses or resumes the brain processing
     /// "isPaused" Whether to pause (true) or resume (false)
     void SetPaused(bool isPaused);
+
+    // Check if the brain is currently paused
+    bool isPaused();
 }

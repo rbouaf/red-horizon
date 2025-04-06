@@ -1,66 +1,58 @@
 using UnityEngine;
-using System.Collections.Generic;
 
-/// Base abstract class for all AI brains providing common functionality.
+/// <summary>
+/// Base class for all rover brain implementations
+/// Provides common functionality and implements the IBrain interface
+/// </summary>
 public abstract class BrainBase : MonoBehaviour, IBrain
 {
-    [Header("Brain Settings")]
-    [SerializeField] protected bool debugMode = false;
-    [SerializeField] protected float thinkInterval = 0.2f; // How often (in seconds) the brain thinks
+    [Header("Common Brain Properties")]
+    [SerializeField] protected bool isPausedState = false;
     
+    // Reference to the rover body
     protected GameObject roverGameObject;
-    protected Rigidbody roverRigidbody;
     protected RoverController roverController;
     
-    protected bool isPaused = false;
-    protected float lastThinkTime = 0f;
-    
+    // Status reporting for UI display
     protected string currentStatus = "Initializing";
     
     public virtual void Initialize(GameObject gameObject)
     {
-        this.roverGameObject = gameObject;
-        this.roverRigidbody = gameObject.GetComponent<Rigidbody>();
-        this.roverController = gameObject.GetComponent<RoverController>();
+        roverGameObject = gameObject;
+        roverController = gameObject.GetComponent<RoverController>();
         
-        if (roverRigidbody == null || roverController == null)
+        if (roverController == null)
         {
-            Debug.LogError("Brain initialization failed: Missing required components on rover");
-            currentStatus = "Error: Missing components";
+            Debug.LogWarning($"{GetType().Name}: No RoverController found on target rover");
         }
-        else
-        {
-            currentStatus = "Initialized";
-        }
+        
+        currentStatus = "Ready";
     }
     
-    public abstract void Think();
-    
-    protected virtual void Update()
+    public virtual void Think()
     {
-        if (isPaused || Time.time < lastThinkTime + thinkInterval)
-            return;
-            
-        lastThinkTime = Time.time;
-        Think();
+        // Default implementation does nothing
+        // Override in derived classes to implement AI behavior
     }
     
-    public virtual string GetStatus()
+    public void SetPaused(bool paused)
+    {
+        isPausedState = paused;
+        currentStatus = isPausedState ? "Paused" : "Active";
+    }
+    
+    public bool isPaused()
+    {
+        return isPausedState;
+    }
+    
+    public string GetStatus()
     {
         return currentStatus;
     }
     
-    public virtual void SetPaused(bool isPaused)
+    protected void LogDebug(string message)
     {
-        this.isPaused = isPaused;
-        currentStatus = isPaused ? "Paused" : "Active";
-    }
-    
-    protected virtual void LogDebug(string message)
-    {
-        if (debugMode)
-        {
-            Debug.Log($"[{GetType().Name}] {message}");
-        }
+        Debug.Log($"[{GetType().Name}] {message}");
     }
 }

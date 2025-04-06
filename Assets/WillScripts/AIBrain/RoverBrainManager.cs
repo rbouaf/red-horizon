@@ -1,9 +1,12 @@
 using UnityEngine;
-using System;
+using System.Collections;
 using System.Collections.Generic;
+using System;
 
-
+/// <summary>
 /// Manages different AI brain modules for the rover.
+/// Depends on NavMeshManager for NavMesh status.
+/// </summary>
 public class RoverBrainManager : MonoBehaviour
 {
     [System.Serializable]
@@ -16,6 +19,10 @@ public class RoverBrainManager : MonoBehaviour
         [HideInInspector]
         public IBrain brain;
     }
+    
+    [Header("NavMesh Dependencies")]
+    [SerializeField] private bool waitForNavMesh = true;
+    [SerializeField] private NavMeshManager navMeshManager;
     
     [Header("Available Brains")]
     [SerializeField] private List<BrainInfo> availableBrains = new List<BrainInfo>();
@@ -30,26 +37,130 @@ public class RoverBrainManager : MonoBehaviour
     
     private IBrain activeBrain = null;
     private string activeBrainName = "";
+    private bool areBrainsInitialized = false;
+    private bool isWaitingForNavMesh = false;
     
     private void Awake()
     {
-        // Initialize and validate all brains
+        // Set up brain interfaces
         foreach (BrainInfo brainInfo in availableBrains)
         {
             if (brainInfo.brainComponent != null && brainInfo.brainComponent is IBrain)
             {
                 brainInfo.brain = brainInfo.brainComponent as IBrain;
-                brainInfo.brain.Initialize(gameObject);
             }
             else
             {
                 Debug.LogError($"Brain '{brainInfo.brainName}' does not implement IBrain interface.");
             }
         }
+
+        // Find NavMeshManager if not assigned
+        if (navMeshManager == null)
+        {
+            navMeshManager = FindAnyObjectByType<NavMeshManager>();
+            if (navMeshManager == null && waitForNavMesh)
+            {
+                Debug.LogWarning("NavMeshManager not found! Creating a new instance.");
+                GameObject navMeshManagerObj = new GameObject("NavMeshManager");
+                navMeshManager = navMeshManagerObj.AddComponent<NavMeshManager>();
+            }
+        }
     }
     
     private void Start()
     {
+        if (waitForNavMesh && navMeshManager != null)
+        {
+            // Check if NavMesh is already ready
+            if (navMeshManager.IsNavMeshReady())
+            {
+                Debug.Log("NavMesh is already ready, initializing brains...");
+                InitializeBrains();
+            }
+            else
+            {
+                // Subscribe to NavMeshManager events
+                navMeshManager.OnNavMeshReady += OnNavMeshReady;
+                navMeshManager.OnNavMeshGenerationFailed += OnNavMeshGenerationFailed;
+                
+                isWaitingForNavMesh = true;
+                Debug.Log("Waiting for NavMesh to be ready...");
+            }
+        }
+        else
+        {
+            // Don't wait for NavMesh, initialize brains immediately
+            InitializeBrains();
+        }
+    }
+    
+    private void OnDestroy()
+    {
+        // Unsubscribe from NavMeshManager events
+        if (navMeshManager != null)
+        {
+            navMeshManager.OnNavMeshReady -= OnNavMeshReady;
+            navMeshManager.OnNavMeshGenerationFailed -= OnNavMeshGenerationFailed;
+        }
+    }
+    
+    private void OnNavMeshReady()
+    {
+        Debug.Log("NavMesh is ready, initializing brains...");
+        isWaitingForNavMesh = false;
+        InitializeBrains();
+    }
+    
+    private void OnNavMeshGenerationFailed(string errorMessage)
+    {
+        Debug.LogError($"NavMesh generation failed: {errorMessage}");
+        
+        // Decide whether to initialize brains anyway
+        if (waitForNavMesh)
+        {
+            Debug.LogWarning("Cannot initialize brains without NavMesh. Set waitForNavMesh to false to override.");
+        }
+        else
+        {
+            Debug.LogWarning("Initializing brains despite NavMesh generation failure.");
+            InitializeBrains();
+        }
+    }
+    
+    private void Update()
+    {
+        // Skip if no brain is active or brains aren't initialized
+        if (activeBrain == null || !areBrainsInitialized)
+            return;
+            
+        // Let the active brain think
+        if (!activeBrain.isPaused())
+        {
+            activeBrain.Think();
+        }
+    }
+    
+    private void InitializeBrains()
+    {
+        if (areBrainsInitialized)
+            return;
+            
+        // Initialize all brains but keep them inactive
+        Debug.Log("Initializing all brains...");
+        foreach (BrainInfo brainInfo in availableBrains)
+        {
+            if (brainInfo.brain != null)
+            {
+                brainInfo.brain.Initialize(gameObject);
+                brainInfo.brain.SetPaused(true);
+                Debug.Log($"Initialized brain: {brainInfo.brainName}");
+            }
+        }
+        
+        areBrainsInitialized = true;
+        
+        // Activate default brain if specified
         if (activateDefaultBrainOnStart && availableBrains.Count > 0)
         {
             // Make sure default index is valid
@@ -60,6 +171,13 @@ public class RoverBrainManager : MonoBehaviour
     
     public bool ActivateBrain(string brainName)
     {
+        // Don't allow activation until brains are initialized
+        if (!areBrainsInitialized)
+        {
+            Debug.LogWarning($"Cannot activate brain '{brainName}' until brains are initialized!");
+            return false;
+        }
+        
         // If the brain is already active, do nothing
         if (activeBrainName == brainName && activeBrain != null)
             return true;
@@ -165,7 +283,7 @@ public class RoverBrainManager : MonoBehaviour
     // UI helper method to cycle through available brains
     public void CycleToNextBrain()
     {
-        if (availableBrains.Count <= 1)
+        if (availableBrains.Count <= 1 || !areBrainsInitialized)
             return;
             
         int currentIndex = -1;
@@ -183,5 +301,11 @@ public class RoverBrainManager : MonoBehaviour
         // Cycle to the next brain
         int nextIndex = (currentIndex + 1) % availableBrains.Count;
         ActivateBrain(availableBrains[nextIndex].brainName);
+    }
+    
+    // Check if we're still waiting for NavMesh
+    public bool IsWaitingForNavMesh()
+    {
+        return isWaitingForNavMesh;
     }
 }
