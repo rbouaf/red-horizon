@@ -1467,14 +1467,14 @@ MonoBehaviour:
   maxTorquePerWheel: 669.77
   maxSteerAngle: 30
   brakingMultiplier: 5
-  speedSlider: {fileID: 0}
+  speedSlider: {fileID: 982780647}
   batteryLevel: 100
   drainRate: 0.1
   boostDrainMultiplier: 3
   batteryText: {fileID: 1961385642}
-  solarChargeRate: 0.5
+  solarChargeRate: 1
   dustRate: 0.01
-  brushButton: {fileID: 0}
+  brushButton: {fileID: 1920626645}
   sunLight: {fileID: 63765621}
   chargingStatusText: {fileID: 0}
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
@@ -9384,6 +9384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myButton: {fileID: 1920626645}
   buttonText: {fileID: 1266790899}
+  originalButtonText: 
 --- !u!114 &1920626645
 MonoBehaviour:
   m_ObjectHideFlags: 0
