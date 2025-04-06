@@ -3219,12 +3219,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 886225008}
+  m_Father: {fileID: 959423958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 6.125122, y: 238.13608}
+  m_SizeDelta: {x: -219.241, y: -944.91895}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410586461
 MonoBehaviour:
@@ -5711,13 +5711,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 410586460}
-  m_Father: {fileID: 1032447312}
+  m_Children: []
+  m_Father: {fileID: 959423958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1680.2501, y: -265.99832}
+  m_AnchoredPosition: {x: 252.00012, y: -265.99994}
   m_SizeDelta: {x: 272.509, y: 63.353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886225009
@@ -6356,6 +6355,9 @@ RectTransform:
   - {fileID: 1930158475}
   - {fileID: 1686297840}
   - {fileID: 1706481672}
+  - {fileID: 886225008}
+  - {fileID: 410586460}
+  - {fileID: 988264849}
   m_Father: {fileID: 1032447312}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
@@ -6670,11 +6672,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1989401972}
-  m_Father: {fileID: 1032447312}
+  m_Father: {fileID: 959423958}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1680.2501, y: -458.7923}
+  m_AnchoredPosition: {x: 252.00012, y: -458.79398}
   m_SizeDelta: {x: 272.509, y: 63.353}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &988264850
@@ -7001,8 +7003,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 886225008}
-  - {fileID: 988264849}
   - {fileID: 959423958}
   - {fileID: 460652979}
   - {fileID: 163530322}
@@ -8407,13 +8407,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8cc879e652a44719df890ab1f93bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
-  moveSpeed: 5
-  rotateSpeed: 100
-  cameraOffset: {x: 0, y: 2, z: -5}
-  jumpForce: 5
-  isGrounded: 1
-  rb: {fileID: 0}
 --- !u!54 &1443199712
 Rigidbody:
   m_ObjectHideFlags: 0
