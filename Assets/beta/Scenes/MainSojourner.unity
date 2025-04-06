@@ -3804,7 +3804,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 785, y: -385}
+  m_AnchoredPosition: {x: 460, y: -180}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629766545
@@ -8897,7 +8897,7 @@ MonoBehaviour:
   sunLight: {fileID: 63765621}
   minSunIntensity: 0.05
   maxSunIntensity: 0.8
-  fullDayDuration: 40
+  fullDayDuration: 100
 --- !u!1 &1821073970
 GameObject:
   m_ObjectHideFlags: 0
