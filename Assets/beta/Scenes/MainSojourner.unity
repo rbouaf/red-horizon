@@ -1478,6 +1478,8 @@ MonoBehaviour:
   sunLight: {fileID: 63765621}
   chargingStatusText: {fileID: 0}
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
+  movementAudio: {fileID: 1317247368}
+  fadeSpeed: 0.5
 --- !u!114 &264630813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7258,8 +7260,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f7bec42a333ac4c93b8535a0835ea3a2, type: 3}
-  m_Resource: {fileID: 8300000, guid: f7bec42a333ac4c93b8535a0835ea3a2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 08cc9837afa0a4e0098090fbd6490cfc, type: 3}
+  m_Resource: {fileID: 8300000, guid: 08cc9837afa0a4e0098090fbd6490cfc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1

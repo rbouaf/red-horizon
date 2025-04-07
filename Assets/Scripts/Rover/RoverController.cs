@@ -45,7 +45,7 @@ public class RoverController : MonoBehaviour
 
     public AudioSource movementAudio;
 
-    public float fadeSpeed = 0.1f; // How fast to fade in/out
+    public float fadeSpeed = 0.5f; // How fast to fade in/out
 
     private void Start()
     {
