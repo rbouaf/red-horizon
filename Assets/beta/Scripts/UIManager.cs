@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
 		// Save initial transform values of the globe
 		startPosition = marsGlobe.position;
 		startScale = marsGlobe.localScale;
+		SetSkyboxExposure();
 
 		// Ensure the start menu has a CanvasGroup for fading
 		startMenuCanvasGroup = startMenuPanel.GetComponent<CanvasGroup>();
@@ -141,7 +142,7 @@ public class UIManager : MonoBehaviour
 		{
 			yield return StartCoroutine(FadeOutAtmosphere(atmosphereTransform, 0.2f));
 		}
-		// Wait for a 1 second delay.
+		DarkenSkyboxExposure();
 		warp1.gameObject.SetActive(true);
 		warp1.Play();
 		warp2.gameObject.SetActive(true);
@@ -150,7 +151,7 @@ public class UIManager : MonoBehaviour
 		// Activate and fade in the loading panel.
 		loadingPanel.SetActive(true);
 		Debug.LogError("Loading panel active");
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(2f);
 
 		yield return StartCoroutine(FadeInCanvasGroup(loadingPanelCanvasGroup, 1.5f));
 		Debug.LogError("Loading panel faded in");
@@ -160,6 +161,51 @@ public class UIManager : MonoBehaviour
 
 
 	}
+	void SetSkyboxExposure()
+	{
+		// Get the current skybox material from RenderSettings
+		Material skyboxMat = RenderSettings.skybox;
+
+		// Make sure the material has the _Exposure property (Procedural Skybox does)
+		if (skyboxMat.HasProperty("_Exposure"))
+		{
+			// Decrease it to darken
+			float newExposure = 0.9f;
+
+			// Apply the new exposure value
+			skyboxMat.SetFloat("_Exposure", newExposure);
+
+			Debug.Log("Skybox Exposure set to: " + newExposure);
+		}
+		else
+		{
+			Debug.LogWarning("Skybox material does not have an _Exposure property!");
+		}
+	}
+	void DarkenSkyboxExposure()
+	{
+		// Get the current skybox material from RenderSettings
+		Material skyboxMat = RenderSettings.skybox;
+
+		// Make sure the material has the _Exposure property (Procedural Skybox does)
+		if (skyboxMat.HasProperty("_Exposure"))
+		{
+			// Grab the current exposure
+
+			// Decrease it to darken
+			float newExposure = 0f;
+
+			// Apply the new exposure value
+			skyboxMat.SetFloat("_Exposure", newExposure);
+
+			Debug.Log("Skybox Exposure set to: " + newExposure);
+		}
+		else
+		{
+			Debug.LogWarning("Skybox material does not have an _Exposure property!");
+		}
+	}
+
 	private IEnumerator FadeOutAtmosphere(Transform atmosphereTransform, float duration)
 	{
 		// Get all MeshRenderers on the atmosphere object (and its children)
