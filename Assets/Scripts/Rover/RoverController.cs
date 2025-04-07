@@ -288,7 +288,7 @@ public class RoverController : MonoBehaviour
     private bool IsInSunlight()
     {
         // Consider it day if sun intensity is strong enough
-        return sunLight != null && sunLight.intensity > 0.2f;
+        return sunLight != null && sunLight.intensity > 0.5f;
     }
 
     public Rigidbody GetRigidBody(){
