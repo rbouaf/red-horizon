@@ -68,6 +68,9 @@ MonoBehaviour:
   thicknessModifier:
     overrideState: 0
     value: 1
+  zBias:
+    overrideState: 0
+    value: 0.0001
   directLightingStrength:
     overrideState: 0
     value: 0
@@ -1424,7 +1427,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 1.25
+    value: 200
   threshold:
     overrideState: 1
     value: 0.5
@@ -1436,7 +1439,7 @@ MonoBehaviour:
     value: 65472
   diffusion:
     overrideState: 1
-    value: 5
+    value: 10
   anamorphicRatio:
     overrideState: 0
     value: 0
@@ -1452,7 +1455,7 @@ MonoBehaviour:
     defaultState: 1
   dirtIntensity:
     overrideState: 1
-    value: 1
+    value: 10
 --- !u!114 &9139940069679381520
 MonoBehaviour:
   m_ObjectHideFlags: 3
