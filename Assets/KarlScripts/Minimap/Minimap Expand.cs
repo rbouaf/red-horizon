@@ -13,6 +13,9 @@ public class MinimapExpand : MonoBehaviour
     public GameObject button2;
     public GameObject button3;
 
+    public GameObject panel1;
+    public GameObject button4;
+
     public TMPro.TextMeshProUGUI ExpandMinimize;
 
 
@@ -46,6 +49,8 @@ public class MinimapExpand : MonoBehaviour
             button1.gameObject.SetActive(true);
             button2.gameObject.SetActive(true);
             button3.gameObject.SetActive(true);
+            panel1.gameObject.SetActive(true);
+            button4.gameObject.SetActive(true);
             ExpandMinimize.text = "Expand";
 
         }
@@ -64,6 +69,8 @@ public class MinimapExpand : MonoBehaviour
             button1.gameObject.SetActive(false);
             button2.gameObject.SetActive(false);
             button3.gameObject.SetActive(false);
+            panel1.gameObject.SetActive(false);
+            button4.gameObject.SetActive(false);
             ExpandMinimize.text = "Minimize";
         }
 

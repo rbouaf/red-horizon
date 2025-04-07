@@ -64,11 +64,11 @@ public class OnScreenUI : MonoBehaviour
         weatherTypeText.text = randomWeather;
 
         string info = 
-        "Atmospheric Density: 0.000 kg/m³\n" +  // 3 decimal places for precision
-        "Atmospheric Pressure: 0.00 kPa\n" +  // 2 decimal places
-        "CO2 Concentration: 0.00 %\n" +  // Convert to percentage and format
-        "Nitrogen Concentration: 0.00 %\n" +  // Convert to percentage
-        "Argon Concentration: 0.00 %";  // Convert to percentage
+        "Atmospheric Density: 0.000 kg/m³\n" +  
+        "Atmospheric Pressure: 0.00 kPa\n" +  
+        "CO2 Concentration: 0.00 %\n" +  
+        "Nitrogen Concentration: 0.00 %\n" +  
+        "Argon Concentration: 0.00 %"; 
 
         environmentalInfoText.text = info;
 
@@ -134,11 +134,11 @@ public class OnScreenUI : MonoBehaviour
         if (timeSinceLastUpdate >= 1f)  {
             UpdateTemp();
             string info = 
-            "Atmospheric Density: " + atmospheric_density.ToString("F3") + " kg/m³\n" +  // 3 decimal places for precision
-            "Atmospheric Pressure: " + atmospheric_pressure.ToString("F2") + " kPa\n" +  // 2 decimal places
-            "CO2 Concentration: " + (co2_concentration * 100).ToString("F2") + " %\n" +  // Convert to percentage and format
-            "Nitrogen Concentration: " + (nitrogen_concentration * 100).ToString("F2") + " %\n" +  // Convert to percentage
-            "Argon Concentration: " + (argon_concentration * 100).ToString("F2") + " %";  // Convert to percentage
+            "Atmospheric Density: " + atmospheric_density.ToString("F3") + " kg/m³\n" +  
+            "Atmospheric Pressure: " + atmospheric_pressure.ToString("F2") + " kPa\n" +  
+            "CO2 Concentration: " + (co2_concentration * 100).ToString("F2") + " %\n" +  
+            "Nitrogen Concentration: " + (nitrogen_concentration * 100).ToString("F2") + " %\n" + 
+            "Argon Concentration: " + (argon_concentration * 100).ToString("F2") + " %"; 
 
             environmentalInfoText.text = info;
             timeSinceLastUpdate = 0f;  
