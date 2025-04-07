@@ -15,7 +15,7 @@ public class AIsampleBrain : MonoBehaviour
     public TextMeshProUGUI messageText;
 
     public Color glowColor = Color.yellow;
-    public float glowDuration = 5f;
+    public float glowDuration = 6f;
 
     public float forwardThreshold = 0.5f;
 
@@ -33,7 +33,7 @@ public class AIsampleBrain : MonoBehaviour
         }
 
        
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
 
         // Use the rover's position as the center of the scan.
         Vector3 sampleOrigin = (roverTransform != null) ? roverTransform.position : transform.position;
