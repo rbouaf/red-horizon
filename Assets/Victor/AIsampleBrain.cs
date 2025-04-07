@@ -8,7 +8,7 @@ public class AIsampleBrain : MonoBehaviour
     //(assign in inspector if AIBrain is not on the rover itself)
     public Transform roverTransform;
 
-    public float samplingRadius = 10f;
+    public float samplingRadius = 12f;
 
     public LayerMask rockLayerMask;
 
@@ -29,7 +29,7 @@ public class AIsampleBrain : MonoBehaviour
         
         if (messageText != null)
         {
-            messageText.text = "Sampling in process... Scanning...";
+            messageText.text = "Sampling in process....";
         }
 
        
