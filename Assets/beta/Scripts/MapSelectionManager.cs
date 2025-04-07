@@ -299,5 +299,25 @@ public class MapSelectionManager : MonoBehaviour
 		SceneManager.LoadScene(sceneName);
 	}
 
+	public void ForceGo()
+	{
+		if (interestPoints == null || interestPoints.Length == 0)
+		{
+			Debug.LogError("No interest points set!");
+			return;
+		}
+
+		InterestPoint currentPoint = interestPoints[currentIndex];
+
+		if (string.IsNullOrEmpty(currentPoint.sceneName))
+		{
+			Debug.LogError("Scene name is not set for this interest point.");
+			return;
+		}
+
+		Debug.Log($"Loading scene: {currentPoint.sceneName}");
+		SceneManager.LoadScene(currentPoint.sceneName);
+	}
+
 
 }
