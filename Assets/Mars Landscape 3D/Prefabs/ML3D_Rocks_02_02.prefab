@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af40a236169e4dd4a9faf07b315f7851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rockType: 2
+  rockType: 4
   basalticConcentration: 0.9
   andesiticConcentration: 0.7
   sedimentaryConcentration: 0.3

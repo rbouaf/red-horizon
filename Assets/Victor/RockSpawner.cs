@@ -23,7 +23,7 @@ public class RockSpawner : MonoBehaviour
     public float volcaniclasticConcentration = 0.1f;
 
     [Header("Spawn Settings")]
-    //  to scale the spawn count based on the rarity value.
+    //  to scale the spawn count based on map
     public float spawnMultiplier = 100f;
 
     void Start()
@@ -33,7 +33,7 @@ public class RockSpawner : MonoBehaviour
 
     void SpawnRocks()
     {
-        // Get terrain boundaries for placement.
+        
         TerrainData terrainData = terrain.terrainData;
         Vector3 terrainSize = terrainData.size;
         Vector3 terrainPos = terrain.transform.position;

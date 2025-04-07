@@ -8,7 +8,7 @@ public class AIsampleBrain : MonoBehaviour
     //(assign in inspector if AIBrain is not on the rover itself)
     public Transform roverTransform;
 
-    public float samplingRadius = 10f;
+    public float samplingRadius = 15f;
 
     public LayerMask rockLayerMask;
 
@@ -33,7 +33,7 @@ public class AIsampleBrain : MonoBehaviour
         }
 
        
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
 
         // Use the rover's position as the center of the scan.
         Vector3 sampleOrigin = (roverTransform != null) ? roverTransform.position : transform.position;
