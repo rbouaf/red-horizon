@@ -9,6 +9,10 @@ public class UIManager : MonoBehaviour
 	[SerializeField] private GameObject mapSelectionPanel;
 	[SerializeField] private Transform marsGlobe;
 	[SerializeField] private GameObject loadingPanel; // Assign in inspector
+	[SerializeField] private Transform atmosphereTransform;
+	[SerializeField] private CanvasGroup loadingPanelCanvasGroup;
+	[SerializeField] private ParticleSystem warp1;
+	[SerializeField] private ParticleSystem warp2;
 
 	private Vector3 startPosition;
 	private Vector3 endPosition = new Vector3(6, 1, 0);
@@ -17,7 +21,6 @@ public class UIManager : MonoBehaviour
 	private float transitionTime = 2f;
 	private CanvasGroup startMenuCanvasGroup;
 	private CanvasGroup mapSelectionCanvasGroup;
-	private CanvasGroup loadingPanelCanvasGroup;
 
 	private void Start()
 	{
@@ -46,11 +49,14 @@ public class UIManager : MonoBehaviour
 		if (loadingPanelCanvasGroup == null)
 		{
 			loadingPanelCanvasGroup = loadingPanel.AddComponent<CanvasGroup>();
+			Debug.LogError("Loading panel CanvasGroup not found, added one.");
 		}
 		loadingPanelCanvasGroup.alpha = 0f; // Start hidden
 		startMenuPanel.SetActive(true);
 		mapSelectionPanel.SetActive(false);
 		loadingPanel.SetActive(false);
+		warp1.gameObject.SetActive(false);
+		warp2.gameObject.SetActive(false);
 	}
 
 	public void OnStartButtonClicked()
@@ -128,18 +134,71 @@ public class UIManager : MonoBehaviour
 		yield return StartCoroutine(FadeOutCanvasGroup(mapSelectionCanvasGroup, 1f));
 		Debug.LogError("fading globe...");
 
-		yield return StartCoroutine(FadeOutGlobe(marsGlobe, 1f));
+		yield return StartCoroutine(FadeOutGlobe(marsGlobe, 0.5f));
 
-
+		// Fade out the atmosphere over 1 second
+		if (atmosphereTransform != null)
+		{
+			yield return StartCoroutine(FadeOutAtmosphere(atmosphereTransform, 0.2f));
+		}
 		// Wait for a 1 second delay.
-		yield return new WaitForSeconds(1f);
+		warp1.gameObject.SetActive(true);
+		warp1.Play();
+		warp2.gameObject.SetActive(true);
+		warp2.Play();
 
 		// Activate and fade in the loading panel.
 		loadingPanel.SetActive(true);
-		yield return StartCoroutine(FadeInCanvasGroup(loadingPanelCanvasGroup, 1f));
+		Debug.LogError("Loading panel active");
+		yield return new WaitForSeconds(3f);
 
-		
+		yield return StartCoroutine(FadeInCanvasGroup(loadingPanelCanvasGroup, 1.5f));
+		Debug.LogError("Loading panel faded in");
+
+		yield return new WaitForSeconds(10f);
+
+
+
 	}
+	private IEnumerator FadeOutAtmosphere(Transform atmosphereTransform, float duration)
+	{
+		// Get all MeshRenderers on the atmosphere object (and its children)
+		MeshRenderer[] renderers = atmosphereTransform.GetComponentsInChildren<MeshRenderer>();
+		float elapsedTime = 0f;
+
+		// Assume the FadeAlpha property is set up in your shader (named "_FadeAlpha")
+		while (elapsedTime < duration)
+		{
+			elapsedTime += Time.deltaTime;
+			float t = Mathf.Clamp01(elapsedTime / duration);
+			// Lerp from fully visible (1) to fully faded (0)
+			float currentFade = Mathf.Lerp(1f, 0f, t);
+
+			// Apply the fade value to each material on each renderer
+			foreach (MeshRenderer renderer in renderers)
+			{
+				foreach (Material mat in renderer.materials)
+				{
+					mat.SetFloat("_SetAlpha", currentFade);
+				}
+			}
+			yield return null;
+		}
+
+		// Ensure the atmosphere is completely faded out
+		foreach (MeshRenderer renderer in renderers)
+		{
+			foreach (Material mat in renderer.materials)
+			{
+				mat.SetFloat("_SetAlpha", 0f);
+			}
+		}
+		foreach (MeshRenderer renderer in renderers)
+		{
+			renderer.gameObject.SetActive(false);
+		}
+	}
+
 	private IEnumerator FadeOutGlobe(Transform globeTransform, float duration)
 	{
 		Debug.LogError("Fading out globe");
@@ -187,6 +246,10 @@ public class UIManager : MonoBehaviour
 				c.a = 0f;
 				mats[j].color = c;
 			}
+		}
+		foreach (MeshRenderer renderer in renderers)
+		{
+			renderer.gameObject.SetActive(false);
 		}
 	}
 
