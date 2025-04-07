@@ -1044,7 +1044,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hide
+  m_text: 'Hide
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3633,7 +3635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 0, y: 0, z: 0}
+  targetPosition: {x: 1593, y: 92.4, z: 3837.68}
   teleportButton: {fileID: 542163514}
   rb: {fileID: 264630811}
   buttonText: {fileID: 403331547}
@@ -3795,7 +3797,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629766540}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 256.99994}
+  m_LocalPosition: {x: 0, y: 0, z: 257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3804,7 +3806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 341, y: -164}
+  m_AnchoredPosition: {x: 460, y: -180}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &629766545
@@ -4804,7 +4806,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 245.875, y: -329.1965}
+  m_AnchoredPosition: {x: 180, y: -329.1965}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &886225009
@@ -5473,8 +5475,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -2, y: 35.538}
-  m_SizeDelta: {x: 491.75, y: 1008.393}
+  m_AnchoredPosition: {x: -2, y: 90}
+  m_SizeDelta: {x: 350, y: 900}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &964830577
 GameObject:
@@ -5790,7 +5792,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 245.875, y: -479.1965}
+  m_AnchoredPosition: {x: 180, y: -479.1965}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &988264850
@@ -6492,7 +6494,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 290, y: -113}
+  m_AnchoredPosition: {x: 220, y: -113}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1091047926
@@ -8572,7 +8574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hide Buttons
+  m_text: Hide Data
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -9026,7 +9028,7 @@ MonoBehaviour:
   sunLight: {fileID: 63765621}
   minSunIntensity: 0.05
   maxSunIntensity: 0.8
-  fullDayDuration: 40
+  fullDayDuration: 100
 --- !u!1 &1821073970
 GameObject:
   m_ObjectHideFlags: 0
@@ -9473,7 +9475,7 @@ GameObject:
   - component: {fileID: 1920626647}
   - component: {fileID: 1920626646}
   - component: {fileID: 1920626645}
-  - component: {fileID: 1920626644}
+  - component: {fileID: 1920626648}
   m_Layer: 5
   m_Name: BrushButton
   m_TagString: Untagged
@@ -9501,21 +9503,6 @@ RectTransform:
   m_AnchoredPosition: {x: 50.84974, y: 12.943}
   m_SizeDelta: {x: 330, y: 78.87}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1920626644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1920626642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07bdd86f69a323242a534fe21d05080b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myButton: {fileID: 1920626645}
-  buttonText: {fileID: 1266790899}
-  originalButtonText: 
 --- !u!114 &1920626645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9559,19 +9546,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1920626646}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: RoverController, Assembly-CSharp
-        m_MethodName: CleanPanels
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1920626646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9610,6 +9585,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920626642}
   m_CullTransparentMesh: 1
+--- !u!114 &1920626648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920626642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371899ce2e5cfe2409192d5373c43f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myButton: {fileID: 1920626645}
+  buttonText: {fileID: 1266790899}
+  originalButtonText: Brush Solar Panels
+  targetScript: {fileID: 264630812}
 --- !u!1 &1930158474
 GameObject:
   m_ObjectHideFlags: 0
@@ -9647,7 +9638,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 245.875, y: -629.19653}
+  m_AnchoredPosition: {x: 180, y: -629.19653}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1930158476
@@ -10303,8 +10294,8 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
-  m_Height: 0.2
+  m_Radius: 9
+  m_Height: 10
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &1990122837
@@ -10743,7 +10734,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -450, y: -400}
+  m_AnchoredPosition: {x: -700, y: -400}
   m_SizeDelta: {x: 800, y: 750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2094501061
