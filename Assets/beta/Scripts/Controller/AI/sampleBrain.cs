@@ -3,7 +3,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 
-public class AIsampleBrain : MonoBehaviour
+public class sampleBrain : MonoBehaviour
 {
     //(assign in inspector if AIBrain is not on the rover itself)
     public Transform roverTransform;
@@ -26,7 +26,7 @@ public class AIsampleBrain : MonoBehaviour
 
     public IEnumerator SampleRoutine()
     {
-        
+        // scanning
         if (messageText != null)
         {
             messageText.text = "Sampling in process....";
@@ -35,7 +35,7 @@ public class AIsampleBrain : MonoBehaviour
        
         yield return new WaitForSeconds(5f);
 
-        // Use the rover's position as the center of the scan.
+        // Use the rover's position as the center of the scan
         Vector3 sampleOrigin = (roverTransform != null) ? roverTransform.position : transform.position;
         Collider[] colliders = Physics.OverlapSphere(sampleOrigin, samplingRadius, rockLayerMask);
         List<GameObject> candidateRocks = new List<GameObject>();
@@ -44,13 +44,13 @@ public class AIsampleBrain : MonoBehaviour
         
         foreach (Collider col in colliders)
         {
-            // Check if the rock is in front of the rover using dot product.
+            // Check if the rock is in front of the rover using dot product
             Vector3 directionToRock = (col.transform.position - sampleOrigin).normalized;
             Vector3 roverForward = (roverTransform != null) ? roverTransform.forward : transform.forward;
             if (Vector3.Dot(directionToRock, roverForward) < forwardThreshold)
             {
-                // Skip rocks that are not sufficiently in front.
-                continue;
+                
+                continue;// Skip rocks not in front
             }
             SampleInfo info = col.GetComponent<SampleInfo>();
             if (info != null)
@@ -109,7 +109,7 @@ public class AIsampleBrain : MonoBehaviour
         }
     }
 
-    // Resets the emission after a specified duration.
+    // Resets the emission after a specified duration
     private IEnumerator ResetGlow(Renderer rend)
     {
         yield return new WaitForSeconds(glowDuration);
