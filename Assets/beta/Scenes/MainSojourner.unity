@@ -4771,7 +4771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -717.4099, y: -501.80005}
+  m_AnchoredPosition: {x: 766.6001, y: 3.400055}
   m_SizeDelta: {x: 446.9, y: 43.667}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &692538472
@@ -7044,6 +7044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PathfindingAI: {fileID: 1989401973}
   SamplingAI: {fileID: 410586461}
+  FreeRoamAI: {fileID: 80011018}
 --- !u!1 &1051044741
 GameObject:
   m_ObjectHideFlags: 0
@@ -9531,7 +9532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -875.81, y: -502.20004}
+  m_AnchoredPosition: {x: 620.5, y: 3}
   m_SizeDelta: {x: 127.35, y: 43.6}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1603660825
@@ -11500,6 +11501,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1930158479}
         m_TargetAssemblyTypeName: HideButtons, Assembly-CSharp
         m_MethodName: Hidebuttons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1044069971}
+        m_TargetAssemblyTypeName: BrainGUIButtons, Assembly-CSharp
+        m_MethodName: ShowMessageFreeRoam
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

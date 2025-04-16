@@ -6,6 +6,8 @@ public class BrainGUIButtons : MonoBehaviour
     public TextMeshProUGUI PathfindingAI;
     public TextMeshProUGUI SamplingAI;    
 
+    public TextMeshProUGUI FreeRoamAI; 
+
     
     public void ShowMessagePath()
     {
@@ -21,6 +23,17 @@ public class BrainGUIButtons : MonoBehaviour
         Invoke("RevertSamplingText", 2f);
     }
 
+    public void ShowMessageFreeRoam()
+    {
+        FreeRoamAI.text = "Free Roam Activated";
+       
+        Invoke("RevertFreeRoamText", 2f);
+    }
+
+void RevertFreeRoamText()
+    {
+        FreeRoamAI.text = "Pathfinding AI"; 
+    }
    
     void RevertPathfindingText()
     {
