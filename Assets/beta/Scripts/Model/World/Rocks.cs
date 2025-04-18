@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum RockType { Basaltic, Andesitic, Sedimentary, Clay, Quartz, Volcaniclastic }
 
-public class SampleInfo : MonoBehaviour
+public class Rocks : MonoBehaviour
 {
     public RockType rockType;
 

@@ -2318,10 +2318,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Volcaniclastic
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8223178595989908536, guid: 440ddc44bdac1465b9960626412666aa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7709263511906827119, guid: 440ddc44bdac1465b9960626412666aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 285406645}
   m_SourcePrefab: {fileID: 100100000, guid: 440ddc44bdac1465b9960626412666aa, type: 3}
 --- !u!4 &285406639 stripped
 Transform:
@@ -2333,6 +2337,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7709263511906827119, guid: 440ddc44bdac1465b9960626412666aa, type: 3}
   m_PrefabInstance: {fileID: 285406638}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &285406645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 285406640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851500df174dc024ca09996096fecc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockType: 5
+  basalticConcentration: 0.9
+  andesiticConcentration: 0.7
+  sedimentaryConcentration: 0.3
+  clayConcentration: 0.4
+  quartzConcentration: 0.05
+  volcaniclasticConcentration: 0.1
 --- !u!1 &318507124
 GameObject:
   m_ObjectHideFlags: 0
@@ -4249,10 +4272,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 1593, y: 92.4, z: 3837.68}
-  teleportButton: {fileID: 542163514}
-  rb: {fileID: 264630811}
-  buttonText: {fileID: 403331547}
 --- !u!1 &573656907
 GameObject:
   m_ObjectHideFlags: 0
@@ -5193,10 +5212,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Clay
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 485967404320294401, guid: ab9eddba29a1e475da0bb23451afb3d1, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4070865055231202052, guid: ab9eddba29a1e475da0bb23451afb3d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 824954580}
   m_SourcePrefab: {fileID: 100100000, guid: ab9eddba29a1e475da0bb23451afb3d1, type: 3}
 --- !u!4 &824954574 stripped
 Transform:
@@ -5208,6 +5231,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4070865055231202052, guid: ab9eddba29a1e475da0bb23451afb3d1, type: 3}
   m_PrefabInstance: {fileID: 824954573}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &824954580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824954575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851500df174dc024ca09996096fecc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockType: 3
+  basalticConcentration: 0.9
+  andesiticConcentration: 0.7
+  sedimentaryConcentration: 0.3
+  clayConcentration: 0.4
+  quartzConcentration: 0.05
+  volcaniclasticConcentration: 0.1
 --- !u!1 &832023554
 GameObject:
   m_ObjectHideFlags: 0
@@ -7223,10 +7265,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2267732190243747112, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5297640286462424509, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1066762663}
   m_SourcePrefab: {fileID: 100100000, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
 --- !u!4 &1066762657 stripped
 Transform:
@@ -7238,6 +7284,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5297640286462424509, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
   m_PrefabInstance: {fileID: 1066762656}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1066762663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066762658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851500df174dc024ca09996096fecc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockType: 2
+  basalticConcentration: 0.9
+  andesiticConcentration: 0.7
+  sedimentaryConcentration: 0.3
+  clayConcentration: 0.4
+  quartzConcentration: 0.05
+  volcaniclasticConcentration: 0.1
 --- !u!1 &1068300778
 GameObject:
   m_ObjectHideFlags: 0
@@ -9194,13 +9259,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -256395019115502983, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2513313343952670899, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1489540850}
+      addedObject: {fileID: 1489540855}
   m_SourcePrefab: {fileID: 100100000, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
 --- !u!4 &1489540845 stripped
 Transform:
@@ -9212,16 +9278,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2513313343952670899, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
   m_PrefabInstance: {fileID: 1489540844}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1489540850
+--- !u!114 &1489540855
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489540846}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af40a236169e4dd4a9faf07b315f7851, type: 3}
+  m_Script: {fileID: 11500000, guid: 851500df174dc024ca09996096fecc86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rockType: 0
@@ -10356,10 +10422,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1660537896378036849, guid: 71c58b72eff5848b3b4e2897ef6fda92, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5496369607938120404, guid: 71c58b72eff5848b3b4e2897ef6fda92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1801764238}
   m_SourcePrefab: {fileID: 100100000, guid: 71c58b72eff5848b3b4e2897ef6fda92, type: 3}
 --- !u!4 &1801764232 stripped
 Transform:
@@ -10371,6 +10441,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5496369607938120404, guid: 71c58b72eff5848b3b4e2897ef6fda92, type: 3}
   m_PrefabInstance: {fileID: 1801764231}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1801764238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801764233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851500df174dc024ca09996096fecc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockType: 4
+  basalticConcentration: 0.9
+  andesiticConcentration: 0.7
+  sedimentaryConcentration: 0.3
+  clayConcentration: 0.4
+  quartzConcentration: 0.05
+  volcaniclasticConcentration: 0.1
 --- !u!1 &1802269257
 GameObject:
   m_ObjectHideFlags: 0
@@ -11264,10 +11353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371899ce2e5cfe2409192d5373c43f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myButton: {fileID: 1920626645}
-  buttonText: {fileID: 1266790899}
-  originalButtonText: Brush Solar Panels
-  targetScript: {fileID: 264630812}
 --- !u!1 &1924762173
 GameObject:
   m_ObjectHideFlags: 0
@@ -11773,10 +11858,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5235723121057319867, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3462093792325843721, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1953451127}
   m_SourcePrefab: {fileID: 100100000, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
 --- !u!4 &1953451121 stripped
 Transform:
@@ -11788,6 +11877,25 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3462093792325843721, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
   m_PrefabInstance: {fileID: 1953451120}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1953451127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953451122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 851500df174dc024ca09996096fecc86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rockType: 1
+  basalticConcentration: 0.9
+  andesiticConcentration: 0.7
+  sedimentaryConcentration: 0.3
+  clayConcentration: 0.4
+  quartzConcentration: 0.05
+  volcaniclasticConcentration: 0.1
 --- !u!1 &1961385640
 GameObject:
   m_ObjectHideFlags: 0

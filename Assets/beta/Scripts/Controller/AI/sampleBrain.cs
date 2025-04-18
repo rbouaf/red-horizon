@@ -52,7 +52,7 @@ public class sampleBrain : MonoBehaviour
                 
                 continue;// Skip rocks not in front
             }
-            SampleInfo info = col.GetComponent<SampleInfo>();
+            Rocks info = col.GetComponent<Rocks>();
             if (info != null)
             {
                 float rarity = info.GetRarity();
