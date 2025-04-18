@@ -32,7 +32,7 @@ public class BrainGUIButtons : MonoBehaviour
 
 void RevertFreeRoamText()
     {
-        FreeRoamAI.text = "Pathfinding AI"; 
+        FreeRoamAI.text = "Free Roam AI"; 
     }
    
     void RevertPathfindingText()
