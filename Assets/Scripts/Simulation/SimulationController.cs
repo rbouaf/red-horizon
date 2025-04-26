@@ -33,6 +33,8 @@ public class SimulationController : MonoBehaviour
     
     private void Start()
     {
+        Physics.gravity = new Vector3(0, -3.721f, 0);
+        
         if (loadDataOnStart)
         {
             // Subscribe to data loading events

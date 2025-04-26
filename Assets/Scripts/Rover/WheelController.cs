@@ -23,7 +23,7 @@ public class WheelController : MonoBehaviour
         if (wheelCollider == null)
             return;
 
-        wheelCollider.motorTorque = power;
+        wheelCollider.motorTorque = power * maxTorque;
     }
 
     public void ApplySteering(float steerAngle)

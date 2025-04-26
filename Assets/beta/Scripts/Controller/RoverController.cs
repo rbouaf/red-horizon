@@ -8,6 +8,7 @@ public class RoverController : MonoBehaviour
 {
     private string roverId = "001";
     public RoverModel roverModel;
+    public SimulationController simController;
     public List<WheelController> driveWheels;
     public List<WheelController> steeringWheels;
 
@@ -51,20 +52,14 @@ public class RoverController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        SimulationController simController = GetComponent<SimulationController>();
+        // Set the rover model based on the loaded data
+        simController = FindAnyObjectByType<SimulationController>();
         if (simController == null)
         {
             Debug.LogError("SimulationController not found!");
-            return;
         }
-        roverModel = simController.GetRoverModelById(roverId);
-        if (roverModel == null)
-        {
-            Debug.LogError("Rover model not found!");
-            return;
-        }
-        
-        maxTorquePerWheel = roverModel.systems.mobility.wheelTorque;
+
+        simController.OnRoverModelsLoaded += OnRoverModelsLoaded;
 
         // Set center of mass for better stability
         if (rb != null)
@@ -104,6 +99,9 @@ public class RoverController : MonoBehaviour
         ApplyBrakes(brakeInput);
         SolarCharge();
         MakePanelsDustier();
+
+        UpdateWheelsVisuals();
+        UpdateBatteryUI();
     }
 
     public void ApplyMovement(float throttle)
@@ -191,6 +189,16 @@ public class RoverController : MonoBehaviour
         foreach (WheelController wheel in driveWheels)
         {
             wheel.ApplyBrake(brake * brakingMultiplier);
+        }
+    }
+
+    private void SetWheelTorque()
+    {
+        foreach (WheelController wheel in driveWheels)
+        {
+            wheel.maxPower = HorsepowerToWatts(wheel.horsepower);
+            wheel.maxTorque = maxTorquePerWheel;
+            Debug.Log("Wheel torque set to: " + wheel.maxTorque);
         }
     }
 
@@ -293,5 +301,35 @@ public class RoverController : MonoBehaviour
 
     public Rigidbody GetRigidBody(){
         return rb;
+    }
+
+    private void OnDestroy()
+    {
+        if (simController != null)
+        {
+            simController.OnRoverModelsLoaded -= OnRoverModelsLoaded;
+        }
+    }
+
+    private void OnRoverModelsLoaded(){
+        if (simController == null)
+        {
+            Debug.LogError("SimulationController not found!");
+            return;
+        }
+
+        roverModel = simController.GetRoverModelById(roverId);
+        if (roverModel == null)
+        {
+            Debug.LogError("Rover model not found!");
+            return;
+        }
+        SetWheelTorque();
+
+        Debug.Log("Rover model loaded: " + roverModel.id);
+        Debug.Log("Rover torque: " + maxTorquePerWheel);
+        maxTorquePerWheel = roverModel.systems.mobility.wheelTorque;
+        Debug.Log("Rover torque: " + maxTorquePerWheel);
+
     }
 }
