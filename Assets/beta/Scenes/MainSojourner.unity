@@ -1413,7 +1413,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 15, y: 0.5, z: 15}
+  m_Size: {x: 1, y: 0.5, z: 2}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &264630811
 Rigidbody:
@@ -1451,10 +1451,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 264630808}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91aed13c5dde94044bea9367835ec8b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dda22756a80a844083d001f8c63aec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roverModel: {fileID: 0}
+  simController: {fileID: 0}
   driveWheels:
   - {fileID: 1313567333}
   - {fileID: 1522775461}
@@ -1463,24 +1464,24 @@ MonoBehaviour:
   - {fileID: 408196149}
   - {fileID: 494261552}
   steeringWheels:
-  - {fileID: 494261552}
   - {fileID: 1772933407}
+  - {fileID: 494261552}
   maxHorsepower: 10
   maxTorquePerWheel: 669.77
   maxSteerAngle: 30
   brakingMultiplier: 5
-  speedSlider: {fileID: 982780647}
+  speedSlider: {fileID: 0}
   batteryLevel: 100
-  drainRate: 0.1
+  drainRate: 0.01
   boostDrainMultiplier: 3
-  batteryText: {fileID: 1961385642}
+  batteryText: {fileID: 0}
   solarChargeRate: 1
   dustRate: 0.01
-  brushButton: {fileID: 1920626645}
-  sunLight: {fileID: 63765621}
+  brushButton: {fileID: 0}
+  sunLight: {fileID: 0}
   chargingStatusText: {fileID: 0}
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
-  movementAudio: {fileID: 1317247368}
+  movementAudio: {fileID: 0}
   fadeSpeed: 0.5
 --- !u!114 &264630813
 MonoBehaviour:
@@ -2642,7 +2643,7 @@ MonoBehaviour:
   wheelModel: {fileID: 470925194}
   horsepower: 10
   maxPower: 10
-  maxTorque: 6690.77
+  maxTorque: 669.77
 --- !u!146 &408196150
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -3314,7 +3315,7 @@ MonoBehaviour:
   wheelModel: {fileID: 1440906031}
   horsepower: 10
   maxPower: 10
-  maxTorque: 6690.77
+  maxTorque: 669.77
 --- !u!146 &494261553
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -3635,10 +3636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 1593, y: 92.4, z: 3837.68}
-  teleportButton: {fileID: 542163514}
-  rb: {fileID: 264630811}
-  buttonText: {fileID: 403331547}
 --- !u!1 &620515037
 GameObject:
   m_ObjectHideFlags: 0
@@ -5129,7 +5126,7 @@ MonoBehaviour:
   wheelModel: {fileID: 324194006}
   horsepower: 10
   maxPower: 10
-  maxTorque: 6690.77
+  maxTorque: 669.77
 --- !u!146 &928121440
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -7143,7 +7140,7 @@ MonoBehaviour:
   wheelModel: {fileID: 1437594694}
   horsepower: 10
   maxPower: 10
-  maxTorque: 6690.77
+  maxTorque: 669.77
 --- !u!146 &1313567334
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -8178,7 +8175,7 @@ MonoBehaviour:
   wheelModel: {fileID: 151488961}
   horsepower: 10
   maxPower: 10
-  maxTorque: 6690.77
+  maxTorque: 669.77
 --- !u!146 &1522775462
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -8742,7 +8739,7 @@ MonoBehaviour:
   wheelModel: {fileID: 676079458}
   horsepower: 10
   maxPower: 10
-  maxTorque: 6690.77
+  maxTorque: 669.77
 --- !u!146 &1772933408
 WheelCollider:
   m_ObjectHideFlags: 0
@@ -9598,10 +9595,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371899ce2e5cfe2409192d5373c43f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myButton: {fileID: 1920626645}
-  buttonText: {fileID: 1266790899}
-  originalButtonText: Brush Solar Panels
-  targetScript: {fileID: 264630812}
 --- !u!1 &1930158474
 GameObject:
   m_ObjectHideFlags: 0

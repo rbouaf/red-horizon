@@ -1140,31 +1140,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 386489693}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91aed13c5dde94044bea9367835ec8b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dda22756a80a844083d001f8c63aec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roverModel: {fileID: 0}
-  driveWheels:
-  - {fileID: 2011564027}
-  - {fileID: 489270934}
-  - {fileID: 1592491439}
-  - {fileID: 899911930}
-  - {fileID: 471369526}
-  - {fileID: 42479935}
-  steeringWheels:
-  - {fileID: 42479935}
-  - {fileID: 1592491439}
+  simController: {fileID: 0}
+  driveWheels: []
+  steeringWheels: []
   maxHorsepower: 10
   maxTorquePerWheel: 669.77
   maxSteerAngle: 30
   brakingMultiplier: 5
   speedSlider: {fileID: 0}
   batteryLevel: 100
-  drainRate: 0.1
+  drainRate: 0.01
   boostDrainMultiplier: 3
   batteryText: {fileID: 0}
-  solarChargeRate: 0.5
+  solarChargeRate: 1
+  dustRate: 0.01
+  brushButton: {fileID: 0}
+  sunLight: {fileID: 0}
+  chargingStatusText: {fileID: 0}
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
+  movementAudio: {fileID: 0}
+  fadeSpeed: 0.5
 --- !u!114 &386489698
 MonoBehaviour:
   m_ObjectHideFlags: 0
