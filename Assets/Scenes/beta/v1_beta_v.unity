@@ -951,8 +951,15 @@ MonoBehaviour:
   roverRigidbody: {fileID: 549914073}
   speedText: {fileID: 1270640204}
   coords: {fileID: 746848667}
+  environmentalInfoText: {fileID: 0}
   weather: {fileID: 1382543017}
+  weatherTypeText: {fileID: 0}
   updateSlider: {fileID: 2051730344}
+  atmospheric_density: 0
+  atmospheric_pressure: 0
+  co2_concentration: 0
+  nitrogen_concentration: 0
+  argon_concentration: 0
 --- !u!4 &227552306
 Transform:
   m_ObjectHideFlags: 0
@@ -2544,6 +2551,8 @@ MonoBehaviour:
   button1: {fileID: 1683789463}
   button2: {fileID: 200288871}
   button3: {fileID: 1624835032}
+  envatmosphericcontent: {fileID: 0}
+  background1: {fileID: 0}
   ExpandMinimize: {fileID: 1253850994}
   normalSize: {x: 350, y: 280}
   expandedSize: {x: 2000, y: 1500}
@@ -2759,10 +2768,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 549914071}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91aed13c5dde94044bea9367835ec8b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dda22756a80a844083d001f8c63aec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roverModel: {fileID: 0}
+  simController: {fileID: 0}
   driveWheels:
   - {fileID: 428514931}
   - {fileID: 118080982}
@@ -2771,21 +2781,25 @@ MonoBehaviour:
   - {fileID: 1298742165}
   - {fileID: 1217970183}
   steeringWheels:
-  - {fileID: 1217970183}
   - {fileID: 396158382}
+  - {fileID: 1217970183}
   maxHorsepower: 10
   maxTorquePerWheel: 669.77
   maxSteerAngle: 30
   brakingMultiplier: 5
-  speedSlider: {fileID: 472012617}
+  speedSlider: {fileID: 0}
   batteryLevel: 100
-  drainRate: 0.05
+  drainRate: 0.01
   boostDrainMultiplier: 3
-  batteryText: {fileID: 1952177856}
-  solarChargeRate: 0.5
+  batteryText: {fileID: 0}
+  solarChargeRate: 1
   dustRate: 0.01
+  brushButton: {fileID: 0}
+  sunLight: {fileID: 0}
   chargingStatusText: {fileID: 0}
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
+  movementAudio: {fileID: 0}
+  fadeSpeed: 0.5
 --- !u!4 &549914075
 Transform:
   m_ObjectHideFlags: 0
@@ -3252,6 +3266,8 @@ MonoBehaviour:
   button1: {fileID: 1683789463}
   button2: {fileID: 200288871}
   button3: {fileID: 1624835032}
+  envatmosphericcontent: {fileID: 0}
+  background1: {fileID: 0}
   ExpandMinimize: {fileID: 1253850994}
   normalSize: {x: 350, y: 280}
   expandedSize: {x: 1920, y: 1080}
@@ -4521,6 +4537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myButton: {fileID: 989800462}
   buttonText: {fileID: 2117234902}
+  originalButtonText: 
 --- !u!1 &1026522472
 GameObject:
   m_ObjectHideFlags: 0
@@ -4785,11 +4802,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b8cc879e652a44719df890ab1f93bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraTransform: {fileID: 0}
-  moveSpeed: 5
-  rotateSpeed: 100
-  cameraOffset: {x: 0, y: 2, z: -5}
-  jumpForce: 5
 --- !u!65 &1044359534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7018,10 +7030,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 601.02, y: 0, z: 680.2329}
-  teleportButton: {fileID: 1304907713}
-  rb: {fileID: 549914073}
-  buttonText: {fileID: 521926138}
 --- !u!1 &1522712635
 GameObject:
   m_ObjectHideFlags: 0
@@ -9299,8 +9307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 962468428}
-  offset: {x: 0, y: 20, z: 0}
-  fixedHeight: 40
 --- !u!1 &2092746983
 GameObject:
   m_ObjectHideFlags: 0

@@ -318,7 +318,7 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 30000
+    spring: 35000
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
@@ -591,6 +591,8 @@ MonoBehaviour:
   button1: {fileID: 2070593455}
   button2: {fileID: 251653509}
   button3: {fileID: 1087599727}
+  envatmosphericcontent: {fileID: 0}
+  background1: {fileID: 0}
   ExpandMinimize: {fileID: 1704732927}
   normalSize: {x: 350, y: 280}
   expandedSize: {x: 2000, y: 1500}
@@ -911,6 +913,8 @@ MonoBehaviour:
   button1: {fileID: 2070593455}
   button2: {fileID: 251653509}
   button3: {fileID: 1087599727}
+  envatmosphericcontent: {fileID: 0}
+  background1: {fileID: 0}
   ExpandMinimize: {fileID: 1704732927}
   normalSize: {x: 350, y: 280}
   expandedSize: {x: 1920, y: 1080}
@@ -1590,10 +1594,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 1582.12, y: 92.2, z: 3877.73}
-  teleportButton: {fileID: 1376691216}
-  rb: {fileID: 281952366}
-  buttonText: {fileID: 771289797}
 --- !u!65 &281952365
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1624,7 +1624,7 @@ Rigidbody:
   m_GameObject: {fileID: 281952362}
   serializedVersion: 4
   m_Mass: 800
-  m_Drag: 0.5
+  m_Drag: 0.8
   m_AngularDrag: 2
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -1651,7 +1651,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 281952362}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91aed13c5dde94044bea9367835ec8b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dda22756a80a844083d001f8c63aec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   roverModel: {fileID: 0}
@@ -1672,15 +1672,17 @@ MonoBehaviour:
   brakingMultiplier: 5
   speedSlider: {fileID: 0}
   batteryLevel: 100
-  drainRate: 0.1
+  drainRate: 0.01
   boostDrainMultiplier: 3
   batteryText: {fileID: 762918972}
   solarChargeRate: 1
   dustRate: 0.01
-  brushButton: {fileID: 1350649779}
-  sunLight: {fileID: 1737310280}
+  brushButton: {fileID: 0}
+  sunLight: {fileID: 0}
   chargingStatusText: {fileID: 0}
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
+  movementAudio: {fileID: 0}
+  fadeSpeed: 0.5
 --- !u!114 &281952368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1693,24 +1695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91aed13c5dde94044bea9367835ec8b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roverModel: {fileID: 0}
-  driveWheels: []
-  steeringWheels: []
-  maxHorsepower: 10
-  maxTorquePerWheel: 669.77
-  maxSteerAngle: 30
-  brakingMultiplier: 5
-  speedSlider: {fileID: 0}
-  batteryLevel: 100
-  drainRate: 0.01
-  boostDrainMultiplier: 3
-  batteryText: {fileID: 0}
-  solarChargeRate: 1
-  dustRate: 0.01
-  brushButton: {fileID: 0}
-  sunLight: {fileID: 0}
-  chargingStatusText: {fileID: 0}
-  centerOfMassOffset: {x: 0, y: -0.8, z: 0}
 --- !u!1 &290063988
 GameObject:
   m_ObjectHideFlags: 0
@@ -5161,7 +5145,7 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 30000
+    spring: 35000
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
@@ -5939,7 +5923,7 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 30000
+    spring: 35000
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
@@ -6649,10 +6633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 371899ce2e5cfe2409192d5373c43f26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myButton: {fileID: 1350649779}
-  buttonText: {fileID: 2053089529}
-  originalButtonText: Brush Solar Panels
-  targetScript: {fileID: 281952367}
 --- !u!1 &1376691214
 GameObject:
   m_ObjectHideFlags: 0
@@ -7901,7 +7881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 896ea74097486422696ff037f3f8a7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelCollider: {fileID: 76965605}
+  wheelCollider: {fileID: 1648932970}
   wheelModel: {fileID: 6394034141158273115}
   horsepower: 0.023
   maxPower: 10
@@ -7917,7 +7897,7 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 30000
+    spring: 35000
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
@@ -8636,7 +8616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelCollider: {fileID: 1730010363}
-  wheelModel: {fileID: 894343464312459362}
+  wheelModel: {fileID: 7476793213543778684}
   horsepower: 0.023
   maxPower: 10
   maxTorque: 669.77
@@ -8651,7 +8631,7 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 30000
+    spring: 35000
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
@@ -10490,7 +10470,7 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.5
   m_SuspensionSpring:
-    spring: 30000
+    spring: 35000
     damper: 5000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
@@ -11737,8 +11717,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 228666981590195422}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -5.820766e-11, w: 1}
-  m_LocalPosition: {x: 2.1478271, y: -0.008575439, z: -0.017333984}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.131, y: -0.005, z: -0.022}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

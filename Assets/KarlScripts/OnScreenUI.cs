@@ -39,6 +39,11 @@ public class OnScreenUI : MonoBehaviour
         rc = GetComponent<RoverController>();
         sm = FindAnyObjectByType<SimulationController>();
 
+        if (rc != null)
+        {
+            roverRigidbody = rc.GetRigidBody();
+        }
+
         if (sm == null)
         {
             StartCoroutine(WaitForSimulationController());

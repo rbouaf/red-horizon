@@ -120,6 +120,10 @@ public class RoverController : MonoBehaviour
         {
             if (Mathf.Abs(throttle) > 0.1f)
             {
+                // Apply throttle to the wheel
+                wheel.wheelCollider.motorTorque = 0;
+                wheel.wheelCollider.brakeTorque = 0;
+
                 // Use the slider's selected speed when Shift is held
                 float speedMultiplier = Input.GetKey(KeyCode.LeftShift) ? speedSlider.GetSelectedSpeed() * boostDrainMultiplier : normalSpeed;
                 wheel.ApplyDrive(throttle * speedMultiplier); 
