@@ -12578,6 +12578,7 @@ GameObject:
   - component: {fileID: 1937779849}
   - component: {fileID: 1937779850}
   - component: {fileID: 1937779851}
+  - component: {fileID: 1937779852}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -12708,6 +12709,21 @@ MonoBehaviour:
   desiredViewportPos: {x: 0.25, y: 0.5}
   panelRectTransform: {fileID: 1452030259}
   panelImage: {fileID: 1452030260}
+--- !u!114 &1937779852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937779848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc5561b212e5435397b9011e37fc096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activeRoverModel: {fileID: 0}
+  loadDataOnStart: 1
+  logDetailedInfo: 1
 --- !u!1 &2122407835
 GameObject:
   m_ObjectHideFlags: 0
