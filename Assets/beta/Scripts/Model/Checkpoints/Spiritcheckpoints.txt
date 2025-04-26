@@ -1,0 +1,59 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [175.47844, -14.57181]
+        },
+        "properties": {
+          "title": "Columbia Memorial Station",
+          "image": "Images/columbia",
+          "description": "One of two robotic rovers in NASA's Mars Exploration Rover program, Spirit was designed to explore the geology of Mars, look for evidence of past liquid water, and assess whether those environments were conducive to life. Its landing site was named Columbia Memorial Station in honor of the seven astronauts killed in the Space Shuttle Columbia disaster.",
+          "rover": "Spirit"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [175.48239, -14.5686]
+        },
+        "properties": {
+          "title": "Bonneville Crater",
+          "image": "Images/bonneville",
+          "description": "Bonneville Crater.",
+          "rover": "Spirit"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [175.52468, -14.59208]
+        },
+        "properties": {
+          "title": "Husband Hill",
+          "image": "Images/husband_hill",
+          "description": "Perhaps the best vantage point for Spirit to survey the terrain came when it climbed to the top of Husband Hill, the tallest of the Columbia Hills. It provided expansive views and excellent rock outcrops to study, revealing minerals that suggested water played a role in their formation.",
+          "rover": "Spirit"
+        }
+      },
+      {
+        "type": "Feature",
+        "geometry": {
+          "type": "Point",
+          "coordinates": [175.5308, -14.606]
+        },
+        "properties": {
+          "title": "Western edge of Home Plate",
+          "image": "Images/home_plate",
+          "description": "This is an area with soft soil where the Spirit rover got stuck on May 1, 2009.",
+          "rover": "Spirit",
+          "warning": "Popup warning: Caution, soft soil area!"
+        }
+      }
+    ]
+  }
+  
