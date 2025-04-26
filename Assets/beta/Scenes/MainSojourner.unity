@@ -4205,7 +4205,7 @@ GameObject:
   - component: {fileID: 542163516}
   - component: {fileID: 542163515}
   - component: {fileID: 542163514}
-  - component: {fileID: 542163517}
+  - component: {fileID: 542163518}
   m_Layer: 5
   m_Name: ReturnOriginButton
   m_TagString: Untagged
@@ -4327,7 +4327,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 542163512}
   m_CullTransparentMesh: 1
---- !u!114 &542163517
+--- !u!114 &542163518
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4336,9 +4336,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 542163512}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
+  m_Script: {fileID: 11500000, guid: 4811767529077484cb7cd8aa9f7cdc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetPosition: {x: 1593, y: 86.4, z: 3837.68}
+  teleportButton: {fileID: 542163514}
+  rb: {fileID: 1800253218}
+  buttonText: {fileID: 403331547}
 --- !u!1 &573656907
 GameObject:
   m_ObjectHideFlags: 0
@@ -10750,7 +10754,7 @@ GameObject:
   - component: {fileID: 1920626647}
   - component: {fileID: 1920626646}
   - component: {fileID: 1920626645}
-  - component: {fileID: 1920626648}
+  - component: {fileID: 1920626649}
   m_Layer: 5
   m_Name: BrushButton
   m_TagString: Untagged
@@ -10822,13 +10826,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
+      - m_Target: {fileID: 11500000, guid: b5b83f8d01cec344981bff75a0a8d59a, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
         m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10872,7 +10876,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920626642}
   m_CullTransparentMesh: 1
---- !u!114 &1920626648
+--- !u!114 &1920626649
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -10881,9 +10885,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1920626642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371899ce2e5cfe2409192d5373c43f26, type: 3}
+  m_Script: {fileID: 11500000, guid: b5b83f8d01cec344981bff75a0a8d59a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myButton: {fileID: 1920626645}
+  buttonText: {fileID: 1266790899}
+  originalButtonText: 
+  targetScript: {fileID: 1800253219}
 --- !u!1 &1924762173
 GameObject:
   m_ObjectHideFlags: 0
