@@ -7206,7 +7206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a792b2aac92ec4385b6f255d9482dd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roverRigidbody: {fileID: 0}
+  roverRigidbody: {fileID: 1800253218}
   speedText: {fileID: 85985193}
   coords: {fileID: 1206536802}
   environmentalInfoText: {fileID: 1344441205}
