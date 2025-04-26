@@ -13,7 +13,7 @@ public class Minimap : MonoBehaviour
 
     void LateUpdate(){
         Vector3 playerPosition = player.transform.position;
-        transform.position = new Vector3(playerPosition.x, 140, playerPosition.y);
+        transform.position = new Vector3(playerPosition.x, 140, playerPosition.z);
         transform.rotation = Quaternion.Euler(90f, 0f, 0f);
     }
 }
