@@ -7206,7 +7206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a792b2aac92ec4385b6f255d9482dd95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roverRigidbody: {fileID: 1800253218}
+  roverRigidbody: {fileID: 0}
   speedText: {fileID: 85985193}
   coords: {fileID: 1206536802}
   environmentalInfoText: {fileID: 1344441205}
@@ -9780,9 +9780,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1800253213}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9821fcfa54daa4a3f972b383f2de9d59, type: 3}
+  m_Script: {fileID: 11500000, guid: afe0a65d11c02f44c92801a9bcd34f63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roverTransform: {fileID: 0}
+  samplingRadius: 10
+  rockLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  messageText: {fileID: 0}
+  glowColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  glowDuration: 5
+  forwardThreshold: 0.5
 --- !u!65 &1800253217
 BoxCollider:
   m_ObjectHideFlags: 0
