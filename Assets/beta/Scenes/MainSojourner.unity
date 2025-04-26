@@ -9784,13 +9784,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roverTransform: {fileID: 0}
-  samplingRadius: 10
+  samplingRadius: 12
   rockLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   messageText: {fileID: 0}
-  glowColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  glowDuration: 5
+  glowColor: {r: 0.19089638, g: 0.93613935, b: 0.7596331, a: 1}
+  glowDuration: 6
   forwardThreshold: 0.5
 --- !u!65 &1800253217
 BoxCollider:
