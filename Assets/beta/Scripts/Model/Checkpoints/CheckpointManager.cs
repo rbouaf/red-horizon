@@ -149,6 +149,7 @@ public class CheckpointManager : MonoBehaviour {
 
                 // Instantiate the checkpoint prefab
                 GameObject checkpointObj = Instantiate(checkpointPrefab, localPos, Quaternion.identity);
+                checkpointObj.tag = "Checkpoint";
 
                 // Optionally set the object's name
                 if (feature.properties.ContainsKey("title"))

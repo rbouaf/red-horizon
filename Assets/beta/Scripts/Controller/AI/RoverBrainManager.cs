@@ -30,6 +30,8 @@ public class RoverBrainManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private bool activateDefaultBrainOnStart = true;
     [SerializeField] private int defaultBrainIndex = 0;
+
+    public RoverController roverController;
     
     // Events
     public event Action<string> OnBrainActivated;
@@ -42,6 +44,8 @@ public class RoverBrainManager : MonoBehaviour
     
     private void Awake()
     {
+        roverController = GetComponent<RoverController>();
+
         // Set up brain interfaces
         foreach (BrainInfo brainInfo in availableBrains)
         {
@@ -141,7 +145,7 @@ public class RoverBrainManager : MonoBehaviour
         }
     }
     
-    private void InitializeBrains()
+    public void InitializeBrains()
     {
         if (areBrainsInitialized)
             return;
@@ -167,6 +171,10 @@ public class RoverBrainManager : MonoBehaviour
             int index = Mathf.Clamp(defaultBrainIndex, 0, availableBrains.Count - 1);
             ActivateBrain(availableBrains[index].brainName);
         }
+    }
+    public void ActivatePathfindingBrain()
+    {
+        ActivateBrain("PathfindingBrain");
     }
     
     public bool ActivateBrain(string brainName)
@@ -204,6 +212,7 @@ public class RoverBrainManager : MonoBehaviour
                 }
                 
                 activeBrain.SetPaused(false);
+                roverController.manualControlEnabled = false;
                 Debug.Log($"Activated brain: {brainName}");
                 
                 OnBrainActivated?.Invoke(brainName);
@@ -220,6 +229,7 @@ public class RoverBrainManager : MonoBehaviour
         if (activeBrain != null)
         {
             activeBrain.SetPaused(true);
+            roverController.manualControlEnabled = true;
             OnBrainDeactivated?.Invoke(activeBrainName);
             
             activeBrain = null;
