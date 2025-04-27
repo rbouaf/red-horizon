@@ -2012,7 +2012,7 @@ MonoBehaviour:
   clayConcentration: 0.4
   quartzConcentration: 0.05
   volcaniclasticConcentration: 0.1
-  spawnMultiplier: 60000
+  spawnMultiplier: 78000
 --- !u!1 &330653579
 GameObject:
   m_ObjectHideFlags: 0
@@ -9010,8 +9010,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1387575945}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0019219633, y: -0.23305747, z: 0.0057407916, w: 0.9724441}
-  m_LocalPosition: {x: 6612.084, y: 316, z: 15790}
+  m_LocalRotation: {x: -0.027235247, y: 0.96681553, z: 0.007175024, w: 0.25391844}
+  m_LocalPosition: {x: 6603.9644, y: 315.76508, z: 15779.834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
