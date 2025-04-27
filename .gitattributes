@@ -1,0 +1,12 @@
+Surface.asset.meta filter=lfs diff=lfs merge=lfs -text
+Assets/beta/Scenes/MainOpportunity/NavMesh-NavMesh filter=lfs diff=lfs merge=lfs -text
+Assets/beta/Scenes/MainOpportunity/NavMesh-NavMesh filter=lfs diff=lfs merge=lfs -text
+Surface.asset filter=lfs diff=lfs merge=lfs -text
+Assets/beta/Scenes/MainCuriosity/NavMesh-NavMesh filter=lfs diff=lfs merge=lfs -text
+Assets/beta/Scenes/MainCuriosity/NavMesh-NavMesh filter=lfs diff=lfs merge=lfs -text
+Assets/beta/Scenes/MainCuriosity/NavMesh-NavMesh[[:space:]]Surface.asset filter=lfs diff=lfs merge=lfs -text
+Assets/beta/Scenes/MainOpportunity/NavMesh-NavMesh[[:space:]]Surface.asset filter=lfs diff=lfs merge=lfs -text
+Assets/beta/Scenes/MainOpportunity/NavMesh-NavMesh filter=lfs diff=lfs merge=lfs -text
+C:/Users/willg/Documents/GitHub/red-horizon/Assets/beta/Scenes/MainCuriosity/NavMesh-NavMesh[[:space:]]Surface.asset filter=lfs diff=lfs merge=lfs -text
+C:/Users/willg/Documents/GitHub/red-horizon/Assets/beta/Scenes/MainOpportunity/NavMesh-NavMesh[[:space:]]Surface.asset filter=lfs diff=lfs merge=lfs -text
+Assets/beta/Scenes/*/NavMesh-NavMesh[[:space:]]Surface.asset filter=lfs diff=lfs merge=lfs -text
