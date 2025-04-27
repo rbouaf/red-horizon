@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; // For TextMeshPro support
+using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -151,12 +153,10 @@ public class UIManager : MonoBehaviour
 		// Activate and fade in the loading panel.
 		loadingPanel.SetActive(true);
 		Debug.LogError("Loading panel active");
-		yield return new WaitForSeconds(2f);
 
 		yield return StartCoroutine(FadeInCanvasGroup(loadingPanelCanvasGroup, 1.5f));
 		Debug.LogError("Loading panel faded in");
 
-		yield return new WaitForSeconds(10f);
 
 
 

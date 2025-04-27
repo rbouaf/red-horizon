@@ -296,7 +296,16 @@ public class MapSelectionManager : MonoBehaviour
 			Debug.LogError("UIManager not found!");
 		}
 		// Finally, load the new scene
-		SceneManager.LoadScene(sceneName);
+    	AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
+		 // While the scene is still loading
+		while (!asyncLoad.isDone)
+		{
+			// You could read asyncLoad.progress here (it goes from 0 to 0.9)
+			// and display a loading bar if you want.
+
+			// Example: wait for it to complete
+			yield return null;
+		}
 	}
 
 	public void ForceGo()
@@ -316,7 +325,7 @@ public class MapSelectionManager : MonoBehaviour
 		}
 
 		Debug.Log($"Loading scene: {currentPoint.sceneName}");
-		SceneManager.LoadScene(currentPoint.sceneName);
+		SceneManager.LoadSceneAsync(currentPoint.sceneName);
 	}
 
 
