@@ -23,6 +23,10 @@ public class PathfindingBrain : BrainBase
     [SerializeField] private float rockAvoidanceSteering = 1.0f;
     [SerializeField] private List<string> rockTags = new List<string> { "Basaltic", "Andesitic", "Sedimentary", "Clay", "Quartz", "Volcaniclastic" };
     [SerializeField] private float forwardDetectionOffset = 3.0f;
+    private float avoidanceSteeringTimer = 0f;
+    private float avoidanceSteeringDuration = 1.0f;
+    private Vector3 lastAvoidanceVector = Vector3.zero;
+
 
     [Header("Checkpoint Detection")]
     [SerializeField] private float checkpointDetectionDelay = 2.0f; // Wait time before searching for checkpoints
@@ -120,6 +124,18 @@ public class PathfindingBrain : BrainBase
         if (isPaused() || roverController == null || !isNavigating || hasReachedAllWaypoints || !checkpointsFound)
             return;
 
+        if (avoidanceSteeringTimer > 0f)
+        {
+            roverController.ApplyBrakes(0.05f);
+            float steerAmount = Mathf.Clamp(Vector3.SignedAngle(roverGameObject.transform.forward, lastAvoidanceVector, Vector3.up) / 30f, -1f, 1f);
+
+            roverController.ApplySteering(steerAmount * rockAvoidanceSteering);
+            roverController.ApplyMovement(0.5f);
+
+            avoidanceSteeringTimer -= Time.deltaTime;
+            return; 
+        }
+
         if (!isPathValid || Time.time > lastPathCalculationTime + navMeshPathUpdateInterval)
         {
             CalculateNavMeshPath();
@@ -159,21 +175,56 @@ public class PathfindingBrain : BrainBase
         Vector3 scanOrigin = roverGameObject.transform.position + roverGameObject.transform.forward * forwardDetectionOffset;
         Collider[] colliders = Physics.OverlapSphere(scanOrigin, rockDetectionDistance);
 
+        Vector3 seekForce = (currentTarget - roverGameObject.transform.position);
+        seekForce.y = 0;
+        seekForce = seekForce.normalized;
+
+        Vector3 avoidForce = Vector3.zero;
+        int rocksDetected = 0;
+        float closestRockDistance = float.MaxValue;
+
         foreach (Collider col in colliders)
         {
             if (rockTags.Contains(col.tag))
             {
-                Vector3 awayFromRock = (scanOrigin - col.transform.position).normalized;
-                float avoidanceSteer = Mathf.Clamp(Vector3.SignedAngle(roverGameObject.transform.forward, awayFromRock, Vector3.up) / 30f, -1f, 1f);
-                float randomDirection = (Random.value > 0.5f) ? 1f : -1f;
-                roverController.ApplySteering(randomDirection * avoidanceSteer * rockAvoidanceSteering);
-                roverController.ApplyMovement(1.0f);
-                return true;
+                Vector3 toRock = (col.transform.position - scanOrigin);
+                toRock.y = 0;
+                toRock = toRock.normalized;
+
+                Vector3 lateralAvoidance = Vector3.Cross(Vector3.up, toRock).normalized;
+
+                float distance = Vector3.Distance(scanOrigin, col.transform.position);
+                float weight = Mathf.Clamp01((rockDetectionDistance - distance) / rockDetectionDistance);
+
+                avoidForce += lateralAvoidance * weight;
+                rocksDetected++;
+
+                if (distance < closestRockDistance)
+                    closestRockDistance = distance;
             }
+        }
+
+        if (rocksDetected > 0)
+        {   
+            roverController.ApplyBrakes(1.0f);
+            Vector3 finalForce = (seekForce + avoidForce * 2f);
+            finalForce.y = 0;
+            finalForce = finalForce.normalized;
+
+            lastAvoidanceVector = finalForce;
+            avoidanceSteeringTimer = avoidanceSteeringDuration;
+
+            float steerAmount = Mathf.Clamp(Vector3.SignedAngle(roverGameObject.transform.forward, finalForce, Vector3.up) / 30f, -1f, 1f);
+
+            roverController.ApplySteering(steerAmount * rockAvoidanceSteering);
+            roverController.ApplyMovement(0.5f);
+
+            return true;
         }
 
         return false;
     }
+
 
     private void FindCheckpoints()
     {
@@ -447,6 +498,14 @@ public class PathfindingBrain : BrainBase
                 Gizmos.DrawSphere(pathCorners[i], 0.2f);
             }
             Gizmos.DrawSphere(pathCorners[pathCorners.Length - 1], 0.2f);
+        }
+
+        if (lastAvoidanceVector != Vector3.zero && roverGameObject != null)
+        {
+            Gizmos.color = Color.magenta;
+            Vector3 origin = roverGameObject.transform.position + roverGameObject.transform.forward * forwardDetectionOffset;
+            Gizmos.DrawLine(origin, origin + lastAvoidanceVector * 5f);
+            Gizmos.DrawSphere(origin + lastAvoidanceVector * 5f, 0.2f);
         }
 
         if (roverGameObject != null)

@@ -193,7 +193,7 @@ public class RoverController : MonoBehaviour
         }
     }
 
-    private void ApplyBrakes(float brake)
+    public void ApplyBrakes(float brake)
     {
         foreach (WheelController wheel in driveWheels)
         {
