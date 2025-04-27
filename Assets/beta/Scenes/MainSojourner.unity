@@ -5603,6 +5603,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1800253221}
+        m_TargetAssemblyTypeName: RoverBrainManager, Assembly-CSharp
+        m_MethodName: DeactivateAllBrains
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1044069971}
         m_TargetAssemblyTypeName: BrainGUIButtons, Assembly-CSharp
         m_MethodName: ShowMessageSampling
@@ -6157,7 +6169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -4.49, y: 0.71, z: -4.57}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -21.099976, y: -201.09}
+  m_AnchoredPosition: {x: -21.100098, y: -201.09}
   m_SizeDelta: {x: 360, y: 454.2}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!1 &964830577
@@ -6533,9 +6545,33 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1800253221}
+        m_TargetAssemblyTypeName: RoverBrainManager, Assembly-CSharp
+        m_MethodName: DeactivateAllBrains
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 988264853}
         m_TargetAssemblyTypeName: HideButtons, Assembly-CSharp
         m_MethodName: Hidebuttons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1800253221}
+        m_TargetAssemblyTypeName: RoverBrainManager, Assembly-CSharp
+        m_MethodName: ActivatePathfindingBrain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8256,6 +8292,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1266790897}
   m_CullTransparentMesh: 1
+--- !u!1 &1270272346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1270272348}
+  - component: {fileID: 1270272347}
+  m_Layer: 0
+  m_Name: NavMesh Surface
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1270272347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270272346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: ba777bd1663716843aa58715e499310c, type: 2}
+  m_BuildHeightMesh: 0
+--- !u!4 &1270272348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270272346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1588.001, y: 93.02517, z: 3836.2468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1270334670
 GameObject:
   m_ObjectHideFlags: 0
@@ -9749,7 +9849,8 @@ GameObject:
   - component: {fileID: 1800253218}
   - component: {fileID: 1800253217}
   - component: {fileID: 1800253216}
-  - component: {fileID: 1800253215}
+  - component: {fileID: 1800253221}
+  - component: {fileID: 1800253220}
   m_Layer: 9
   m_Name: rover
   m_TagString: Rover
@@ -9775,18 +9876,6 @@ Transform:
   - {fileID: 343014899}
   m_Father: {fileID: 1124525558}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1800253215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1800253213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91aed13c5dde94044bea9367835ec8b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1800253216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9869,7 +9958,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roverModel: {fileID: 0}
-  simController: {fileID: 0}
   driveWheels:
   - {fileID: 2123303867}
   - {fileID: 467451654}
@@ -9884,6 +9972,7 @@ MonoBehaviour:
   maxTorquePerWheel: 669.77
   maxSteerAngle: 30
   brakingMultiplier: 5
+  manualControlEnabled: 1
   speedSlider: {fileID: 982780647}
   batteryLevel: 100
   drainRate: 0.01
@@ -9897,6 +9986,63 @@ MonoBehaviour:
   centerOfMassOffset: {x: 0, y: -0.5, z: 0}
   movementAudio: {fileID: 1317247368}
   fadeSpeed: 0.5
+--- !u!114 &1800253220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800253213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebcfae55a71df844491e3c55e7a4d991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPausedState: 0
+  waypointReachedDistance: 1.5
+  steeringSpeed: 30
+  navMeshPathUpdateInterval: 0.5
+  useCheckpoints: 1
+  loopWaypoints: 0
+  manualWaypoints: []
+  rockDetectionDistance: 2
+  rockAvoidanceSteering: 1
+  rockTags:
+  - Basaltic
+  - Andesitic
+  - Sedimentary
+  - Clay
+  - Quartz
+  - Volcaniclastic
+  forwardDetectionOffset: 3
+  checkpointDetectionDelay: 2
+  checkpointRefreshInterval: 5
+  maxCheckpointSearchAttempts: 5
+  terrainLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  debugMode: 1
+--- !u!114 &1800253221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800253213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03e7fb4a1dbe7d245a021591b0696963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitForNavMesh: 1
+  navMeshManager: {fileID: 0}
+  availableBrains:
+  - brainName: PathfindingBrain
+    brainComponent: {fileID: 1800253220}
+    isActive: 0
+  activateDefaultBrainOnStart: 0
+  defaultBrainIndex: 0
+  roverController: {fileID: 1800253219}
 --- !u!1001 &1801764231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11117,6 +11263,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1930158479}
         m_TargetAssemblyTypeName: HideButtons, Assembly-CSharp
         m_MethodName: Hidebuttons
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1800253221}
+        m_TargetAssemblyTypeName: RoverBrainManager, Assembly-CSharp
+        m_MethodName: DeactivateAllBrains
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12397,6 +12555,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009818785}
   m_CullTransparentMesh: 1
+--- !u!1 &2038397461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2038397463}
+  - component: {fileID: 2038397462}
+  m_Layer: 0
+  m_Name: NavmeshManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2038397462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038397461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d27ccce2eb3f26f42b1f6efa6ddf53c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showDebugInfo: 1
+--- !u!4 &2038397463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038397461}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1588.001, y: 93.02517, z: 3836.2468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2075050752
 GameObject:
   m_ObjectHideFlags: 0
@@ -13301,3 +13504,5 @@ SceneRoots:
   - {fileID: 1807619983}
   - {fileID: 1556185907}
   - {fileID: 1749129469}
+  - {fileID: 2038397463}
+  - {fileID: 1270272348}

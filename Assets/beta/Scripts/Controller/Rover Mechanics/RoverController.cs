@@ -8,7 +8,6 @@ public class RoverController : MonoBehaviour
 {
     private string roverId = "001";
     public RoverModel roverModel;
-    public SimulationController simController;
     public List<WheelController> driveWheels;
     public List<WheelController> steeringWheels;
 
@@ -16,6 +15,9 @@ public class RoverController : MonoBehaviour
     public float maxTorquePerWheel = 669.77f;
     public float maxSteerAngle = 30f;
     public float brakingMultiplier = 5f;
+
+    [Header("Control Settings")]
+    public bool manualControlEnabled = true; 
 
     [Header("Speed Slider")]
     public SpeedSlider speedSlider;  // Reference to Speed Slider script
@@ -52,14 +54,20 @@ public class RoverController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        // Set the rover model based on the loaded data
-        simController = FindAnyObjectByType<SimulationController>();
+        SimulationController simController = GetComponent<SimulationController>();
         if (simController == null)
         {
             Debug.LogError("SimulationController not found!");
+            return;
         }
-
-        simController.OnRoverModelsLoaded += OnRoverModelsLoaded;
+        roverModel = simController.GetRoverModelById(roverId);
+        if (roverModel == null)
+        {
+            Debug.LogError("Rover model not found!");
+            return;
+        }
+        
+        maxTorquePerWheel = roverModel.systems.mobility.wheelTorque;
 
         // Set center of mass for better stability
         if (rb != null)
@@ -90,6 +98,10 @@ public class RoverController : MonoBehaviour
 
     private void Update()
     {
+        // If manual control is disabled, skip Update
+        if (!manualControlEnabled)
+            return; 
+
         float throttleInput = Input.GetAxis("Vertical");
         float steerInput = Input.GetAxis("Horizontal");
         float brakeInput = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
@@ -99,9 +111,6 @@ public class RoverController : MonoBehaviour
         ApplyBrakes(brakeInput);
         SolarCharge();
         MakePanelsDustier();
-
-        UpdateWheelsVisuals();
-        UpdateBatteryUI();
     }
 
     public void ApplyMovement(float throttle)
@@ -120,10 +129,6 @@ public class RoverController : MonoBehaviour
         {
             if (Mathf.Abs(throttle) > 0.1f)
             {
-                // Apply throttle to the wheel
-                wheel.wheelCollider.motorTorque = 0;
-                wheel.wheelCollider.brakeTorque = 0;
-
                 // Use the slider's selected speed when Shift is held
                 float speedMultiplier = Input.GetKey(KeyCode.LeftShift) ? speedSlider.GetSelectedSpeed() * boostDrainMultiplier : normalSpeed;
                 wheel.ApplyDrive(throttle * speedMultiplier); 
@@ -193,16 +198,6 @@ public class RoverController : MonoBehaviour
         foreach (WheelController wheel in driveWheels)
         {
             wheel.ApplyBrake(brake * brakingMultiplier);
-        }
-    }
-
-    private void SetWheelTorque()
-    {
-        foreach (WheelController wheel in driveWheels)
-        {
-            wheel.maxPower = HorsepowerToWatts(wheel.horsepower);
-            wheel.maxTorque = maxTorquePerWheel;
-            Debug.Log("Wheel torque set to: " + wheel.maxTorque);
         }
     }
 
@@ -305,35 +300,5 @@ public class RoverController : MonoBehaviour
 
     public Rigidbody GetRigidBody(){
         return rb;
-    }
-
-    private void OnDestroy()
-    {
-        if (simController != null)
-        {
-            simController.OnRoverModelsLoaded -= OnRoverModelsLoaded;
-        }
-    }
-
-    private void OnRoverModelsLoaded(){
-        if (simController == null)
-        {
-            Debug.LogError("SimulationController not found!");
-            return;
-        }
-
-        roverModel = simController.GetRoverModelById(roverId);
-        if (roverModel == null)
-        {
-            Debug.LogError("Rover model not found!");
-            return;
-        }
-        SetWheelTorque();
-
-        Debug.Log("Rover model loaded: " + roverModel.id);
-        Debug.Log("Rover torque: " + maxTorquePerWheel);
-        maxTorquePerWheel = roverModel.systems.mobility.wheelTorque;
-        Debug.Log("Rover torque: " + maxTorquePerWheel);
-
     }
 }
