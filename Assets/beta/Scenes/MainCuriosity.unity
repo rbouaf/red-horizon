@@ -7916,7 +7916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4811767529077484cb7cd8aa9f7cdc14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPosition: {x: 8376, y: 144, z: 17576}
+  targetPosition: {x: 8302.5, y: 138.65, z: 17690.53}
   teleportButton: {fileID: 1239436750}
   rb: {fileID: 1387575946}
   buttonText: {fileID: 2051900467}
