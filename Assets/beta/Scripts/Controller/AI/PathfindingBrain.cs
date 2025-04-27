@@ -6,50 +6,55 @@ using System.Collections.Generic;
 // PathfindingBrain controls rover navigation using NavMesh while avoiding rocks dynamically.
 public class PathfindingBrain : BrainBase
 {
+    // --- Settings ---
+
     [Header("Pathfinding Settings")]
-    [SerializeField] private float waypointReachedDistance = 1.5f;
-    [SerializeField] private float steeringSpeed = 30.0f;
+    [SerializeField] private float waypointReachedDistance = 1.5f;  // Distance at which a waypoint is considered "reached"
+    [SerializeField] private float steeringSpeed = 30.0f;           // How quickly the rover can steer
 
     [Header("NavMesh Settings")]
-    [SerializeField] private float navMeshPathUpdateInterval = 0.5f;
+    [SerializeField] private float navMeshPathUpdateInterval = 0.5f;  // How often the path is recalculated
 
     [Header("Waypoints")]
-    [SerializeField] private bool useCheckpoints = true;
-    [SerializeField] private bool loopWaypoints = true;
-    [SerializeField] private List<Transform> manualWaypoints = new List<Transform>();
+    [SerializeField] private bool useCheckpoints = true;              // Whether to use dynamically generated checkpoints
+    [SerializeField] private bool loopWaypoints = true;               // Whether to loop back after reaching the last waypoint
+    [SerializeField] private List<Transform> manualWaypoints = new List<Transform>();  // Manually set waypoints (if not using checkpoints)
 
     [Header("Rock Avoidance Settings")]
-    [SerializeField] private float rockDetectionDistance = 2.0f;
-    [SerializeField] private float rockAvoidanceSteering = 1.0f;
-    [SerializeField] private List<string> rockTags = new List<string> { "Basaltic", "Andesitic", "Sedimentary", "Clay", "Quartz", "Volcaniclastic" };
-    [SerializeField] private float forwardDetectionOffset = 3.0f;
-    private float avoidanceSteeringTimer = 0f;
-    private float avoidanceSteeringDuration = 1.0f;
-    private Vector3 lastAvoidanceVector = Vector3.zero;
-
+    [SerializeField] private float rockDetectionDistance = 2.0f;        // Radius to detect nearby rocks
+    [SerializeField] private float rockAvoidanceSteering = 1.0f;         // Steering strength when avoiding rocks
+    [SerializeField] private List<string> rockTags = new List<string> { "Basaltic", "Andesitic", "Sedimentary", "Clay", "Quartz", "Volcaniclastic" }; // Recognized rock tags
+    [SerializeField] private float forwardDetectionOffset = 3.0f;        // Distance in front of the rover to start detecting rocks
+    private float avoidanceSteeringTimer = 0f;                           // Timer controlling avoidance steering
+    private float avoidanceSteeringDuration = 1.0f;                      // How long avoidance steering lasts
+    private Vector3 lastAvoidanceVector = Vector3.zero;                  // Last calculated avoidance direction
 
     [Header("Checkpoint Detection")]
-    [SerializeField] private float checkpointDetectionDelay = 2.0f; // Wait time before searching for checkpoints
-    [SerializeField] private float checkpointRefreshInterval = 5.0f; // How often to refresh checkpoint search
-    [SerializeField] private int maxCheckpointSearchAttempts = 5; // Maximum number of attempts to find checkpoints
-    [SerializeField] private LayerMask terrainLayerMask = -1; // Default to all layers for terrain detection
+    [SerializeField] private float checkpointDetectionDelay = 2.0f;   // Time to wait for checkpoints to spawn
+    [SerializeField] private float checkpointRefreshInterval = 5.0f;  // Time between checkpoint search retries
+    [SerializeField] private int maxCheckpointSearchAttempts = 5;     // Maximum attempts to find checkpoints
+    [SerializeField] private LayerMask terrainLayerMask = -1;         // Terrain layer used for raycasting
 
     [Header("Debug")]
-    [SerializeField] private bool debugMode = true;
+    [SerializeField] private bool debugMode = true;                  // Enables extra debug logging and gizmos
 
-    private NavMeshPath navMeshPath;
-    private Vector3[] pathCorners = new Vector3[0];
-    private List<Transform> waypoints = new List<Transform>();
-    private int currentWaypointIndex = 0;
-    private int currentPathIndex = 0;
-    private Vector3 currentTarget;
-    private bool isPathValid = false;
-    private bool isNavigating = false;
-    private bool hasReachedAllWaypoints = false;
-    private float lastPathCalculationTime = 0f;
-    private bool isAvoidingRock = false;
-    private int checkpointSearchAttempts = 0;
-    private bool checkpointsFound = false;
+    // --- Internal State ---
+
+    private NavMeshPath navMeshPath;          // Stores the current calculated NavMesh path
+    private Vector3[] pathCorners = new Vector3[0]; // Corner points along the current path
+    private List<Transform> waypoints = new List<Transform>(); // List of all active waypoints
+    private int currentWaypointIndex = 0;     // Which waypoint we're currently targeting
+    private int currentPathIndex = 0;         // Which corner we're currently targeting
+    private Vector3 currentTarget;            // Current move target
+    private bool isPathValid = false;         // Whether the current path is valid
+    private bool isNavigating = false;        // Whether rover is currently navigating
+    private bool hasReachedAllWaypoints = false; // True if all waypoints were reached
+    private float lastPathCalculationTime = 0f;  // Last time we recalculated the path
+    private bool isAvoidingRock = false;          // Whether currently performing rock avoidance
+    private int checkpointSearchAttempts = 0;     // Number of times we've searched for checkpoints
+    private bool checkpointsFound = false;        // Whether valid checkpoints were found
+
+    // --- Initialization ---
 
     public override void Initialize(GameObject gameObject)
     {
@@ -57,16 +62,16 @@ public class PathfindingBrain : BrainBase
         Debug.Log("[PathfindingBrain] Initializing...");
         navMeshPath = new NavMeshPath();
 
-        // Auto-detect terrain layer if not set
+        // Auto-detect the terrain layer if not set
         if (terrainLayerMask.value == -1 && Terrain.activeTerrain != null)
         {
             terrainLayerMask = 1 << Terrain.activeTerrain.gameObject.layer;
             Debug.Log($"[PathfindingBrain] Auto-detected terrain layer: {Terrain.activeTerrain.gameObject.layer}");
         }
 
-        // For manually specified waypoints
         if (!useCheckpoints && manualWaypoints.Count > 0)
         {
+            // Using manually specified waypoints
             waypoints = manualWaypoints;
             checkpointsFound = true;
             currentStatus = "Ready to navigate (manual waypoints)";
@@ -74,7 +79,7 @@ public class PathfindingBrain : BrainBase
         }
         else
         {
-            // For dynamically created checkpoints, start a delayed search
+            // Dynamically find checkpoints after a short delay
             StartCoroutine(DelayedCheckpointSearch());
         }
     }
@@ -119,14 +124,17 @@ public class PathfindingBrain : BrainBase
         StartNavigation();
     }
 
+    // Main Update Logic (Called every frame by RoverBrainManager) ---
     public override void Think()
     {
+        // Early exit if paused or in invalid states
         if (isPaused() || roverController == null || !isNavigating || hasReachedAllWaypoints || !checkpointsFound)
             return;
 
+        // If we're currently avoiding a rock, continue steering to avoid it
         if (avoidanceSteeringTimer > 0f)
         {
-            roverController.ApplyBrakes(0.05f);
+            roverController.ApplyBrakes(0.05f); // Light braking
             float steerAmount = Mathf.Clamp(Vector3.SignedAngle(roverGameObject.transform.forward, lastAvoidanceVector, Vector3.up) / 30f, -1f, 1f);
 
             roverController.ApplySteering(steerAmount * rockAvoidanceSteering);
@@ -136,6 +144,7 @@ public class PathfindingBrain : BrainBase
             return; 
         }
 
+        // If no valid path or time to update, calculate new path
         if (!isPathValid || Time.time > lastPathCalculationTime + navMeshPathUpdateInterval)
         {
             CalculateNavMeshPath();
@@ -206,10 +215,9 @@ public class PathfindingBrain : BrainBase
 
         if (rocksDetected > 0)
         {   
+            // Braking and evasive steering when rocks are detected
             roverController.ApplyBrakes(1.0f);
-            Vector3 finalForce = (seekForce + avoidForce * 2f);
-            finalForce.y = 0;
-            finalForce = finalForce.normalized;
+            Vector3 finalForce = (seekForce + avoidForce * 2f).normalized;
 
             lastAvoidanceVector = finalForce;
             avoidanceSteeringTimer = avoidanceSteeringDuration;
@@ -225,15 +233,16 @@ public class PathfindingBrain : BrainBase
         return false;
     }
 
-
     private void FindCheckpoints()
     {
+        // Find objects tagged as "Checkpoint" in the scene
         GameObject[] checkpointObjects = GameObject.FindGameObjectsWithTag("Checkpoint");
-        
+
         Debug.Log($"[PathfindingBrain] Found {checkpointObjects.Length} objects with Checkpoint tag");
-        
+
         if (checkpointObjects.Length > 0)
         {
+            // Sort checkpoints alphabetically by name for consistent order
             System.Array.Sort(checkpointObjects, (a, b) => a.name.CompareTo(b.name));
             waypoints.Clear();
             
@@ -245,14 +254,14 @@ public class PathfindingBrain : BrainBase
         }
         else
         {
-            // If checkpoint tag is not found, try other methods
+            // If no tagged checkpoints found, fallback to searching by name
             FindCheckpointsByName();
         }
     }
     
     private void FindCheckpointsByName()
     {
-        // Look for objects with checkpoint in their name
+        // Search all GameObjects for "checkpoint", "waypoint" or "navsample" in their name
         GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
         int foundCheckpoints = 0;
         
@@ -270,7 +279,7 @@ public class PathfindingBrain : BrainBase
         
         if (foundCheckpoints > 0)
         {
-            // Sort the waypoints based on their names for consistent ordering
+            // Sort waypoints alphabetically for deterministic navigation
             waypoints.Sort((a, b) => a.name.CompareTo(b.name));
             Debug.Log($"[PathfindingBrain] Found {foundCheckpoints} checkpoints by name search");
         }
@@ -284,6 +293,7 @@ public class PathfindingBrain : BrainBase
             return;
         }
 
+        // Check if rover is on the NavMesh
         NavMeshHit hit;
         if (!NavMesh.SamplePosition(roverGameObject.transform.position, out hit, 5f, NavMesh.AllAreas))
         {
@@ -291,10 +301,13 @@ public class PathfindingBrain : BrainBase
             currentStatus = "Warning: Not on NavMesh";
         }
 
+        // Reset navigation variables
         currentWaypointIndex = 0;
         currentPathIndex = 0;
         isNavigating = true;
         hasReachedAllWaypoints = false;
+
+        // Calculate path to first waypoint
         CalculateNavMeshPath();
         
         currentStatus = $"Navigating to waypoint {currentWaypointIndex + 1}/{waypoints.Count}";
@@ -314,14 +327,11 @@ public class PathfindingBrain : BrainBase
         Transform waypointTransform = waypoints[currentWaypointIndex];
         Vector3 waypointPos = waypointTransform.position;
         
-        // Find the terrain height at the checkpoint location
+        // Adjust waypoint Y position to terrain height
         float terrainY = SampleTerrainHeightAt(waypointPos.x, waypointPos.z);
-        
-        // Create target position at the terrain height
         Vector3 targetPos = new Vector3(waypointPos.x, terrainY, waypointPos.z);
-        Debug.Log($"[PathfindingBrain] Waypoint {currentWaypointIndex + 1}: original pos {waypointPos}, target pos {targetPos}");
 
-        // Find nearest points on NavMesh for both start and end positions
+        // Snap start and target to NavMesh
         NavMeshHit startHit, endHit;
         bool startOnNavMesh = NavMesh.SamplePosition(startPos, out startHit, 5f, NavMesh.AllAreas);
         bool endOnNavMesh = NavMesh.SamplePosition(targetPos, out endHit, 10f, NavMesh.AllAreas);
@@ -339,26 +349,22 @@ public class PathfindingBrain : BrainBase
         }
         else
         {
-            // Use the NavMesh height to ensure we're on valid ground
             targetPos = endHit.position;
         }
 
-        // Calculate path using NavMesh
+        // Actually calculate the NavMesh path
         if (NavMesh.CalculatePath(startPos, targetPos, NavMesh.AllAreas, navMeshPath))
         {
             pathCorners = navMeshPath.corners;
-            
+
             if (pathCorners.Length == 0)
             {
                 Debug.LogError("[PathfindingBrain] Path calculation returned zero corners!");
                 isPathValid = false;
                 return;
             }
-            
-            // Log path calculation success
-            Debug.Log($"[PathfindingBrain] Path calculated with {pathCorners.Length} corners");
-            
-            // Draw path in scene for debugging
+
+            // Optional: draw the path lines for debug visualization
             if (debugMode && pathCorners.Length > 0)
             {
                 for (int i = 0; i < pathCorners.Length - 1; i++)
@@ -366,7 +372,7 @@ public class PathfindingBrain : BrainBase
                     Debug.DrawLine(pathCorners[i], pathCorners[i + 1], Color.green, navMeshPathUpdateInterval);
                 }
             }
-            
+
             currentPathIndex = 0;
             isPathValid = true;
             lastPathCalculationTime = Time.time;
@@ -380,7 +386,7 @@ public class PathfindingBrain : BrainBase
 
     private float SampleTerrainHeightAt(float x, float z)
     {
-        // First try using active terrain
+        // Try to sample height from active terrain
         Terrain terrain = Terrain.activeTerrain;
         if (terrain != null)
         {
@@ -389,7 +395,7 @@ public class PathfindingBrain : BrainBase
             return height;
         }
         
-        // If no terrain, try raycast to find ground
+        // If no terrain found, use physics raycast
         RaycastHit hit;
         if (Physics.Raycast(new Vector3(x, 1000, z), Vector3.down, out hit, 2000f, terrainLayerMask))
         {
@@ -397,6 +403,7 @@ public class PathfindingBrain : BrainBase
             return hit.point.y;
         }
         
+        // If all fails, return default height
         Debug.LogWarning("[PathfindingBrain] Failed to determine terrain height! Using default Y = 0.");
         return 0f;
     }
@@ -413,23 +420,20 @@ public class PathfindingBrain : BrainBase
     {
         if (currentTarget == Vector3.zero || roverController == null)
             return;
-            
-        // Calculate direction to target (ignore Y axis for flat movement)
+        
+        // Calculate a flat 2D direction to target
         Vector3 targetPos = new Vector3(currentTarget.x, 0, currentTarget.z);
         Vector3 currentPos = new Vector3(roverGameObject.transform.position.x, 0, roverGameObject.transform.position.z);
         Vector3 direction = (targetPos - currentPos).normalized;
         
-        // Calculate angle between forward direction and target direction
+        // Calculate steering angle
         float targetAngle = Vector3.SignedAngle(roverGameObject.transform.forward, direction, Vector3.up);
-        
-        // Determine steering based on angle
         float steerInput = Mathf.Clamp(targetAngle / steeringSpeed, -1f, 1f);
-        
-        // Reduce throttle when turning sharply
+
+        // Reduce speed when sharply turning
         float angleFactor = 1.0f - (Mathf.Abs(steerInput) * 0.5f);
         float throttleInput = angleFactor;
-        
-        // Apply steering and throttle
+
         roverController.ApplySteering(steerInput);
         roverController.ApplyMovement(throttleInput);
     }
@@ -447,7 +451,7 @@ public class PathfindingBrain : BrainBase
     private void OnReachedWaypoint()
     {
         Debug.Log($"[PathfindingBrain] Reached waypoint {currentWaypointIndex + 1}");
-        
+
         // Move to next waypoint
         currentWaypointIndex++;
 
@@ -455,13 +459,12 @@ public class PathfindingBrain : BrainBase
         {
             if (loopWaypoints)
             {
-                // Loop back to first waypoint
                 currentWaypointIndex = 0;
                 Debug.Log("[PathfindingBrain] Looping back to first waypoint");
             }
             else
             {
-                // End navigation
+                // All waypoints completed
                 hasReachedAllWaypoints = true;
                 roverController.ApplyMovement(0);
                 roverController.ApplySteering(0);
@@ -470,19 +473,22 @@ public class PathfindingBrain : BrainBase
             }
         }
 
-        // Calculate path to the next waypoint
+        // Recalculate path to the next waypoint
         currentPathIndex = 0;
         CalculateNavMeshPath();
         currentStatus = $"Navigating to waypoint {currentWaypointIndex + 1}/{waypoints.Count}";
     }
 
-    // Forces a rescan for checkpoints
+    // --- Public Helper ---
+
     public void RescanForCheckpoints()
     {
         checkpointSearchAttempts = 0;
         checkpointsFound = false;
         StartCoroutine(DelayedCheckpointSearch());
     }
+
+    // --- Debug Visualization (Gizmos) ---
 
     private void OnDrawGizmos()
     {
