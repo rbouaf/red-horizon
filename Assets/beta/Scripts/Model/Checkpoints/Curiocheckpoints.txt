@@ -9,7 +9,7 @@
         },
         "properties": {
           "title": "Bradbury Landing",
-          "image": "Images/bradbury_landing",
+          "image": "Images/bradbury",
           "description": "Bradbury Landing is the landing site for the Curiosity rover within Gale Crater. Named after writer Ray Bradbury, it is located in Aeolis Palus, a flat plain between Gale Crater's northern rim and central peak. Curiosity found evidence of conglomerated fluvial sediments shortly after landing.",
           "rover": "Curiosity"
         }
@@ -48,7 +48,7 @@
         },
         "properties": {
           "title": "Bagnold Dunes South",
-          "image": "Images/bagnold_dunes_south",
+          "image": "Images/southDunes",
           "description": "The southern portion of the Bagnold Dunes where Curiosity continued its exploration of dynamic sand formations on Mars.",
           "rover": "Curiosity"
         }
@@ -74,7 +74,7 @@
         },
         "properties": {
           "title": "Top of Vera Rubin Ridge",
-          "image": "Images/top_of_vera_rubin_ridge",
+          "image": "Images/top_of_vera_rubin",
           "description": "Curiosity continued southeast along the base of Vera Rubin Ridge in search of a gentle slope. On Sol 1796, the rover headed toward a rock ramp and, by Sol 1809, began ascending the bedrock of the ridge. It's a wonderful place to rest and admire the views of Mount Sharp",
           "rover": "Curiosity"
         }

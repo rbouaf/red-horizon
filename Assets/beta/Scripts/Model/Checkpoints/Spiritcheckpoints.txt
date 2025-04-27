@@ -48,7 +48,7 @@
         },
         "properties": {
           "title": "Western edge of Home Plate",
-          "image": "Images/home_plate",
+          "image": "Images/mars-home-plate-panorama",
           "description": "This is an area with soft soil where the Spirit rover got stuck on May 1, 2009.",
           "rover": "Spirit",
           "warning": "Popup warning: Caution, soft soil area!"
