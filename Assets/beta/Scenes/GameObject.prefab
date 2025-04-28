@@ -13381,7 +13381,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3462093792325843721, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6880981128878453785}
+    - targetCorrespondingSourceObject: {fileID: 3462093792325843721, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8120447251081082951}
   m_SourcePrefab: {fileID: 100100000, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
+--- !u!23 &2610592910887197904 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3721836738861743999, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
+  m_PrefabInstance: {fileID: 1701286027077854127}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2853027437856757926 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3462093792325843721, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
@@ -13406,6 +13414,32 @@ MonoBehaviour:
   clayConcentration: 0.4
   quartzConcentration: 0.05
   volcaniclasticConcentration: 0.1
+--- !u!205 &8120447251081082951
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853027437856757926}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.30105782
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2610592910887197904}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 2610592910887197904}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!4 &8495219247056254744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7095766760163824823, guid: a9d47e8a5c98f498a84556b79162a1cf, type: 3}
@@ -13475,7 +13509,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4070865055231202052, guid: ab9eddba29a1e475da0bb23451afb3d1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5255363315948837143}
+    - targetCorrespondingSourceObject: {fileID: 4070865055231202052, guid: ab9eddba29a1e475da0bb23451afb3d1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6133650033487913681}
   m_SourcePrefab: {fileID: 100100000, guid: ab9eddba29a1e475da0bb23451afb3d1, type: 3}
+--- !u!23 &455433846962738281 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4640665276494268663, guid: ab9eddba29a1e475da0bb23451afb3d1, type: 3}
+  m_PrefabInstance: {fileID: 5058935260705266846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6761392797459637609 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2009089485001619959, guid: ab9eddba29a1e475da0bb23451afb3d1, type: 3}
@@ -13505,6 +13547,32 @@ MonoBehaviour:
   clayConcentration: 0.4
   quartzConcentration: 0.05
   volcaniclasticConcentration: 0.1
+--- !u!205 &6133650033487913681
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100205723523108762}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.30105782
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 455433846962738281}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 455433846962738281}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &5624559550956014708
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13573,6 +13641,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5496369607938120404, guid: 71c58b72eff5848b3b4e2897ef6fda92, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5060129510391029231}
+    - targetCorrespondingSourceObject: {fileID: 5496369607938120404, guid: 71c58b72eff5848b3b4e2897ef6fda92, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3244511388291736123}
   m_SourcePrefab: {fileID: 100100000, guid: 71c58b72eff5848b3b4e2897ef6fda92, type: 3}
 --- !u!1 &164790495315498656 stripped
 GameObject:
@@ -13598,9 +13669,40 @@ MonoBehaviour:
   clayConcentration: 0.4
   quartzConcentration: 0.05
   volcaniclasticConcentration: 0.1
+--- !u!205 &3244511388291736123
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164790495315498656}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.30105782
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3551333834822841188}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 3551333834822841188}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!4 &3238022975961200772 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7125177988340774128, guid: 71c58b72eff5848b3b4e2897ef6fda92, type: 3}
+  m_PrefabInstance: {fileID: 5624559550956014708}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3551333834822841188 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 9171207159704420112, guid: 71c58b72eff5848b3b4e2897ef6fda92, type: 3}
   m_PrefabInstance: {fileID: 5624559550956014708}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5787719084493390505
@@ -13667,7 +13769,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2513313343952670899, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1005375734381129966}
+    - targetCorrespondingSourceObject: {fileID: 2513313343952670899, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7892054159720009598}
   m_SourcePrefab: {fileID: 100100000, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
+--- !u!23 &7919100932931209901 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4446274943233951748, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
+  m_PrefabInstance: {fileID: 5787719084493390505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8051058816093689030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4605212650260977263, guid: 719667f2035d442a8b6fc78d6a10a7fa, type: 3}
@@ -13697,6 +13807,32 @@ MonoBehaviour:
   clayConcentration: 0.4
   quartzConcentration: 0.05
   volcaniclasticConcentration: 0.1
+--- !u!205 &7892054159720009598
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264966217345143322}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.30105782
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7919100932931209901}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 7919100932931209901}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!1001 &7429730814172934488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13761,6 +13897,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7709263511906827119, guid: 440ddc44bdac1465b9960626412666aa, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7515323596659274874}
+    - targetCorrespondingSourceObject: {fileID: 7709263511906827119, guid: 440ddc44bdac1465b9960626412666aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5134834214704474031}
   m_SourcePrefab: {fileID: 100100000, guid: 440ddc44bdac1465b9960626412666aa, type: 3}
 --- !u!1 &1001904261952113207 stripped
 GameObject:
@@ -13786,9 +13925,40 @@ MonoBehaviour:
   clayConcentration: 0.4
   quartzConcentration: 0.05
   volcaniclasticConcentration: 0.1
+--- !u!205 &5134834214704474031
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001904261952113207}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.30105782
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5569839953840645514}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 5569839953840645514}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!4 &1117049698714349070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7537682207299493718, guid: 440ddc44bdac1465b9960626412666aa, type: 3}
+  m_PrefabInstance: {fileID: 7429730814172934488}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5569839953840645514 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3051117425920447698, guid: 440ddc44bdac1465b9960626412666aa, type: 3}
   m_PrefabInstance: {fileID: 7429730814172934488}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8719984767497695601
@@ -13859,6 +14029,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5297640286462424509, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2824747146546754332}
+    - targetCorrespondingSourceObject: {fileID: 5297640286462424509, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4496242758135345238}
   m_SourcePrefab: {fileID: 100100000, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
 --- !u!1 &3496873826013168844 stripped
 GameObject:
@@ -13884,8 +14057,39 @@ MonoBehaviour:
   clayConcentration: 0.4
   quartzConcentration: 0.05
   volcaniclasticConcentration: 0.1
+--- !u!205 &4496242758135345238
+LODGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496873826013168844}
+  serializedVersion: 2
+  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
+  m_Size: 1
+  m_FadeMode: 0
+  m_AnimateCrossFading: 0
+  m_LastLODIsBillboard: 0
+  m_LODs:
+  - screenRelativeHeight: 0.30105782
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4319485925002723168}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers:
+    - renderer: {fileID: 4319485925002723168}
+  - screenRelativeHeight: 0.0008400191
+    fadeTransitionWidth: 0
+    renderers: []
+  m_Enabled: 1
 --- !u!4 &3770774630183074126 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5573169896362707007, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
+  m_PrefabInstance: {fileID: 8719984767497695601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4319485925002723168 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4824057111272115729, guid: 916c49c1725b444db83f8ccd1f04c5fd, type: 3}
   m_PrefabInstance: {fileID: 8719984767497695601}
   m_PrefabAsset: {fileID: 0}

@@ -74,29 +74,7 @@ public class RoverBrainManager : MonoBehaviour
     
     private void Start()
     {
-        if (waitForNavMesh && navMeshManager != null)
-        {
-            // Check if NavMesh is already ready
-            if (navMeshManager.IsNavMeshReady())
-            {
-                Debug.Log("NavMesh is already ready, initializing brains...");
-                InitializeBrains();
-            }
-            else
-            {
-                // Subscribe to NavMeshManager events
-                navMeshManager.OnNavMeshReady += OnNavMeshReady;
-                navMeshManager.OnNavMeshGenerationFailed += OnNavMeshGenerationFailed;
-                
-                isWaitingForNavMesh = true;
-                Debug.Log("Waiting for NavMesh to be ready...");
-            }
-        }
-        else
-        {
-            // Don't wait for NavMesh, initialize brains immediately
-            InitializeBrains();
-        }
+        InitializeBrains();
     }
     
     private void OnDestroy()
