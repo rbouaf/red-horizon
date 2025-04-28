@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/beta/Scenes/MainCuriosity.unity
     guid: 356ed5a41ea2fc8498ed15d851f7c743
   - enabled: 1
+    path: Assets/beta/Scenes/MainOpportunity2.unity
+    guid: b06855b2dc02cbf4cb873c06ee281714
+  - enabled: 0
     path: Assets/beta/Scenes/MainOpportunity.unity
     guid: e6ff72e70e64a7047890c0a7cf9c6036
   - enabled: 1
