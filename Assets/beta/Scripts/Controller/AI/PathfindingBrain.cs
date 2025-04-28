@@ -1,7 +1,15 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework;
 
+
+/*
+Intended to use a Navmesh for Navigation but since the scene terrain is massive, it caused performance
+ issues on laptops (not great when a demo is on a laptop...) So instead this is what is implemented,
+ a script that plots a straight line between rover and next checkpoint, with no care if that checkpoint
+ is in a massive pit or surrounded by a mountain range. It will go straight towards it..
+ */
 public class PathfindingBrain : BrainBase
 {
     [Header("Simple Line Path Settings")]
@@ -58,12 +66,14 @@ public class PathfindingBrain : BrainBase
             {
                 currentPathIndex++;
             }
-        }
-        else if (path != null && currentPathIndex >= path.Count)
-        {
-            OnReachedCheckpoint();
+
+            if (currentPathIndex >= path.Count)
+            {
+                OnReachedCheckpoint();
+            }
         }
     }
+
 
     private IEnumerator DelayedCheckpointSearch()
     {
@@ -81,7 +91,6 @@ public class PathfindingBrain : BrainBase
 
         if (checkpointObjects.Length > 0)
         {
-            System.Array.Sort(checkpointObjects, (a, b) => a.name.CompareTo(b.name));
             foreach (GameObject checkpoint in checkpointObjects)
             {
                 checkpoints.Add(checkpoint.transform);
@@ -99,14 +108,27 @@ public class PathfindingBrain : BrainBase
         if (checkpoints.Count == 0)
             return;
 
-        Vector3 startPos = roverGameObject.transform.position;
-        Vector3 endPos = checkpoints[0].position;
-        endPos.y = Terrain.activeTerrain.SampleHeight(endPos);
+        SortCheckpointsByDistance(); // Sorts closest first
 
-        GenerateRandomizedPath(startPos, endPos);
+        Vector3 startPos = roverGameObject.transform.position;
+        Vector3 checkpointCenter = GetCheckpointGroundPosition(checkpoints[0]);
+
+        // --- NEW ---
+        Vector3 toCheckpoint = (checkpointCenter - startPos);
+        toCheckpoint.y = 0;
+        Vector3 offsetDirection = toCheckpoint.normalized;
+
+        float offsetDistance = 3.0f; // How far to stop *before* checkpoint center (tune this!)
+
+        Vector3 adjustedEnd = checkpointCenter - offsetDirection * offsetDistance;
+        adjustedEnd.y = checkpointCenter.y; // Keep same height after adjustment
+        // ---
+
+        GenerateRandomizedPath(startPos, adjustedEnd);
         currentPathIndex = 0;
         isNavigating = true;
     }
+
 
     private void GenerateRandomizedPath(Vector3 start, Vector3 end)
     {
@@ -123,16 +145,25 @@ public class PathfindingBrain : BrainBase
             point.x += randomOffset.x;
             point.z += randomOffset.y;
 
-            point.y = Terrain.activeTerrain.SampleHeight(new Vector3(point.x, 0, point.z));
+            // ✨ Sample terrain height correctly for each point
+            point.y = Terrain.activeTerrain.SampleHeight(new Vector3(point.x, 0, point.z)) 
+                    + Terrain.activeTerrain.transform.position.y;
 
             path.Add(point);
 
             if (debugMode)
-                Debug.Log($"[PathfindingBrain] Generated waypoint {i}: {point}");
+                Debug.Log($"[PathfindingBrain] Generated segment waypoint {i}: {point}");
         }
 
-        path.Add(end);
+        // ✨ Re-sample terrain height for the final end position
+        Vector3 finalEnd = end;
+        finalEnd.y = Terrain.activeTerrain.SampleHeight(new Vector3(end.x, 0, end.z)) 
+                + Terrain.activeTerrain.transform.position.y;
+
+        path.Add(finalEnd);
     }
+
+
 
     private void MoveTowards(Vector3 target)
     {
@@ -156,7 +187,6 @@ public class PathfindingBrain : BrainBase
     {
         if (avoidanceTimer > 0f)
         {
-            // Continue previously initiated avoidance
             roverController.ApplySteering(avoidanceDirection.x * avoidanceSteeringStrength);
             roverController.ApplyMovement(0.5f);
             avoidanceTimer -= Time.deltaTime;
@@ -203,6 +233,43 @@ public class PathfindingBrain : BrainBase
         else
         {
             checkpoints.RemoveAt(0);
+        }
+    }
+
+    private void SortCheckpointsByDistance()
+    {
+        if (checkpoints.Count == 0)
+            return;
+
+        Vector3 roverPos = roverGameObject.transform.position;
+
+        checkpoints.Sort((a, b) =>
+        {
+            float distA = Vector3.SqrMagnitude(a.position - roverPos);
+            float distB = Vector3.SqrMagnitude(b.position - roverPos);
+            return distA.CompareTo(distB);
+        });
+    }
+
+    private Vector3 GetCheckpointGroundPosition(Transform checkpoint)
+    {
+        Vector3 origin = checkpoint.position + Vector3.up * 5f;
+        Ray ray = new Ray(origin, Vector3.down);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 20f))
+        {
+            return new Vector3(checkpoint.position.x, hit.point.y, checkpoint.position.z);
+        }
+        else if (Terrain.activeTerrain != null)
+        {
+            float terrainHeight = Terrain.activeTerrain.SampleHeight(checkpoint.position);
+            return new Vector3(checkpoint.position.x, terrainHeight, checkpoint.position.z);
+        }
+        else
+        {
+            Debug.LogWarning("[PathfindingBrain] No ground found under checkpoint! Defaulting to original Y.");
+            return checkpoint.position;
         }
     }
 

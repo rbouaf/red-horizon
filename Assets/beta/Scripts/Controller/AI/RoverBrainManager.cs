@@ -22,7 +22,6 @@ public class RoverBrainManager : MonoBehaviour
     
     [Header("NavMesh Dependencies")]
     [SerializeField] private bool waitForNavMesh = true;
-    [SerializeField] private NavMeshManager navMeshManager;
     
     [Header("Available Brains")]
     [SerializeField] private List<BrainInfo> availableBrains = new List<BrainInfo>();
@@ -58,33 +57,11 @@ public class RoverBrainManager : MonoBehaviour
                 Debug.LogError($"Brain '{brainInfo.brainName}' does not implement IBrain interface.");
             }
         }
-
-        // Find NavMeshManager if not assigned
-        if (navMeshManager == null)
-        {
-            navMeshManager = FindAnyObjectByType<NavMeshManager>();
-            if (navMeshManager == null && waitForNavMesh)
-            {
-                Debug.LogWarning("NavMeshManager not found! Creating a new instance.");
-                GameObject navMeshManagerObj = new GameObject("NavMeshManager");
-                navMeshManager = navMeshManagerObj.AddComponent<NavMeshManager>();
-            }
-        }
     }
     
     private void Start()
     {
         InitializeBrains();
-    }
-    
-    private void OnDestroy()
-    {
-        // Unsubscribe from NavMeshManager events
-        if (navMeshManager != null)
-        {
-            navMeshManager.OnNavMeshReady -= OnNavMeshReady;
-            navMeshManager.OnNavMeshGenerationFailed -= OnNavMeshGenerationFailed;
-        }
     }
     
     private void OnNavMeshReady()
