@@ -111,6 +111,8 @@ public class RoverController : MonoBehaviour
         ApplyBrakes(brakeInput);
         SolarCharge();
         MakePanelsDustier();
+
+        UpdateWheelsVisuals();
     }
 
     public void ApplyMovement(float throttle)
