@@ -102,22 +102,23 @@ public class RoverController : MonoBehaviour
 
     private void Update()
     {
-        // If manual control is disabled, skip Update
-        if (!manualControlEnabled)
-            return; 
+        if (manualControlEnabled) {
 
-        float throttleInput = Input.GetAxis("Vertical");
-        float steerInput = Input.GetAxis("Horizontal");
-        float brakeInput = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
-        
-        ApplyMovement(throttleInput);
-        ApplySteering(steerInput);
-        ApplyBrakes(brakeInput);
+            float throttleInput = Input.GetAxis("Vertical");
+            float steerInput = Input.GetAxis("Horizontal");
+            float brakeInput = Input.GetKey(KeyCode.Space) ? 1.0f : 0.0f;
+            
+            ApplyMovement(throttleInput);
+            ApplySteering(steerInput);
+            ApplyBrakes(brakeInput);
+        }
+    
         SolarCharge();
         MakePanelsDustier();
 
         UpdateWheelsVisuals();
         UpdateBatteryUI();
+
     }
 
     public void ApplyMovement(float throttle)
