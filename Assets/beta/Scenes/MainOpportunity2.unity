@@ -304,6 +304,14 @@ PrefabInstance:
       propertyPath: unityTerrainSize.y
       value: 15980
       objectReference: {fileID: 0}
+    - target: {fileID: 6024893581090985000, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 8105362335240817180, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -600
+      objectReference: {fileID: 0}
     - target: {fileID: 8461233589001289188, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 946.42126
@@ -344,6 +352,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8936212780271317834, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: de7f961a802dcae4f8c10c021badf5f0, type: 2}
     - target: {fileID: 8958529819159919807, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
