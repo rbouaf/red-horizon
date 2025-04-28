@@ -4060,7 +4060,7 @@ GameObject:
   - component: {fileID: 706088507}
   - component: {fileID: 706088506}
   - component: {fileID: 706088505}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4076,7 +4076,7 @@ Transform:
   m_GameObject: {fileID: 706088503}
   serializedVersion: 2
   m_LocalRotation: {x: 0.9993717, y: -0.0010496307, z: -0.035015665, w: -0.005382785}
-  m_LocalPosition: {x: -0.019952118, y: 6.840005, z: 0.6001858}
+  m_LocalPosition: {x: -0, y: 13.09, z: 0.66}
   m_LocalScale: {x: 1.3817118, y: 0.12434039, z: 1.4787506}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4167,7 +4167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 9875a245ac49007498213638a307faa1, type: 2}
+  - {fileID: 2100000, guid: ad22456ec438240daae096e1db6d891b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8632,7 +8632,7 @@ Transform:
   m_GameObject: {fileID: 1300181173}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 21.5, y: -8.68, z: -4.33}
+  m_LocalPosition: {x: 6732, y: 38.43, z: 13794.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
