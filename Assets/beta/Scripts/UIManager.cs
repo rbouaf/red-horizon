@@ -129,38 +129,7 @@ public class UIManager : MonoBehaviour
 		}
 		cg.alpha = 1f;
 	}
-	public IEnumerator ShowLoadingScreen(string sceneName)
-	{
-		// Fade out the map selection panel.
-		yield return StartCoroutine(FadeOutCanvasGroup(mapSelectionCanvasGroup, 1f));
-		Debug.LogError("fading globe...");
 
-		yield return StartCoroutine(FadeOutGlobe(marsGlobe, 0.5f));
-
-		// Fade out the atmosphere over 1 second
-		if (atmosphereTransform != null)
-		{
-			yield return StartCoroutine(FadeOutAtmosphere(atmosphereTransform, 0.2f));
-		}
-		DarkenSkyboxExposure();
-		warp1.gameObject.SetActive(true);
-		warp1.Play();
-		warp2.gameObject.SetActive(true);
-		warp2.Play();
-
-		// Activate and fade in the loading panel.
-		loadingPanel.SetActive(true);
-		Debug.LogError("Loading panel active");
-		yield return new WaitForSeconds(2f);
-
-		yield return StartCoroutine(FadeInCanvasGroup(loadingPanelCanvasGroup, 1.5f));
-		Debug.LogError("Loading panel faded in");
-
-		yield return new WaitForSeconds(10f);
-
-
-
-	}
 	void SetSkyboxExposure()
 	{
 		// Get the current skybox material from RenderSettings

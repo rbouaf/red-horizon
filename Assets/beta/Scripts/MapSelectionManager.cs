@@ -264,60 +264,27 @@ public class MapSelectionManager : MonoBehaviour
 		t = t - 1;
 		return (t * t * ((s + 1) * t + s) + 1);
 	}
+	
+
+
+
 	public void GoToNextScene()
 	{
-		if (interestPoints == null || interestPoints.Length == 0)
-		{
+		if (interestPoints == null || interestPoints.Length == 0) {
 			Debug.LogError("No interest points set!");
 			return;
 		}
 
-		InterestPoint currentPoint = interestPoints[currentIndex];
-
-		if (string.IsNullOrEmpty(currentPoint.sceneName))
-		{
+		string nextSceneName = interestPoints[currentIndex].sceneName;
+		if (string.IsNullOrEmpty(nextSceneName)) {
 			Debug.LogError("Scene name is not set for this interest point.");
 			return;
 		}
 
-		Debug.Log($"Loading scene: {currentPoint.sceneName}");
-		StartCoroutine(LoadSceneWithLoadingScreen(currentPoint.sceneName));
+		// Tell the Loader which scene to load,
+		// then immediately load the dedicated loading scene.
+		Loader.NextScene = nextSceneName;
+		SceneManager.LoadScene("LoadingScreen");
 	}
-
-	private IEnumerator LoadSceneWithLoadingScreen(string sceneName)
-	{
-		UIManager uiManager = FindObjectOfType<UIManager>();
-		if (uiManager != null)
-		{
-			yield return StartCoroutine(uiManager.ShowLoadingScreen(sceneName));
-		}
-		else
-		{
-			Debug.LogError("UIManager not found!");
-		}
-		// Finally, load the new scene
-		SceneManager.LoadScene(sceneName);
-	}
-
-	public void ForceGo()
-	{
-		if (interestPoints == null || interestPoints.Length == 0)
-		{
-			Debug.LogError("No interest points set!");
-			return;
-		}
-
-		InterestPoint currentPoint = interestPoints[currentIndex];
-
-		if (string.IsNullOrEmpty(currentPoint.sceneName))
-		{
-			Debug.LogError("Scene name is not set for this interest point.");
-			return;
-		}
-
-		Debug.Log($"Loading scene: {currentPoint.sceneName}");
-		SceneManager.LoadScene(currentPoint.sceneName);
-	}
-
 
 }
