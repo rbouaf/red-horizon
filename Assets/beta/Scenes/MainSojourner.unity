@@ -119,6 +119,26 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &307949076 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6559716908390322994, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+  m_PrefabInstance: {fileID: 1880750476131563870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &549633229 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4434096296553706036, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+  m_PrefabInstance: {fileID: 1880750476131563870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &682668620 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 489990693454811591, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+  m_PrefabInstance: {fileID: 1880750476131563870}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1217986443 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6177849473586181920, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+  m_PrefabInstance: {fileID: 1880750476131563870}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1880750476131563870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,6 +154,26 @@ PrefabInstance:
     - target: {fileID: 3227431283871463043, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3971443784940973024, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: wallTop
+      value: 
+      objectReference: {fileID: 1217986443}
+    - target: {fileID: 3971443784940973024, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: wallLeft
+      value: 
+      objectReference: {fileID: 549633229}
+    - target: {fileID: 3971443784940973024, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: wallRight
+      value: 
+      objectReference: {fileID: 682668620}
+    - target: {fileID: 3971443784940973024, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: wallBottom
+      value: 
+      objectReference: {fileID: 307949076}
+    - target: {fileID: 3971443784940973024, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: wallHeight
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8461233589001289188, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_LocalPosition.x
