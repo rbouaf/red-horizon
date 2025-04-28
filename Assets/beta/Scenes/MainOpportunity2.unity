@@ -230,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 398352379480919334, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -283.77112
+      value: -384.1195
       objectReference: {fileID: 0}
     - target: {fileID: 398352379480919334, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_LocalPosition.z
@@ -238,19 +238,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 398352379480919334, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.83466536
+      value: 0.8346649
       objectReference: {fileID: 0}
     - target: {fileID: 398352379480919334, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0000032665496
+      value: 0.00000014146981
       objectReference: {fileID: 0}
     - target: {fileID: 398352379480919334, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5507575
+      value: 0.5507581
       objectReference: {fileID: 0}
     - target: {fileID: 398352379480919334, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000006341587
+      value: 0.000010943524
       objectReference: {fileID: 0}
     - target: {fileID: 3227431283871463043, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_AnchorMax.y
@@ -303,6 +303,18 @@ PrefabInstance:
     - target: {fileID: 5248335999455949344, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: unityTerrainSize.y
       value: 15980
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455409097969539231, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: targetPosition.x
+      value: 1308
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455409097969539231, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: targetPosition.y
+      value: -461
+      objectReference: {fileID: 0}
+    - target: {fileID: 5455409097969539231, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
+      propertyPath: targetPosition.z
+      value: 15435
       objectReference: {fileID: 0}
     - target: {fileID: 6024893581090985000, guid: cb33f95bf50fd764ea3bb6c9d80647b4, type: 3}
       propertyPath: m_TagString
