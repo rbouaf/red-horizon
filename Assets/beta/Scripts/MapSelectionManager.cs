@@ -11,7 +11,6 @@ public class InterestPoint
 	public float latitude;
 	public float longitude;
 	public string description;
-	public Sprite[] images; // Up to 3 images
 
 	public string sceneName;
 }

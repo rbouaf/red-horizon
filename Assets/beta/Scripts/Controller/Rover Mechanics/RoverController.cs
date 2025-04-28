@@ -153,7 +153,7 @@ public class RoverController : MonoBehaviour
             // Base volume on actual rover speed
             float speed = rb.linearVelocity.magnitude;
             float maxSpeed = 2.0f; 
-            float targetVolume = Mathf.Clamp01(speed / maxSpeed) * 0.4f;
+            float targetVolume = Mathf.Clamp01(speed / maxSpeed) * 0.2f;
 
             if (inputPressed)
             {
