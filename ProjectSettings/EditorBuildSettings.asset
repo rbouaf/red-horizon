@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/beta/Scenes/StartMenu.unity
     guid: f5b346f930494f549a16fa7ac86febb6
   - enabled: 1
+    path: Assets/beta/Scenes/LoadingScreen.unity
+    guid: a20da106b731020478e8be4e43b7cd31
+  - enabled: 1
     path: Assets/beta/Scenes/MainSojourner.unity
     guid: 0994e7207483d1a4aa24384139fdcaeb
   - enabled: 1
@@ -29,9 +32,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/beta/Scenes/MainSpirit.unity
     guid: 5a41e872fc357b345b6fe2112001b7a7
-  - enabled: 1
-    path: Assets/beta/Scenes/LoadingScreen.unity
-    guid: a20da106b731020478e8be4e43b7cd31
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
