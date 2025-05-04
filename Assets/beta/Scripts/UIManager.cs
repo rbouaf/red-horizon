@@ -5,12 +5,15 @@ using TMPro; // For TextMeshPro support
 
 public class UIManager : MonoBehaviour
 {
+	private void Awake()
+    {
+        Screen.SetResolution(910, 512, FullScreenMode.Windowed);
+    }
+
 	[SerializeField] private GameObject startMenuPanel;
 	[SerializeField] private GameObject mapSelectionPanel;
 	[SerializeField] private Transform marsGlobe;
-	[SerializeField] private GameObject loadingPanel; // Assign in inspector
 	[SerializeField] private Transform atmosphereTransform;
-	[SerializeField] private CanvasGroup loadingPanelCanvasGroup;
 	[SerializeField] private ParticleSystem warp1;
 	[SerializeField] private ParticleSystem warp2;
 
@@ -45,17 +48,9 @@ public class UIManager : MonoBehaviour
 		}
 		mapSelectionCanvasGroup.alpha = 0f; // Start hidden
 
-		// Ensure the loading panel has a CanvasGroup for fading
-		CanvasGroup loadingPanelCanvasGroup = loadingPanel.GetComponent<CanvasGroup>();
-		if (loadingPanelCanvasGroup == null)
-		{
-			loadingPanelCanvasGroup = loadingPanel.AddComponent<CanvasGroup>();
-			Debug.LogError("Loading panel CanvasGroup not found, added one.");
-		}
-		loadingPanelCanvasGroup.alpha = 0f; // Start hidden
+		
 		startMenuPanel.SetActive(true);
 		mapSelectionPanel.SetActive(false);
-		loadingPanel.SetActive(false);
 		warp1.gameObject.SetActive(false);
 		warp2.gameObject.SetActive(false);
 	}
