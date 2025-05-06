@@ -1,7 +1,12 @@
-# Red Horizon
+
+![demo_banner](https://github.com/rbouaf/red-horizon/blob/1fb778d324e037bdb3b86634f0ba00d188649ebe/demo_banner.png)
 A Unity 3D Mars rover simulation using authentic NASA terrain data, featuring physics-based rover controls, AI-driven pathfinding, checkpoint navigation, geological sampling, and a real-time telemetry HUD. 
 
 Software Engineering Project for COMP 361 @ McGill University
+![demo_map](https://github.com/rbouaf/red-horizon/blob/1fb778d324e037bdb3b86634f0ba00d188649ebe/demo_map.png)
+![demo_main](https://github.com/rbouaf/red-horizon/blob/1fb778d324e037bdb3b86634f0ba00d188649ebe/demo_main.png)
+![demo_checkpoint](https://github.com/rbouaf/red-horizon/blob/1fb778d324e037bdb3b86634f0ba00d188649ebe/demo_checkpoint.png)
+![demo_sample](https://github.com/rbouaf/red-horizon/blob/1fb778d324e037bdb3b86634f0ba00d188649ebe/demo_sample.png)
 
 Run inside Unity's playtest mode for now, errors in the build would require 10-30 additional hours of debugging.
 It should be set already but if not, the resolution is meant to be 910x512.
